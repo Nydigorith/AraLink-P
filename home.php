@@ -118,8 +118,11 @@ if (!empty($fetch['images'])) {
             -moz-transition: all 0.5s;
             -o-transition: all 0.5s;
         }
+        .copy-code {
+            margin-top: -15px;
+        }
         /* Footer */
-footer .copyright {
+footer .footer-text {
    /*  text-align: center; */
    /*  padding-top: 10px;
     padding-bottom: 10px; */
@@ -127,6 +130,20 @@ footer .copyright {
     font-size: 15px;
     background-color: rgb(27, 27, 19);
 }
+
+
+@media (min-width: 581px) {
+    .modal .modal-dialog {
+  max-width: 220px !important;
+}
+}
+@media (max-width: 581px)  and (min-width: 381px)  {
+    .modal  {
+  padding-left: 23vw;
+  padding-right: 23vw;
+}
+}
+
 
     </style>
 </head>
@@ -154,7 +171,7 @@ footer .copyright {
     <div class="background-image ">
         <div class="jumbotron d-flex align-items-center text-center">
             <div class="container">
-                <h1 class="jumbotron-heading"><?php  echo $fetch['classname']  ?><a data-toggle="modal"
+                <h1 class="jumbotron-heading"><?php  echo $fetch['classname']?><a data-toggle="modal"
                         data-target="#copy_code_modal"><i class="fa fa-share" aria-hidden="true"></i></a></h1>
             </div>
         </div>
@@ -203,52 +220,61 @@ footer .copyright {
                 <?php
                     if(isset($_POST['subject'])) {
                         $subject = $_POST["subject"];
-                        $query = $conn->prepare("SELECT * FROM classvideo WHERE subjects = :subject AND linkcode = :codihe");
-                        $result  =  $query->execute([':subject' => $subject, ':codihe' => $fetch_classcode]);
-                         echo "<style>.filter-selection[value='$subject']{background-color: yellow;}.filter-selection[value=ALL]{background-color: white;}</style>";   
-                        if($result){
-                            if($query->rowCount() > 0){
-                                while($row = $query->fetch(PDO::FETCH_BOTH)){                           
-                ?>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="card mb-4 box-shadow">
-                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"></iframe>
-                        <div class="card-body">
-                            <div class="card-subtitle text-muted"> <?php echo $row['subjects'];?></div>
-                            <div class="card-title"> <?php echo $row['titles'];?></div>
-                            <div class="card-subtitle text-muted"> <?php echo $row['dates'];?> </div>
-                        </div>
+                        if ($subject == "ALL") {
+                            $query = $conn->prepare("SELECT * FROM classvideo WHERE linkcode = :codihe");
+                            $result  =  $query->execute([':codihe' => $fetch_classcode]);
+                            echo "<style>.filter-selection[value='ALL']{background-color: yellow;}></style>"; 
+                            if($result){
+                                if($query->rowCount() > 0){
+                                    while($row = $query->fetch(PDO::FETCH_BOTH)){
+                        ?>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card mb-4 box-shadow">
+                    <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"></iframe>
+                    <div class="card-body">
+                        <div class="card-subtitle text-muted"> <?php echo $row['subjects'];?></div>
+                        <div class="card-title"> <?php echo $row['titles'];?></div>
+                        <div class="card-subtitle text-muted"> <?php echo $row['dates'];?> </div>
                     </div>
                 </div>
-                <?php
-                                 } 
-                            } else {
-                                $query = $conn->prepare("SELECT * FROM classvideo WHERE linkcode = :codihe");
-                                $result  =  $query->execute([':codihe' => $fetch_classcode]);
-                                echo "<style>.filter-selection[value='ALL']{background-color: yellow;}></style>"; 
-                                if($result){
-                                    if($query->rowCount() > 0){
-                                        while($row = $query->fetch(PDO::FETCH_BOTH)){
-                            ?>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="card mb-4 box-shadow">
-                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"></iframe>
-                        <div class="card-body">
-                            <div class="card-subtitle text-muted"> <?php echo $row['subjects'];?></div>
-                            <div class="card-title"> <?php echo $row['titles'];?></div>
-                            <div class="card-subtitle text-muted"> <?php echo $row['dates'];?> </div>
+            </div>
+            <?php
+                                    }  
+                                } else {
+                                    ?>
+                                    <div class="error-text mx-auto">No video were found </div>';
+                                    <?php
+                                } 
+                            }
+                        } else {
+                            $query = $conn->prepare("SELECT * FROM classvideo WHERE subjects = :subject AND linkcode = :codihe");
+                            $result  =  $query->execute([':subject' => $subject, ':codihe' => $fetch_classcode]);
+                             echo "<style>.filter-selection[value='$subject']{background-color: yellow;}.filter-selection[value=ALL]{background-color: white;}</style>";   
+                            if($result){
+                                if($query->rowCount() > 0){
+                                    while($row = $query->fetch(PDO::FETCH_BOTH)){                           
+                    ?>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="card mb-4 box-shadow">
+                            <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"></iframe>
+                            <div class="card-body">
+                                <div class="card-subtitle text-muted"> <?php echo $row['subjects'];?></div>
+                                <div class="card-title"> <?php echo $row['titles'];?></div>
+                                <div class="card-subtitle text-muted"> <?php echo $row['dates'];?> </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <?php
-                                        }  
-                                    } else {
-                                        echo '<div class="error-text mx-auto" ">No records matching your query were found</div>';
-                                    } 
+                    <?php
+                                     } 
+                                } else {
+                                    ?>
+                                    <div class="error-text mx-auto">No video for <?php echo $subject;?> </div>';
+                                    <?php
                                 }
                             }
                         }
-                    } else {
+                    }
+                     else {
                         $query = $conn->prepare("SELECT * FROM classvideo WHERE linkcode = :codihe");
                         $result  =  $query->execute([':codihe' => $fetch_classcode]);
                         if($result){
@@ -268,7 +294,9 @@ footer .copyright {
                 <?php
                                 }  
                             }else {
-                                echo '<div class="error-text mx-auto""> No records matching your query were found</div>';
+                                ?>
+                                <div class="error-text mx-auto">No video were found </div>';
+                                <?php
                         }
                     }
                 }
@@ -284,11 +312,9 @@ footer .copyright {
 
     <!-- Footer -->
 <footer class="page-footer">
-<div class="copyright text-center py-3">
-            &copy;
-            <script>
-                document.write(new Date().getFullYear());
-            </script> SL Visuals. All Rights Reserved.
+<div class="footer-text text-center py-3">
+<a href="https://github.com/Nydigorith/AraLink" target="_blank">Download Source Code</a>
+           
         </div>
 </footer>
 <!-- Footer -->
@@ -303,11 +329,11 @@ footer .copyright {
     <!-- Copy Modal -->
     <div class="modal fade" id="copy_code_modal" tabindex="-1" role="dialog" aria-labelledby="copy_code_modalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered px-3" role="document">
             <div class="modal-content">
-                <div class="modal-body row">
-                    <div id="select_txt" class="nav-item"><?php echo $fetch['classcode']  ?></div>
-                    <div class="close-fade" data-dismiss="modal" onclick="copy_data(select_txt)" id="copy-code">copy</div>
+                <div class="modal-body  text-center">
+                    <h3 id="select_txt" class="class-code"><?php echo $fetch['classcode']  ?></h3>
+                    <div class="copy-code close-fade " data-dismiss="modal" onclick="copy_data(select_txt)" id="copy-code">copy</div>
                 </div>
             </div>
         </div>

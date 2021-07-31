@@ -202,26 +202,30 @@ padding-left:25px;
     /* background-size: cover; */
     background-position: center center;
     background-repeat: no-repeat;
+   /*  font-size:31px; */
 }
 .background-image .jumbotron-heading {
-  font-size:3.5vw;
+  font-size:40px;
 }
 .background-image .fa-share {
-  font-size: 1.5vw;
+  font-size: 15px;
+  padding-left:.2vw;
 }
 @media (max-width: 768px) {
   .background-image .jumbotron {
     /* height: 32vw; */
  /*    font-size:15vw; */
-
+ background-size: 50em auto;
+ height: 230px;
 }
 
-/* .background-image .jumbotron-heading {
-  font-size:6.5vw;
+.background-image .jumbotron-heading {
+  font-size:30px;
 }
 .background-image .fa-share {
-  font-size: 3vw;
-} */
+  font-size: 10px;
+  padding-left:.2vw;
+}
 }
 
 
@@ -274,9 +278,18 @@ padding-left:25px;
   color: #999999;
 } */
 .card {
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
     border-bottom-left-radius: 5%;
     border-bottom-right-radius: 5%;
     border: 1px solid #999999;
+}
+
+@media (max-width:576px) and (min-width: 420px)  {
+
+  .video-show {
+  padding:0px 60px;
+}
 }
 
 .card:hover {
@@ -287,13 +300,16 @@ padding-left:25px;
 
     text-align: center;
     width: 100%;
-    height: 10em;
-    object-fit: cover;
+    height: 12em;
+    /* object-fit: cover; */
     margin-left: auto;
     margin-right: auto;
-    padding:1px;
-    border: 1px solid #999999;
+    /* padding:2px; */
+    border-style:none;
+    border-radius: 0%;
+    /* border: 1px solid #999999; */
 }
+
 
 .card .card-title {
     font-size: 18px;
