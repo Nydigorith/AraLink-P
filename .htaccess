@@ -1,0 +1,13 @@
+RewriteEngine On
+ErrorDocument 400 /AraLink/error
+ErrorDocument 403 /AraLink/error
+ErrorDocument 404 /AraLink/error
+ErrorDocument 405 /AraLink/error
+ErrorDocument 408 /AraLink/error
+ErrorDocument 500 /AraLink/error
+ErrorDocument 502 /AraLink/error
+ErrorDocument 504 /AraLink/error
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+

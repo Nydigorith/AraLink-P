@@ -1,0 +1,236 @@
+<?php 
+
+$errors = array();
+require_once "controllerUserData.php";
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>AraLink</title>
+    <link rel="icon" href="img/logo.png">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Loading -->
+    <link rel="stylesheet" href="css/pace-theme-minimal.css">
+
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+    }
+
+    /* .btn-light {
+        width: 200px;
+    } */
+
+
+
+
+    .jumbotron {
+        /*   filter: blur(0px) brightness(80%);  */
+        /* background-color: #3c94ff; */
+        color: white;
+        height: 110%;
+        padding-top: 10px;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        background-image: url(img/map2.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center center;
+        box-shadow: inset 0 0 0 9999px rgba(15, 144, 105, .6);
+    }
+
+    /* Particles in Jumbotron */
+    .jumbotron .container {
+        position: relative;
+        z-index: 999;
+       
+    }
+
+    /* .jumbotron-heading {
+        margin-top: 15%;
+    } */
+   /*  @media (max-width:768px) {
+        .jumbotron-heading {
+        margin-top: 30%;
+    }
+} */
+
+    /* Jumbotron Button */
+    .jumbotron .container .btn {
+        width: 200px;
+        background: none;
+        transition: 0.3s;
+        border: 2px solid white;
+        color: white;
+    }
+
+    .jumbotron .container .btn:hover {
+        background-color: rgb(85, 168, 116);
+        border: 2px solid rgb(85, 168, 116);
+        color: rgb(27, 27, 19);
+    }
+
+    /* Particles */
+    #particles-js {
+        position: relative;
+        z-index: 2;
+        background-color: #4398FF;
+    }
+
+    canvas.particles-js-canvas-el {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+    }
+  
+    .modal-content {
+        border-radius: 10px;    
+    }
+  
+    .modal-title  {
+    /*     border: pink solid 1px;
+    border-radius: 50px; */
+    background-color:pink;
+    
+}
+@media (min-width: 580px) {
+    .modal .modal-dialog {
+  max-width: 400px !important;
+}
+}
+    
+</style>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-light sticky-top nav-index">
+        <a href="index" class="navbar-brand pl-3"><img src="img/nav-logo.png" width="190px" height="50px"></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navigation_bar"
+            aria-controls="navigation_bar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navigation_bar">
+            <ul class="navbar-nav ml-auto flex-sm-row pr-2">
+                <div class="nav-item left col-sm-6 "> <a href="login" class="btn btn-light">Login</a></div>
+                <div class="nav-item right col-sm-6"> <a href="signup" class="btn btn-light">Signup</a></div>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <div class="jumbotron d-flex align-items-center particles" id="particles-js">
+        <div class="container text-center">
+            <h1 class="jumbotron-heading ">AraLink</h1>
+            <p>AraLink is a website where you can compile every class video recording through embed links.</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#code_modal"> Enter Code
+            </button>
+        </div>
+    </div>
+
+   <!--  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ -->
+    <!-- Code Modal -->
+    <div class="modal fade " id="code_modal" tabindex="-1" role="dialog" aria-labelledby="code_modalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered px-3" role="document">
+            <div class="modal-content">
+            <h5 class="modal-title py-3 text-center">Modal title</h5>
+                <div class="modal-body">
+                    <form method="POST" action="index">
+                        <!-- <h2 class="text-center">Login Form</h2> -->
+                        
+                        <?php
+                                if(count($errors) > 0){
+                            ?>
+                        <div class="alert alert-danger text-center">
+                            <?php
+                            foreach($errors as $showerror){
+                                echo $showerror;
+                            }
+                            ?>
+                        </div>
+                        <?php
+                            }
+                            ?>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="c" id="c" placeholder="Class Code"
+                                onkeypress="return event.charCode != 32" maxlength="8" required>
+                        </div>
+                        <div class="form-group">
+                            <button class="form-control button" type="hidden" name="submit">Enter
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <!-- Loading -->
+    <script src="js/pace.js"></script>
+    <!-- Particle -->
+    <script src="js/particles.js"></script>
+    <script src="js/app.js"></script>
+
+   
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                            
+
+    <script>
+        var error;
+        if (error == "error") {
+            $('#code_modal').modal("show");
+        }
+
+        /* Remove Confirm Form Resubmission  */
+if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+  }
+    </script>
+
+</body>
+
+</html>
