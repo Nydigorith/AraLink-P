@@ -127,6 +127,7 @@ footer .copyright {
     font-size: 15px;
     background-color: rgb(27, 27, 19);
 }
+
     </style>
 </head>
 
@@ -162,7 +163,7 @@ footer .copyright {
     <!-- Videos -->
     <div class="videos">
         <div class="container video-selection text-center">
-            <div class="row text-center">
+            <div class="text-center">
                 <div class="filter p-4">
                     <form id="form1" method="POST">
                         <label class="filter-selection" value='ALL'>
@@ -242,7 +243,7 @@ footer .copyright {
                 <?php
                                         }  
                                     } else {
-                                        echo '<div class="error-text text-center">No records matching your query were found</div>';
+                                        echo '<div class="error-text mx-auto" ">No records matching your query were found</div>';
                                     } 
                                 }
                             }
@@ -267,7 +268,7 @@ footer .copyright {
                 <?php
                                 }  
                             }else {
-                                echo '<div class="error-text text-center"> No records matching your query were found</div>';
+                                echo '<div class="error-text mx-auto""> No records matching your query were found</div>';
                         }
                     }
                 }
