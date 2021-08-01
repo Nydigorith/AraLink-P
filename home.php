@@ -143,7 +143,9 @@ footer .footer-text {
   padding-right: 23vw;
 }
 }
-
+.videos .mb-4  {
+    margin-top:8px;
+}
 
     </style>
 </head>
@@ -229,7 +231,7 @@ footer .footer-text {
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
                         ?>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card mb-4 box-shadow">
+                <div class="card mb-4 box-shadow ">
                     <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"></iframe>
                     <div class="card-body">
                         <div class="card-subtitle text-muted"> <?php echo $row['subjects'];?></div>

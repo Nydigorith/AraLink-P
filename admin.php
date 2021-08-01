@@ -140,52 +140,108 @@ if (!empty($fetch['images'])) {
         }
 
         .content {
-  /* max-width: 1400px; */
-  padding-left:30px;
-  padding-right:30px;
-  /* margin: auto; */
+            /* max-width: 1400px; */
+            padding-left: 30px;
+            padding-right: 30px;
+            /* margin: auto; */
+        }
+
+        @media (min-width: 581px) {
+            .modal .modal-dialog {
+                max-width: 300px !important;
+            }
+        }
+
+        @media (max-width: 581px) and (min-width: 381px) {
+            .modal {
+                padding-left: 18vw;
+                padding-right: 18vw;
+            }
+        }
+
+
+        @media (min-width: 768px) {
+            .fa-image {
+                padding-top: 305px;
+                margin-right: -15px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .fa-image {
+                padding-top: 180px;
+                margin-right: 0px;
+            }
+        }
+
+        
+
+        @media (max-width: 768px) and (min-width: 575px) {
+            .fa-image {
+                padding-top: 180px;
+                margin-right: -15px;
+            }
+        }
+
+       
+        table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+            background: rgba(0,0,0,0.0);
+            color: black;
+border-style:none;
+            box-shadow: 0px 0px;
+}
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
+    background-color: white;
+            color: black;
+            border-style:none;
+            box-shadow: 0px 0px;
+            background: rgba(0,0,0,0.0);
 }
 
-@media (min-width: 581px) {
-    .modal .modal-dialog {
-  max-width: 300px !important;
+   
+        @media (min-width:768px) {
+            .dataTables_filter {
+              
+   float: left !important;
+   margin-left:-49vw!important;
+   
+   
 }
+
 }
-@media (max-width: 581px)  and (min-width: 381px)  {
-    .modal  {
-  padding-left: 18vw;
-  padding-right: 18vw;
+@media (max-width:768px)   {
+    .dataTables_filter {
+        user-select:none;
+   float: left !important;
+   /* margin-left:-1vw!important; */
+   margin-left:-7px!important;
+   
 }
 }
 
 
-@media (min-width: 768px) {
-.fa-image {
-  padding-top:305px;
-  margin-right:-15px;
+    .dataTables_filter input {
+    
+        box-shadow: none !important;   
+        width: 250px !important;
+        height:40px !important;
+    }
+    ::-ms-clear {
+display: none;
 }
+      
+#video_table {
+border: 1px solid black;
 }
-@media (max-width: 575px) {
-.fa-image {
-  padding-top:180px;
-  margin-right:0px;
+.edit {
+    /* padding:100px; */
 }
-}
+    
+.btn {
+ margin-left:-10px;
 
-@media (max-width: 768px) and (min-width: 575px) {
-  .fa-image {
-    padding-top:180px;
-    margin-right:-15px;
-  }
-}
-table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, 
-table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before  {
-background-color: white;
-color:black;
 
-box-shadow: 0px 0px;
 }
-
 
     </style>
 
@@ -207,8 +263,8 @@ box-shadow: 0px 0px;
         </div>
     </nav>
 
-        <!-- Jumbotron -->
-        <div class="background-image ">
+    <!-- Jumbotron -->
+    <div class="background-image ">
         <div class="jumbotron d-flex align-items-center text-center">
             <div class="container">
                 <h1 class="jumbotron-heading"><?php  echo $fetch['classname']?><a data-toggle="modal"
@@ -216,7 +272,7 @@ box-shadow: 0px 0px;
                 </h1>
             </div>
             <div class="jumbotron-upload text-right"><a data-toggle="modal" data-target="#upload_image_modal">
-                <i class="fa fa-image" aria-hidden="true"></i></a>
+                    <i class="fa fa-image" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -227,17 +283,17 @@ box-shadow: 0px 0px;
     <div class="video_menu" id="video_menu">
         <div class="content">
             <h1>S</h1>
-            <table id="video_table" class="table dt-responsive nowrap cell-border hover" style="width:100%">
+            <table id="video_table" class="table dt-responsive nowrap row-border hover" style="width:100%">
                 <thead>
-                    <tr class="table-primary">
-                        <th width=>ID</th>
-                        <th >Lesson</th>
-                        <th >Subject</th>
-                        <th >Date</th>
-                        <th >Link</th>
+                    <tr >
+                        <th >ID</th>
+                        <th>Lesson</th>
+                        <th>Subject</th>
+                        <th>Date</th>
+                        <th>Link</th>
                         <th>Code</th>
-                        <th width="2%" scope="col">Edit</th>
-                        <th width="2%" scope="col">Delete</th>
+                        <th width="0%"></th>
+                        <th class="table-delete" width="0%"></th>
                     </tr>
                 </thead>
             </table>
@@ -249,7 +305,7 @@ box-shadow: 0px 0px;
         </div>
 
         <div id="video_modal" class="modal fade">
-            <div class="modal-dialog">
+            <div class="modal-dialog mx-auto">
                 <form method="post" id="video_form" enctype="multipart/form-data">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -266,8 +322,8 @@ box-shadow: 0px 0px;
                             <div class="form-group">
                                 <label>Subject</label>
                                 <select class="form-control subjects-select" id="subjects-select">
-                                <option style="display:none" >Select a Subject</option>
-                                <?php
+                                    <option style="display:none">Select a Subject</option>
+                                    <?php
                                     $query = $conn->prepare("SELECT * FROM classsubject WHERE subjectcode = :subjectcode");
                                     $result  =  $query->execute([':subjectcode' => $fetch_classcode]);
                                     if($result){
@@ -327,7 +383,7 @@ box-shadow: 0px 0px;
                     <tr class="table-primary">
                         <th>ID</th>
                         <th width="95%">Subject</th>
-                        <th >Code</th>
+                        <th>Code</th>
                         <th></th>
                         <th width="5%" scope="col">Delete</th>
                     </tr>
@@ -385,8 +441,8 @@ box-shadow: 0px 0px;
                         <div class="form-group">
                             <input class="form-control button" type="submit" name="check-name" value="Change">
                         </div>
-                        
-                       
+
+
 
                     </form>
                 </div>
@@ -400,27 +456,31 @@ box-shadow: 0px 0px;
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body row">
-                <?php 
+                    <?php 
                 if(isset($_SESSION['info'])){
                 ?>
-                <div class="alert alert-success text-center">
-                    <?php echo $_SESSION['info']; ?>
-                </div>
-                <?php
+                    <div class="alert alert-success text-center">
+                        <?php echo $_SESSION['info']; ?>
+                    </div>
+                    <?php
                 }
                 ?>
-                <?php
+                    <?php
                 if(count($errors) > 0){
                 ?>
-                <div class="alert alert-danger text-center">
-                    <style type="text/css">.alert-success{display:none;}</style>
-                <?php
+                    <div class="alert alert-danger text-center">
+                        <style type="text/css">
+                            .alert-success {
+                                display: none;
+                            }
+                        </style>
+                        <?php
                     foreach($errors as $showerror){
                         echo $showerror;
                     }
                 ?>
-                </div>
-                <?php
+                    </div>
+                    <?php
                 } unset($_SESSION["info"])
                 ?>
                     <form action="admin" method="post" enctype="multipart/form-data">
@@ -462,7 +522,6 @@ box-shadow: 0px 0px;
 
 
     <script type="text/javascript" language="javascript">
-
         var message;
         if (message == "e") {
             $('#upload_image_modal').modal("show");
@@ -483,7 +542,7 @@ box-shadow: 0px 0px;
             }
         }
 
-       $("#subjects-select").change(function () {
+        $("#subjects-select").change(function () {
             $("#subjects").val($(this).val());
         });
         $('#date-picker').datetimepicker({
@@ -504,29 +563,42 @@ box-shadow: 0px 0px;
                 "processing": false,
                 "serverSide": true,
                 "responsive": true,
-                "columns": [
-        { "responsivePriority": 1 },
-        { "responsivePriority": 2 },
-        { "responsivePriority": 6 },
-        { "responsivePriority": 5 },
-        { "responsivePriority": 8 },
-        { "responsivePriority": 4 },
-        { "responsivePriority": 3 },
-        { "responsivePriority": 0 }
-    ],
- 
+                "columns": [{
+                        "responsivePriority": 1
+                    },
+                    {
+                        "responsivePriority": 2
+                    },
+                    {
+                        "responsivePriority": 6
+                    },
+                    {
+                        "responsivePriority": 5
+                    },
+                    {
+                        "responsivePriority": 8
+                    },
+                    {
+                        "responsivePriority": 4
+                    },
+                    {
+                        "responsivePriority": 3
+                    },
+                    {
+                        "responsivePriority": 0
+                    }
+                ],
+
+
+
                 "language": {
 
-                    
+
                     "searchPlaceholder": "Search for Lesson",
                     "search": ''
                 },
-                "aoColumnDefs": [{
-                    "bVisible": false,
-                    "aTargets": [0, 5]
-                }],
-                
-                
+        
+
                 "order": [],
                 "info": false,
                 "ajax": {
@@ -534,11 +606,26 @@ box-shadow: 0px 0px;
                     type: "POST"
                 },
                 "columnDefs": [{
-                    "targets": [0, 3, 4],
-                    "orderable": false,
-                    
-                }, ],
-                
+                        "targets": [0, 3, 4],
+                        "orderable": false,
+
+                    },
+
+                    { 
+                        "targets": [6,7],
+                        "className": "text-center",
+                        "autoWidth": false
+                        /* "width": "%" */
+
+                    },
+                    { 
+                        "targets": [0, 5],
+                        "visible": false,
+                    },
+                    /* { "width": 200, "targets": 7 } */
+
+                ]
+
             });
 
             $(document).on('submit', '#video_form', function (event) {
@@ -549,18 +636,18 @@ box-shadow: 0px 0px;
                 var dates = $('#dates').val();
                 var links = $('#links').val();
                 var linkcode = $('#linkcode').val();
-                    $.ajax({
-                        url: "insert.php",
-                        method: 'POST',
-                        data: new FormData(this),
-                        contentType: false,
-                        processData: false,
-                        success: function (data) {
-                            $('#video_form')[0].reset();
-                            $('#video_modal').modal('hide');
-                            dataTable.ajax.reload();
-                        }
-                    });
+                $.ajax({
+                    url: "insert.php",
+                    method: 'POST',
+                    data: new FormData(this),
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        $('#video_form')[0].reset();
+                        $('#video_modal').modal('hide');
+                        dataTable.ajax.reload();
+                    }
+                });
             });
 
             $(document).on('click', '.update', function () {
@@ -626,10 +713,7 @@ box-shadow: 0px 0px;
                 "serverSide": true,
                 "responsive": true,
                 "searching": false,
-                "aoColumnDefs": [{
-                    "bVisible": false,
-                    "aTargets": [0, 2, 3]
-                }],
+               
                 "order": [],
                 "info": false,
                 "ajax": {
@@ -639,7 +723,14 @@ box-shadow: 0px 0px;
                 "columnDefs": [{
                     "targets": [0, 3, 4],
                     "orderable": false,
-                }, ],
+                }, 
+                {
+                     
+                        "targets": [0,2,3],
+                        "visible": false,
+                    
+                }
+                ],
             });
 
             $(document).on('submit', '#subject_form', function (event) {
@@ -688,7 +779,7 @@ box-shadow: 0px 0px;
             document.getElementById("video_menu").style.display = 'none';
             document.getElementById("subject_menu").style.display = 'block';
         }
-        
+
         /* Back to Top */
         $(window).scroll(function () {
             if ($(this).scrollTop() > 750) {
@@ -722,5 +813,6 @@ box-shadow: 0px 0px;
             sessionStorage.setItem('scrollpos', window.scrollY);
         });
     </script>
-</body>
+    </body>
+
 </html>

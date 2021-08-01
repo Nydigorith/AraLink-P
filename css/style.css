@@ -168,6 +168,9 @@ padding-left:25px;
     }
 }
 
+::-ms-clear {
+  display: none;
+  }
 
 @media (min-width: 769px) {
    /* .nav-item {

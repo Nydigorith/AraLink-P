@@ -43,8 +43,8 @@ foreach($result as $row)
 	$sub_array[] = $row["links"];
 	$sub_array[] = $row["linkcode"];
 
-	$sub_array[] = '<button type="button" name="update" id="'.$row["id"].'" class="btn btn-primary btn-sm update"><i class="fa fa-pencil" aria-hidden="true"></i></button>';
-	$sub_array[] = '<button type="button" name="delete" id="'.$row["id"].'" class="btn btn-danger btn-sm delete"><i class="fa fa-trash" aria-hidden="true"></i></button>';
+	$sub_array[] = '<button type="button"  name="update" id="'.$row["id"].'" class="btn btn-primary btn-sm update"><i class="fa fa-pencil" aria-hidden="true"></i></button>';
+	$sub_array[] = '<button type="button"  name="delete" id="'.$row["id"].'" class="btn btn-danger btn-sm delete"><i class="fa fa-trash" aria-hidden="true"></i></button>';
 	$data[] = $sub_array;
 }
 
