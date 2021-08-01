@@ -61,6 +61,7 @@ if (!empty($fetch['images'])) {
 
     <!-- Icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
@@ -144,7 +145,48 @@ if (!empty($fetch['images'])) {
   padding-right:30px;
   /* margin: auto; */
 }
-        
+
+@media (min-width: 581px) {
+    .modal .modal-dialog {
+  max-width: 300px !important;
+}
+}
+@media (max-width: 581px)  and (min-width: 381px)  {
+    .modal  {
+  padding-left: 18vw;
+  padding-right: 18vw;
+}
+}
+
+
+@media (min-width: 768px) {
+.fa-image {
+  padding-top:305px;
+  margin-right:-15px;
+}
+}
+@media (max-width: 575px) {
+.fa-image {
+  padding-top:180px;
+  margin-right:0px;
+}
+}
+
+@media (max-width: 768px) and (min-width: 575px) {
+  .fa-image {
+    padding-top:180px;
+    margin-right:-15px;
+  }
+}
+table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, 
+table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before  {
+background-color: white;
+color:black;
+
+box-shadow: 0px 0px;
+}
+
+
     </style>
 
 
@@ -165,16 +207,16 @@ if (!empty($fetch['images'])) {
         </div>
     </nav>
 
-
-    <!-- Jumbotron -->
-    <div class="background-image text-center">
-        <div class="jumbotron text-center">
+        <!-- Jumbotron -->
+        <div class="background-image ">
+        <div class="jumbotron d-flex align-items-center text-center">
             <div class="container">
-                <h1 class="jumbotron-heading"><?php  echo $fetch['classname']  ?><a data-toggle="modal"
-                        data-target="#change_code_modal"><i class="bi bi-share" aria-hidden="true"></i></a></h1>
-                <div class="nav-item"><a class="" data-toggle="modal" data-target="#upload_image_modal">Upload Image<i
-                            class="bi bi-upload" aria-hidden="true"></i></a>
-                </div>
+                <h1 class="jumbotron-heading"><?php  echo $fetch['classname']?><a data-toggle="modal"
+                        data-target="#change_code_modal"><i class="fa fa-share" aria-hidden="true"></i></a>
+                </h1>
+            </div>
+            <div class="jumbotron-upload text-right"><a data-toggle="modal" data-target="#upload_image_modal">
+                <i class="fa fa-image" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -185,17 +227,17 @@ if (!empty($fetch['images'])) {
     <div class="video_menu" id="video_menu">
         <div class="content">
             <h1>S</h1>
-            <table id="video_table" class="table  table-bordered dt-responsive nowrap hover" style="width:100%">
+            <table id="video_table" class="table dt-responsive nowrap cell-border hover" style="width:100%">
                 <thead>
                     <tr class="table-primary">
                         <th width=>ID</th>
-                        <th width="30%">Lesson</th>
-                        <th width="10%">Subject</th>
-                        <th width="10%">Date</th>
-                        <th width="40%">Link</th>
+                        <th >Lesson</th>
+                        <th >Subject</th>
+                        <th >Date</th>
+                        <th >Link</th>
                         <th>Code</th>
-                        <th width="5%" scope="col">Edit</th>
-                        <th width="5%" scope="col">Delete</th>
+                        <th width="2%" scope="col">Edit</th>
+                        <th width="2%" scope="col">Delete</th>
                     </tr>
                 </thead>
             </table>
@@ -331,8 +373,9 @@ if (!empty($fetch['images'])) {
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-body row">
+                <div class="modal-body">
                     <form action="admin.php" method="get" autocomplete="">
+
                         <div class="form-group">
                             <input type="hidden" value="<?php  echo $fetch['id']  ?>" name="id">
                             <input type="hidden" value="<?php  echo $varivari?>" name="varivari">
@@ -340,8 +383,11 @@ if (!empty($fetch['images'])) {
                                 value="<?php  echo $fetch['classname']  ?>">
                         </div>
                         <div class="form-group">
-                            <input class="form-control button" type="submit" name="check-name" value="Continue">
+                            <input class="form-control button" type="submit" name="check-name" value="Change">
                         </div>
+                        
+                       
+
                     </form>
                 </div>
             </div>
@@ -379,8 +425,9 @@ if (!empty($fetch['images'])) {
                 ?>
                     <form action="admin" method="post" enctype="multipart/form-data">
                         <label>Select Image File:</label>
-                        <input type="file" name="image">
+                        <input type="file" name="image" onchange="readURL(this);">
                         <input type="submit" name="upload-image" id="btn" value="Upload">
+                        <img id="image-view" src="#" alt="your image" /> Image
                     </form>
                 </div>
             </div>
@@ -421,6 +468,21 @@ if (!empty($fetch['images'])) {
             $('#upload_image_modal').modal("show");
         }
 
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#image-view')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
        $("#subjects-select").change(function () {
             $("#subjects").val($(this).val());
         });
@@ -442,16 +504,29 @@ if (!empty($fetch['images'])) {
                 "processing": false,
                 "serverSide": true,
                 "responsive": true,
+                "columns": [
+        { "responsivePriority": 1 },
+        { "responsivePriority": 2 },
+        { "responsivePriority": 6 },
+        { "responsivePriority": 5 },
+        { "responsivePriority": 8 },
+        { "responsivePriority": 4 },
+        { "responsivePriority": 3 },
+        { "responsivePriority": 0 }
+    ],
+ 
                 "language": {
 
-                    "search": '<i class="fa fa-search"></i>',
-                    "searchPlaceholder": "search",
-
+                    
+                    "searchPlaceholder": "Search for Lesson",
+                    "search": ''
                 },
                 "aoColumnDefs": [{
                     "bVisible": false,
                     "aTargets": [0, 5]
                 }],
+                
+                
                 "order": [],
                 "info": false,
                 "ajax": {
@@ -461,7 +536,9 @@ if (!empty($fetch['images'])) {
                 "columnDefs": [{
                     "targets": [0, 3, 4],
                     "orderable": false,
+                    
                 }, ],
+                
             });
 
             $(document).on('submit', '#video_form', function (event) {
@@ -489,7 +566,7 @@ if (!empty($fetch['images'])) {
             $(document).on('click', '.update', function () {
                 var video_id = $(this).attr("id");
                 $.ajax({
-                    url: "fetch_single.php",
+                    url: "fetch_edit.php",
                     method: "POST",
                     data: {
                         video_id: video_id

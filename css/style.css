@@ -211,6 +211,8 @@ padding-left:25px;
   font-size: 15px;
   padding-left:.2vw;
 }
+
+
 @media (max-width: 768px) {
   .background-image .jumbotron {
     /* height: 32vw; */
