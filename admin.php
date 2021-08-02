@@ -268,16 +268,25 @@ if (!empty($fetch['images'])) {
 
 
         }
-        .dt-first-last {
-            text-align:left !important;
-            padding-left:25px !important;
+      
+        #image-preview {
+          
+    height: 105px;
+    width: 440px;
+    object-fit:cover;
+    
         }
-        .dt-body-center {
-            text-align:left !important;
-            padding-left:10px !important;
-        }
-        
-        
+
+        .image-div { 
+            object-fit:cover;
+    position: relative;
+ /*    height: 170px;
+    width: 480px; */
+    overflow: hidden;
+    
+}
+       
+
     </style>
 
 
@@ -427,7 +436,7 @@ if (!empty($fetch['images'])) {
                         <th width="100%">Subject</th>
                         <th>Code</th>
                         <th></th>
-                        <th width="0%" ></th>
+                        <th width="1%" ></th>
                     </tr>
                 </thead>
             </table>
@@ -500,7 +509,9 @@ if (!empty($fetch['images'])) {
         aria-labelledby="upload_image_modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-body row">
+            <h5 class="modal-title py-3 text-center">Select Image File</h5>
+                <div class="modal-body ">
+                    
                     <?php 
                 if(isset($_SESSION['info'])){
                 ?>
@@ -528,11 +539,18 @@ if (!empty($fetch['images'])) {
                     <?php
                 } unset($_SESSION["info"])
                 ?>
-                    <form action="admin" method="post" enctype="multipart/form-data">
-                        <label>Select Image File:</label>
-                        <input type="file" name="image" onchange="readURL(this);">
-                        <input type="submit" name="upload-image" id="btn" value="Upload">
-                        <img id="image-view" src="#" alt="your image" /> Image
+                    <form action="admin"  method="post" enctype="multipart/form-data">
+                     
+                        <input type="file" id="image"name="image" style="display: none;" onchange="document.getElementById('image-preview').src = window.URL.createObjectURL(this.files[0])">
+                        <input type="button"  class="btn btn-secondary" value="Browse..." onclick="document.getElementById('image').click();" />
+
+                        <div id="image-div" class="text-center">
+                        <img id="image-preview"  />
+                      </div>
+                      <div class="modal-footer">
+                      <input type="submit" class="btn btn-primary" name="upload-image" id="btn" value="Upload">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
                     </form>
                 </div>
             </div>
@@ -574,27 +592,27 @@ if (!empty($fetch['images'])) {
 
 
 
+<script>
+  
+     if( document.getElementById("image").files.length == 0 ){ 
+        document.getElementById("image-preview").src="img/no-image.jpg";
+        console.log("no files selected");
+ } 
 
+
+</script>
     <script type="text/javascript" language="javascript">
+
+
+
+
+
         var message;
         if (message == "e") {
             $('#upload_image_modal').modal("show");
         }
 
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#image-view')
-                        .attr('src', e.target.result)
-                        .width(150)
-                        .height(200);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+      
 
         $("#subjects-select").change(function () {
             $("#subjects").val($(this).val());
@@ -666,8 +684,15 @@ if (!empty($fetch['images'])) {
                     },
 
                     {
-                        "targets": [6, 7],
-                        "className": "text-center",
+                        "targets": [6],
+                        "className": "text-right pr-3",
+                        "autoWidth": false
+                        /* "width": "%" */
+
+                    },
+                    {
+                        "targets": [7],
+                        "className": "text-right pr-3",
                         "autoWidth": false
                         /* "width": "%" */
 
@@ -799,8 +824,8 @@ if (!empty($fetch['images'])) {
                     },
                     {
                         "targets": [4],
-                        "className": "text-center",
-                        "autoWidth": false
+                        "className": "text-right pr-3",
+                        "autoWidth": false,
                         
 
                     },
@@ -835,14 +860,16 @@ if (!empty($fetch['images'])) {
                     processData: false,
                     success: function (data) {
                         $('#subject_form')[0].reset();
+                        $("#subjects-select").load(" #subjects-select > *");
                         $('#subject_modal').modal('hide');
                         dataTable.ajax.reload();
                     }
                 });
             });
 
-            $(document).on('click', '.delete', function () {
+            $(document).on('click', '.deletee', function () {
                 var subject_id = $(this).attr("id");
+                if (confirm("Are you sure you want to delete this user?")) {
                 $.ajax({
                     url: "insert.php",
                     method: "POST",
@@ -851,9 +878,16 @@ if (!empty($fetch['images'])) {
                     },
                     success: function (data) {
                         dataTable.ajax.reload();
+                        $("#subjects-select").load(" #subjects-select > *");
                     }
                 });
+            } else {
+                    return false;
+                }
             });
+
+
+            
         });
     </script>
 
