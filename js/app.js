@@ -35,9 +35,9 @@ particlesJS('particles-js',
           "nb_sides": 5
         },
         "image": {
-          "src": "img/app.png",
-          "width": 500,
-          "height": 500
+          "src": "img/logo.png",
+          "width": 800,
+          "height": 800
         }
       },
       "opacity": {
@@ -51,7 +51,7 @@ particlesJS('particles-js',
         }
       },
       "size": {
-        "value": 10,
+        "value": 12,
         "random": true,
         "anim": {
           "enable": false,

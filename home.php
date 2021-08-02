@@ -79,24 +79,6 @@ if (!empty($fetch['images'])) {
 
         }
 
-        .back-to-top {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            display: none;
-            color: rgb(27, 27, 19);
-            width: 55px;
-            height: 55px;
-            background-color: rgb(254, 221, 2);
-            border: 1px solid rgb(254, 221, 2);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-        }
-
-        .back-to-top:hover {
-            color: rgb(27, 27, 19)9;
-            background-color: rgb(254, 221, 2);
-            border: 1px solid rgb(27, 27, 19);
-        }
 
         .copied {
             display: none;
@@ -121,15 +103,7 @@ if (!empty($fetch['images'])) {
         .copy-code {
             margin-top: -15px;
         }
-        /* Footer */
-footer .footer-text {
-   /*  text-align: center; */
-   /*  padding-top: 10px;
-    padding-bottom: 10px; */
-    color: white;
-    font-size: 15px;
-    background-color: rgb(27, 27, 19);
-}
+
 
 
 @media (min-width: 581px) {
@@ -152,23 +126,28 @@ footer .footer-text {
 
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-md navbar-light  sticky-top ">
-        <a href="index" class="navbar-brand pl-5"><img src="img/nav-logo.png" width="30px" height="30px"></a>
+    
+
+
+    
+
+     <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-light sticky-top nav-index">
+        <a href="index" class="navbar-brand pl-3"><img src="img/nav-logo.png" width="190px" height="50px"></a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navigation_bar"
             aria-controls="navigation_bar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navigation_bar">
-            <ul class="navbar-nav ml-auto">
-                <div class="nav-item "> <a href="admin" class="btn btn-light">Admin</a></div>
-                <div class="nav-item"> <a href="logout" class="btn btn-light">Logout</a></div>
+        <div class="collapse navbar-collapse " id="navigation_bar">
+            <ul class="navbar-nav ml-auto flex-sm-row pr-2">
+                <div class="nav-item left col-sm-6 "> <a href="admin" class="btn btn-light">Admin</a></div>
+                <div class="nav-item right col-sm-6"> <a href="logout" class="btn btn-light">Logout</a></div>
             </ul>
         </div>
     </nav>
-    
+
     <!-- Jumbotron -->
     <div class="background-image ">
         <div class="jumbotron d-flex align-items-center text-center">

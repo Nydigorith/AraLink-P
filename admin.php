@@ -71,7 +71,7 @@ if (!empty($fetch['images'])) {
 
     <!-- Datatable -->
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
@@ -129,6 +129,7 @@ if (!empty($fetch['images'])) {
             -moz-transition: all 0.5s;
             -o-transition: all 0.5s;
         }
+        
 
         /* Button */
         .video_menu {
@@ -147,13 +148,13 @@ if (!empty($fetch['images'])) {
         }
 
         @media (min-width: 581px) {
-            .modal .modal-dialog {
+            .name-modal  .modal .modal-dialog {
                 max-width: 300px !important;
             }
         }
 
         @media (max-width: 581px) and (min-width: 381px) {
-            .modal {
+            .name-modal .name{
                 padding-left: 18vw;
                 padding-right: 18vw;
             }
@@ -174,7 +175,7 @@ if (!empty($fetch['images'])) {
             }
         }
 
-        
+
 
         @media (max-width: 768px) and (min-width: 575px) {
             .fa-image {
@@ -183,86 +184,125 @@ if (!empty($fetch['images'])) {
             }
         }
 
-       
-        table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-            background: rgba(0,0,0,0.0);
-            color: black;
-border-style:none;
-            box-shadow: 0px 0px;
-}
-table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
-    background-color: white;
-            color: black;
-            border-style:none;
-            box-shadow: 0px 0px;
-            background: rgba(0,0,0,0.0);
-}
 
-   
+        table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child,
+        table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child, 
+        table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child,
+        table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child {
+            position:relative;
+        }
+
+       
+        table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+        table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+            background: rgba(0, 0, 0, 0.0);
+            color: black;
+            border-style: none;
+            box-shadow: 0px 0px;
+
+            content: "\f107";  /* this is your text. You can also use UTF-8 character codes as I do here */
+    font-family: FontAwesome;
+  /*   left:-5px; */
+    position:absolute;
+    top:21px;
+        }
+
+        table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before,
+        table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
+            background-color: white;
+            color: black;
+            border-style: none;
+            box-shadow: 0px 0px;
+            background: rgba(0, 0, 0, 0.0);
+
+            content: "\f106";  /* this is your text. You can also use UTF-8 character codes as I do here */
+    font-family: FontAwesome;
+  /*   left:-5px; */
+  position:absolute;
+    top:21px;
+        }
+
+
         @media (min-width:768px) {
             .dataTables_filter {
-              
-   float: left !important;
-   margin-left:-49vw!important;
-   
-   
-}
 
-}
-@media (max-width:768px)   {
-    .dataTables_filter {
-        user-select:none;
-   float: left !important;
-   /* margin-left:-1vw!important; */
-   margin-left:-7px!important;
-   
-}
-}
+                float: left !important;
+                margin-left: -49vw !important;
 
 
-    .dataTables_filter input {
-    
-        box-shadow: none !important;   
-        width: 250px !important;
-        height:40px !important;
-    }
-    ::-ms-clear {
-display: none;
-}
-      
-#video_table {
-border: 1px solid black;
-}
-.edit {
-    /* padding:100px; */
-}
-    
-.btn {
- margin-left:-10px;
+            }
+
+        }
+
+        @media (max-width:768px) {
+            .dataTables_filter {
+                user-select: none;
+                float: left !important;
+                /* margin-left:-1vw!important; */
+                margin-left: -7px !important;
+
+            }
+        }
+
+        .dataTables_filter input {
+
+            box-shadow: none !important;
+            width: 250px !important;
+            height: 40px !important;
+        }
+
+        ::-ms-clear {
+            display: none;
+        }
+
+        #video_table, #subject_table {
+            border: 1px solid black;
+        }
+
+        .edit {
+            /* padding:100px; */
+        }
+
+        .btn .update,.delete {
+            margin-left: -20px;
 
 
-}
-
+        }
+        .dt-first-last {
+            text-align:left !important;
+            padding-left:25px !important;
+        }
+        .dt-body-center {
+            text-align:left !important;
+            padding-left:10px !important;
+        }
+        
+        
     </style>
 
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-md navbar-light  sticky-top ">
-        <a href="index" class="navbar-brand pl-5"><img src="img/nav-logo.png" width="30px" height="30px"></a>
+ 
+
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-md navbar-light sticky-top nav-index">
+        <a href="index" class="navbar-brand pl-3"><img src="img/nav-logo.png" width="190px" height="50px"></a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navigation_bar"
             aria-controls="navigation_bar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navigation_bar">
-            <ul class="navbar-nav ml-auto">
-                <div class="nav-item "> <a href="home" class="btn btn-light">Videos</a></div>
-                <div class="nav-item"> <a href="logout" class="btn btn-light">Logout</a></div>
+        <div class="collapse navbar-collapse " id="navigation_bar">
+            <ul class="navbar-nav ml-auto flex-sm-row pr-2">
+     
+
+                <div class="nav-item left col-sm-6 "> <a href="home" class="btn btn-light">Videos</a></div>
+                <div class="nav-item right col-sm-6"> <a href="logout" class="btn btn-light">Logout</a></div>
             </ul>
         </div>
     </nav>
 
+    
     <!-- Jumbotron -->
     <div class="background-image ">
         <div class="jumbotron d-flex align-items-center text-center">
@@ -282,25 +322,25 @@ border: 1px solid black;
 
     <div class="video_menu" id="video_menu">
         <div class="content">
-            <h1>S</h1>
+           
             <table id="video_table" class="table dt-responsive nowrap row-border hover" style="width:100%">
                 <thead>
-                    <tr >
-                        <th >ID</th>
-                        <th>Lesson</th>
-                        <th>Subject</th>
-                        <th>Date</th>
-                        <th>Link</th>
+                    <tr>
+                        <th>ID</th>
+                        <th width="25%" >Lesson</th>
+                        <th width="10%">Subject</th>
+                        <th width="5%" >Date</th>
+                        <th width="30%">Link</th>
                         <th>Code</th>
                         <th width="0%"></th>
                         <th class="table-delete" width="0%"></th>
                     </tr>
                 </thead>
             </table>
-            </br>
+            
             <div>
                 <button type="button" id="video_add_button" data-toggle="modal" data-target="#video_modal"
-                    class="btn btn-success btn-lg">Add Video</button>
+                    class="btn ">Add Video</button>
             </div>
         </div>
 
@@ -309,20 +349,21 @@ border: 1px solid black;
                 <form method="post" id="video_form" enctype="multipart/form-data">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                           <!--  <button type="button" class="close" data-dismiss="modal">&times;</button> -->
                             <h4 class="modal-title">Add Video</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Title</label>
-                                <input type="text" name="titles" id="titles" class="form-control" placeholder="Title" />
-                                <br />
+                                
+                                <input type="text" name="titles" id="titles" class="form-control" placeholder="Title" required/>
+                               
                             </div>
                             <!-- Subject -->
                             <div class="form-group">
                                 <label>Subject</label>
-                                <select class="form-control subjects-select" id="subjects-select">
-                                    <option style="display:none">Select a Subject</option>
+                                <select class="form-control subjects-select" id="subjects-select" required>
+                                    <option selected disabled value=""style="display:none; color:#81898f;">Select a Subject</option>
                                     <?php
                                     $query = $conn->prepare("SELECT * FROM classsubject WHERE subjectcode = :subjectcode");
                                     $result  =  $query->execute([':subjectcode' => $fetch_classcode]);
@@ -340,24 +381,25 @@ border: 1px solid black;
                                      ?>
                                 </select>
                                 <input type="hidden" name="subjects" id="subjects" class="form-control"
-                                    placeholder="Subject" />
-                                <br />
+                                    placeholder="Subject"/>
+                           
                             </div>
                             <div class="form-group">
                                 <label>Date</label>
                                 <div class='input-group date' id='date-picker'>
-                                    <input type="text" id="dates" name="dates" class="form-control" required>
+                                    <input type="text" id="dates" name="dates" class="form-control" placeholder="Month Date, Year"required>
                                     <span class="input-group-append input-group-addon">
                                         <span class="bi bi-calendar input-group-text"></span>
                                     </span>
-                                    <br />
+                                  
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Link</label>
-                                <input type="text" name="links" id="links" class="form-control"
-                                    placeholder="https://drive.google.com/file/d/link/preview" />
-                                <br />
+                                <label>Link </label>
+                               <!--  <div class="label-notes">include everything in beetween of " "</div> -->
+                                <input type="url" name="links" id="links" class="form-control"
+                                    placeholder="https://drive.google.com/file/d/link/preview" required/>
+                               
                             </div>
                             <input type="hidden" name="linkcode" id="linkcode" value="<?php  echo $varivari?>"
                                 class="form-control" />
@@ -377,39 +419,39 @@ border: 1px solid black;
 
     <div class="subject_menu" id="subject_menu">
         <div class="content">
-            <h1>Server Side Ajax CURD data table with Boostrap model</h1>
-            <table id="subject_table" class="table table-striped">
+            
+            <table id="subject_table" class="table dt-responsive nowrap row-border hover" style="width:100%">
                 <thead>
-                    <tr class="table-primary">
+                    <tr>
                         <th>ID</th>
-                        <th width="95%">Subject</th>
+                        <th width="100%">Subject</th>
                         <th>Code</th>
                         <th></th>
-                        <th width="5%" scope="col">Delete</th>
+                        <th width="0%" ></th>
                     </tr>
                 </thead>
             </table>
-            </br>
+           
             <div>
                 <button type="button" id="subject_add_button" data-toggle="modal" data-target="#subject_modal"
-                    class="btn btn-success btn-lg">Add Course</button>
+                    class="btn">Add Subject</button>
             </div>
         </div>
         <div id="subject_modal" class="modal fade">
-            <div class="modal-dialog">
+            <div class="modal-dialog ">
                 <form method="post" id="subject_form" enctype="multipart/form-data">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Add Course</h4>
+                           <!--  <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                            <h4 class="modal-title">Add Subject</h4>
                         </div>
                         <div class="modal-body">
-                            <label>subjects</label>
+                            <label>Subject</label>
                             <input type="text" name="subjects" id="subjects" class="form-control" />
-                            <br />
+                      
                             <input type="hidden" name="subjectcode" id="subjectcode" value="<?php  echo $varivari?>"
                                 class="form-control" />
-                            <br />
+                         
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" name="subject_id" id="subject_id" />
@@ -425,6 +467,7 @@ border: 1px solid black;
     </div>
 
     <!-- Change Code Modal -->
+    <div class="name-modal">
     <div class="modal fade" id="change_code_modal" tabindex="-1" role="dialog" aria-labelledby="change_code_modalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -449,8 +492,10 @@ border: 1px solid black;
             </div>
         </div>
     </div>
+    </div>
 
     <!-- Upload Image Modal -->
+    <div class="upload-modal">
     <div class="modal fade" id="upload_image_modal" tabindex="-1" role="dialog"
         aria-labelledby="upload_image_modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -493,6 +538,15 @@ border: 1px solid black;
             </div>
         </div>
     </div>
+    </div>
+
+    <footer class="page-footer">
+<div class="footer-text text-center py-1"> 
+<a href="https://github.com/Nydigorith/AraLink" target="_blank">Download Source Code</a>
+
+    <!-- Back To Top -->
+    <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
+            class="fa fa-chevron-up pt-2"></i></a>
 
     <!-- Loading -->
     <script src="js/pace.js"></script>
@@ -579,10 +633,10 @@ border: 1px solid black;
                         "responsivePriority": 8
                     },
                     {
-                        "responsivePriority": 4
+                        "responsivePriority": 3
                     },
                     {
-                        "responsivePriority": 3
+                        "responsivePriority": 4
                     },
                     {
                         "responsivePriority": 0
@@ -597,7 +651,7 @@ border: 1px solid black;
                     "searchPlaceholder": "Search for Lesson",
                     "search": ''
                 },
-        
+
 
                 "order": [],
                 "info": false,
@@ -611,19 +665,33 @@ border: 1px solid black;
 
                     },
 
-                    { 
-                        "targets": [6,7],
+                    {
+                        "targets": [6, 7],
                         "className": "text-center",
                         "autoWidth": false
                         /* "width": "%" */
 
                     },
-                    { 
+                    {
                         "targets": [0, 5],
                         "visible": false,
                     },
-                    /* { "width": 200, "targets": 7 } */
 
+                    {
+                        "targets": [0,2,3,4,5,6],
+                        "className": "dt-body-center",
+                        
+                        /* "width": "%" */
+
+                    },
+                    {
+                        "targets": [1,7],
+                        "className": "dt-first-last",
+                        
+                        /* "width": "%" */
+
+                    },
+                    
                 ]
 
             });
@@ -669,7 +737,7 @@ border: 1px solid black;
                         $('#links').val(data.links);
                         $('#linkcode').val(data.linkcode);
 
-                        $('.modal-title').text("Edit Course Details");
+                        $('.modal-title').text("Edit Video Details");
                         $('#video_id').val(video_id);
                         $('#video_action').val("Save");
                         $('#video_operation').val("Edit");
@@ -701,7 +769,7 @@ border: 1px solid black;
         $(document).ready(function () {
             $('#subject_add_button').click(function () {
                 $('#subject_form')[0].reset();
-                $('.modal-title').text("Add Course Details");
+                $('.modal-title').text("Add Video Details");
                 $('#subject_action').val("Add");
                 $('#subject_operation').val("Add");
             });
@@ -713,7 +781,6 @@ border: 1px solid black;
                 "serverSide": true,
                 "responsive": true,
                 "searching": false,
-               
                 "order": [],
                 "info": false,
                 "ajax": {
@@ -721,15 +788,37 @@ border: 1px solid black;
                     type: "POST"
                 },
                 "columnDefs": [{
-                    "targets": [0, 3, 4],
-                    "orderable": false,
-                }, 
-                {
-                     
-                        "targets": [0,2,3],
+                        "targets": [0, 3, 4],
+                        "orderable": false,
+                    },
+                    {
+
+                        "targets": [0, 2, 3],
                         "visible": false,
-                    
-                }
+
+                    },
+                    {
+                        "targets": [4],
+                        "className": "text-center",
+                        "autoWidth": false
+                        
+
+                    },
+
+                    {
+                        "targets": [0,1,2,3],
+                        "className": "dt-body-center",
+                        
+                        /* "width": "%" */
+
+                    },
+                    {
+                        "targets": [1,4],
+                        "className": "dt-first-last",
+                        
+                        /* "width": "%" */
+
+                    },
                 ],
             });
 

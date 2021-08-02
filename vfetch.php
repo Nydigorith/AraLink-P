@@ -24,14 +24,14 @@ $statement .= "SELECT * FROM classvideo WHERE linkcode ='$varivari' ";
 if(isset($_POST["search"]["value"]))
 {
 	$statement .= 'AND titles LIKE "%'.$_POST["search"]["value"].'%" ';
-	/* $statement .= 'AND dates LIKE "%'.$_POST["search"]["value"].'%" '; */
+
 }
 
-$query = $conn->prepare($statement);/* "SELECT * FROM classvideo WHERE linkcode ='$varivari'" */
+$query = $conn->prepare($statement);
 $query->execute();
 $result = $query->fetchAll();
 $data = array();
-$filtered_rows = $query->rowCount();
+
 foreach($result as $row)
 {
 	$sub_array = array();
@@ -57,4 +57,6 @@ $output = array(
 );
 echo json_encode($output);
 exit;
+
+
 ?>

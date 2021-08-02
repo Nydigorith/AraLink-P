@@ -8,7 +8,7 @@ $statement = $conn->prepare("SELECT * FROM classsubject WHERE subjectcode ='$var
 $statement->execute();
 $result = $statement->fetchAll();
 $data = array();
-$filtered_rows = $statement->rowCount();
+/* $filtered_rows = $statement->rowCount(); */
 foreach($result as $row)
 {
 	$sub_array = array();
@@ -18,8 +18,8 @@ foreach($result as $row)
 	$sub_array[] = $row["subjects"];
 	$sub_array[] = $row["subjectcode"];
 
-	$sub_array[] = '<button type="button" name="update" id="'.$row["id"].'" class="btn btn-primary btn-sm update"></button></button>';
-	$sub_array[] = '<button type="button" name="delete" id="'.$row["id"].'" class="btn btn-danger btn-sm delete">Delete</button>';
+	$sub_array[] = '<button type="button" name="update" id="'.$row["id"].'" class="btn btn-primary btn-sm update"></button>';
+	$sub_array[] = '<button type="button" name="delete" id="'.$row["id"].'" class="btn btn-danger btn-sm delete"><i class="fa fa-trash" aria-hidden="true"></i></button>';
 	$data[] = $sub_array;
 }
 $output = array(
