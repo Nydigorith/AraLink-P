@@ -32,7 +32,7 @@ unset($_SESSION["info"]);
         <div class="row">
             <div class="col-md-4 offset-md-4 form login-form">
                 <form action="login" method="POST" autocomplete="">
-                    <h2 class="text-center">Login Form</h2>
+                    <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
                     <p class="text-center">Login with your email and password.</p>
                     <?php
                     if(count($errors) > 0){

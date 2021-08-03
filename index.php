@@ -120,7 +120,7 @@ require_once "controllerUserData.php";
 }
 @media (min-width: 580px) {
     .modal .modal-dialog {
-  max-width: 400px !important;
+  max-width: 350px !important;
 }
 }
     
@@ -166,7 +166,10 @@ require_once "controllerUserData.php";
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered px-3" role="document">
             <div class="modal-content">
-            <h5 class="modal-title py-3 text-center">Modal title</h5>
+            <div class="modal-header">
+
+<h5 class="modal-title mx-auto">Modal Title</h5>
+</div>
                 <div class="modal-body">
                     <form method="POST" action="index">
                         <!-- <h2 class="text-center">Login Form</h2> -->
@@ -188,11 +191,14 @@ require_once "controllerUserData.php";
                             <input class="form-control" type="text" name="c" id="c" placeholder="Class Code"
                                 onkeypress="return event.charCode != 32" maxlength="8" required>
                         </div>
-                        <div class="form-group">
-                            <button class="form-control button" type="hidden" name="submit">Enter
+                        
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-primary" name="submit" value="Continue">
+                            <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
                         </div>
                     </form>
                 </div>
+                
             </div>
         </div>
     </div>

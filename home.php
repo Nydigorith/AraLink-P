@@ -76,6 +76,8 @@ if (!empty($fetch['images'])) {
             height: 100%;
             margin: 0px;
             padding: 0px;
+            display: flex;
+flex-direction: column;
 
         }
 
@@ -251,7 +253,7 @@ if (!empty($fetch['images'])) {
                                      } 
                                 } else {
                                     ?>
-                <div class="error-text mx-auto">No video for <?php echo $subject;?> </div>';
+                <div class="error-text mx-auto">No video for <?php echo $subject;?> </div>
                 <?php
                                 }
                             }
@@ -295,7 +297,7 @@ if (!empty($fetch['images'])) {
 
     <!-- Footer -->
     <footer class="page-footer">
-        <div class="footer-text text-center py-3">
+        <div class="footer-text text-center py-2">
             <a href="https://github.com/Nydigorith/AraLink" target="_blank">Download Source Code</a>
 
         </div>

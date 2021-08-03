@@ -89,6 +89,9 @@ if (!empty($fetch['images'])) {
             height: 100%;
             margin: 0px;
             padding: 0px;
+            display: flex;
+flex-direction: column;
+          
 
         }
 
@@ -149,7 +152,7 @@ if (!empty($fetch['images'])) {
 
         @media (min-width: 581px) {
             .name-modal .modal .modal-dialog {
-                max-width: 300px !important;
+                max-width: 350px !important;
             }
         }
 
@@ -519,7 +522,7 @@ if (!empty($fetch['images'])) {
     <div class="name-modal">
         <div class="modal fade" id="change_code_modal" tabindex="-1" role="dialog"
             aria-labelledby="change_code_modalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal-dialog-centered px-3" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
 
@@ -542,7 +545,7 @@ if (!empty($fetch['images'])) {
 
                         </div>
                         <div class="modal-footer">
-                            <input type="submit" class="btn btn-primary" nname="check-name" value="Change">
+                            <input type="submit" class="btn btn-primary" name="check-name" value="Change">
                             <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
                         </div>
                     </form>
@@ -556,7 +559,7 @@ if (!empty($fetch['images'])) {
     <div class="upload-modal">
         <div class="modal fade" id="upload_image_modal" tabindex="-1" role="dialog"
             aria-labelledby="upload_image_modalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal-dialog-centered px-3" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
 
@@ -615,8 +618,8 @@ if (!empty($fetch['images'])) {
     </div>
 
     <footer class="page-footer">
-        <div class="footer-text text-center py-1">
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Download Source Code</a>
+        <div class="footer-text text-center py-2">
+            <a href="https://github.com/Nydigorith/AraLink" target="_blank">Download Source Code</a>
 
             <!-- Back To Top -->
             <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
