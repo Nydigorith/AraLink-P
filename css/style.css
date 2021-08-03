@@ -196,6 +196,10 @@ padding-left:25px;
    }  */
 }
 
+.modal-footer .btn {
+  width: 100px;
+}
+
 
 
 
