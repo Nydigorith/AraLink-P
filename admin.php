@@ -310,6 +310,10 @@ if (!empty($fetch['images'])) {
             text-align:left !important;
             padding-left:10px !important;
         }
+        .dt-first-last {
+            text-align:left !important;
+            padding-left:25px !important;
+        }
     </style>
 
 
