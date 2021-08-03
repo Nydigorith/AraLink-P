@@ -695,8 +695,6 @@ if (!empty($fetch['images'])) {
 
 
                         "language": {
-
-
                             "searchPlaceholder": "Search for Lesson",
                             "search": ''
                         },
