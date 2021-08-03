@@ -306,6 +306,10 @@ if (!empty($fetch['images'])) {
 
 
         }
+        .dt-body-center {
+            text-align:left !important;
+            padding-left:10px !important;
+        }
     </style>
 
 
@@ -739,7 +743,7 @@ if (!empty($fetch['images'])) {
 
                             },
                             {
-                                "targets": [1, 7],
+                                "targets": [1],
                                 "className": "dt-first-last",
 
                                 /* "width": "%" */
