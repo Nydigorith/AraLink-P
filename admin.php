@@ -306,13 +306,19 @@ if (!empty($fetch['images'])) {
 
 
         }
+
         .dt-body-center {
-            text-align:left !important;
-            padding-left:10px !important;
+            text-align: left !important;
+            padding-left: 10px !important;
         }
+
         .dt-first-last {
-            text-align:left !important;
-            padding-left:25px !important;
+            text-align: left !important;
+            padding-left: 25px !important;
+        }
+        .menu-buttons {
+            padding-left:30px;
+            padding-bottom:30px;
         }
     </style>
 
@@ -352,10 +358,10 @@ if (!empty($fetch['images'])) {
             </div>
         </div>
     </div>
-
-    <button type="button" class="btn btn-light" onclick="vidMenu()">Video</button>
-    <button type="button" class="btn btn-light" onclick="subMenu()">Subjkect</button>
-
+<div class="menu-buttons ">
+    <button type="button" class="btn btn-secondary" onclick="vidMenu()">Video</button>
+    <button type="button" class="btn btn-secondary" onclick="subMenu()">Subject</button>
+    </div>
     <div class="video_menu" id="video_menu">
         <div class="content">
 
@@ -376,14 +382,16 @@ if (!empty($fetch['images'])) {
 
             <div>
                 <button type="button" id="video_add_button" data-toggle="modal" data-target="#video_modal"
-                    class="btn ">Add Video</button>
+                    class="btn btn-secondary">Add Video</button>
             </div>
         </div>
 
-        <div id="video_modal" class="modal fade">
-            <div class="modal-dialog mx-auto">
-                <form method="post" id="video_form" enctype="multipart/form-data">
-                    <div class="modal-content">
+
+        <div id="video_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="video_modalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered px-3">
+                <div class="modal-content">
+                    <form method="post" id="video_form" enctype="multipart/form-data">
                         <div class="modal-header">
                             <!--  <button type="button" class="close" data-dismiss="modal">&times;</button> -->
                             <h4 class="modal-title">Add Video</h4>
@@ -450,8 +458,8 @@ if (!empty($fetch['images'])) {
                                 value="Add" />
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -473,24 +481,26 @@ if (!empty($fetch['images'])) {
 
             <div>
                 <button type="button" id="subject_add_button" data-toggle="modal" data-target="#subject_modal"
-                    class="btn">Add Subject</button>
+                    class="btn btn-secondary ">Add Subject</button>
             </div>
         </div>
-        <div id="subject_modal" class="modal fade">
-            <div class="modal-dialog ">
-                <form method="post" id="subject_form" enctype="multipart/form-data">
-                    <div class="modal-content">
+
+        <div id="subject_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="subject_modalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered px-3">
+                <div class="modal-content">
+                    <form method="post" id="subject_form" enctype="multipart/form-data">
                         <div class="modal-header">
-                            <!--  <button type="button" class="close" data-dismiss="modal">&times;</button> -->
                             <h4 class="modal-title">Add Subject</h4>
                         </div>
                         <div class="modal-body">
-                            <label>Subject</label>
-                            <input type="text" name="subjects" id="subjects" class="form-control" />
+                            <div class="form-group">
+                                <label>Subject</label>
+                                <input type="text" name="subjects" id="subjects" class="form-control" />
 
-                            <input type="hidden" name="subjectcode" id="subjectcode" value="<?php  echo $varivari?>"
-                                class="form-control" />
-
+                                <input type="hidden" name="subjectcode" id="subjectcode" value="<?php  echo $varivari?>"
+                                    class="form-control" />
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" name="subject_id" id="subject_id" />
@@ -499,8 +509,8 @@ if (!empty($fetch['images'])) {
                                 value="Add" />
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -518,16 +528,16 @@ if (!empty($fetch['images'])) {
                     <form action="admin.php" method="get" autocomplete="">
                         <div class="modal-body">
 
-                            <div class="form-group">
+                            <div class="form-group pt-3">
                                 <input type="hidden" value="<?php  echo $fetch['id']  ?>" name="id">
                                 <input type="hidden" value="<?php  echo $varivari?>" name="varivari">
                                 <input class="form-control" type="text" name="change-name" required
                                     value="<?php  echo $fetch['classname']  ?>">
                             </div>
-                            <div class="form-group">
+                            <!--  <div class="form-group">
 
                             </div>
-
+ -->
 
 
                         </div>
@@ -589,7 +599,7 @@ if (!empty($fetch['images'])) {
 
                             <div id="image-div " class="text-center">
                                 <img id="image-preview" />
-                                <input type="button" class=" browse btn btn-secondary" value="Browse..."
+                                <input type="button" class=" browse btn btn-secondary" value="Browse"
                                     onclick="document.getElementById('image').click();" />
                             </div>
                     </div>
@@ -606,7 +616,7 @@ if (!empty($fetch['images'])) {
 
     <footer class="page-footer">
         <div class="footer-text text-center py-1">
-            <a href="https://github.com/Nydigorith/AraLink" target="_blank">Download Source Code</a>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Download Source Code</a>
 
             <!-- Back To Top -->
             <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
@@ -794,6 +804,7 @@ if (!empty($fetch['images'])) {
                                 $('#id').val(data.id);
 
                                 $('#titles').val(data.titles);
+                                $('#subjects-select').val(data.subjects);
                                 $('#subjects').val(data.subjects);
                                 $('#dates').val(data.dates);
                                 $('#links').val(data.links);
@@ -869,16 +880,16 @@ if (!empty($fetch['images'])) {
 
                             {
                                 "targets": [0, 1, 2, 3],
-                                "className": "dt-body-center",
+                                "className": "text-left pl-3",
 
-                                /* "width": "%" */
+                               
 
                             },
                             {
-                                "targets": [1, 4],
-                                "className": "dt-first-last",
+                                "targets": [1],
+                                "className": "text-left pl-3",
 
-                                /* "width": "%" */
+                                
 
                             },
                         ],

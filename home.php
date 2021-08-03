@@ -31,17 +31,17 @@ $background = 'data:image/png;base64,'.base64_encode($fetch['images']);
 if (!empty($fetch['images'])) {
 ?>
 <style>
-.jumbotron {
-    background-image: url(<?php echo $background; ?>);
-}
+    .jumbotron {
+        background-image: url(<?php echo $background; ?>);
+    }
 </style>
 <?php
 } else {
 ?>
 <style>
-.jumbotron {
-    background-image: url(img/2k.png);
-}
+    .jumbotron {
+        background-image: url(img/2k.png);
+    }
 </style>
 <?php
 }
@@ -68,7 +68,7 @@ if (!empty($fetch['images'])) {
 
     <!-- Loading -->
     <link rel="stylesheet" href="css/pace-theme-minimal.css">
-   
+
     <style>
         html,
         body {
@@ -95,43 +95,45 @@ if (!empty($fetch['images'])) {
             border: #CFD9E0 solid 1px;
             border-radius: 50px;
             /* background-color: green; */
-            
+
             -webkit-transition: all 0.5s;
             -moz-transition: all 0.5s;
             -o-transition: all 0.5s;
         }
+
         .copy-code {
             margin-top: -15px;
         }
 
 
 
-@media (min-width: 581px) {
-    .modal .modal-dialog {
-  max-width: 220px !important;
-}
-}
-@media (max-width: 581px)  and (min-width: 381px)  {
-    .modal  {
-  padding-left: 23vw;
-  padding-right: 23vw;
-}
-}
-.videos .mb-4  {
-    margin-top:8px;
-}
+        @media (min-width: 581px) {
+            .modal .modal-dialog {
+                max-width: 350px !important;
+            }
+        }
 
+        @media (max-width: 581px) and (min-width: 381px) {
+            .modal {
+                padding-left: 23vw;
+                padding-right: 23vw;
+            }
+        }
+
+        .videos .mb-4 {
+            margin-top: 8px;
+        }
     </style>
 </head>
 
 <body>
 
-    
 
 
-    
 
-     <!-- Navbar -->
+
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-light sticky-top nav-index">
         <a href="index" class="navbar-brand pl-3"><img src="img/nav-logo.png" width="190px" height="50px"></a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navigation_bar"
@@ -209,22 +211,22 @@ if (!empty($fetch['images'])) {
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
                         ?>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card mb-4 box-shadow ">
-                    <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"></iframe>
-                    <div class="card-body">
-                        <div class="card-subtitle text-muted"> <?php echo $row['subjects'];?></div>
-                        <div class="card-title"> <?php echo $row['titles'];?></div>
-                        <div class="card-subtitle text-muted"> <?php echo $row['dates'];?> </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="card mb-4 box-shadow ">
+                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"></iframe>
+                        <div class="card-body">
+                            <div class="card-subtitle text-muted"> <?php echo $row['subjects'];?></div>
+                            <div class="card-title"> <?php echo $row['titles'];?></div>
+                            <div class="card-subtitle text-muted"> <?php echo $row['dates'];?> </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <?php
+                <?php
                                     }  
                                 } else {
                                     ?>
-                                    <div class="error-text mx-auto">No video were found </div>';
-                                    <?php
+                <div class="error-text mx-auto">No video were found </div>';
+                <?php
                                 } 
                             }
                         } else {
@@ -235,22 +237,22 @@ if (!empty($fetch['images'])) {
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){                           
                     ?>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="card mb-4 box-shadow">
-                            <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"></iframe>
-                            <div class="card-body">
-                                <div class="card-subtitle text-muted"> <?php echo $row['subjects'];?></div>
-                                <div class="card-title"> <?php echo $row['titles'];?></div>
-                                <div class="card-subtitle text-muted"> <?php echo $row['dates'];?> </div>
-                            </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="card mb-4 box-shadow">
+                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"></iframe>
+                        <div class="card-body">
+                            <div class="card-subtitle text-muted"> <?php echo $row['subjects'];?></div>
+                            <div class="card-title"> <?php echo $row['titles'];?></div>
+                            <div class="card-subtitle text-muted"> <?php echo $row['dates'];?> </div>
                         </div>
                     </div>
-                    <?php
+                </div>
+                <?php
                                      } 
                                 } else {
                                     ?>
-                                    <div class="error-text mx-auto">No video for <?php echo $subject;?> </div>';
-                                    <?php
+                <div class="error-text mx-auto">No video for <?php echo $subject;?> </div>';
+                <?php
                                 }
                             }
                         }
@@ -276,8 +278,8 @@ if (!empty($fetch['images'])) {
                                 }  
                             }else {
                                 ?>
-                                <div class="error-text mx-auto">No video were found </div>';
-                                <?php
+                <div class="error-text mx-auto">No video were found </div>';
+                <?php
                         }
                     }
                 }
@@ -288,17 +290,17 @@ if (!empty($fetch['images'])) {
 
 
 
-  <!--   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <!--   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
 
     <!-- Footer -->
-<footer class="page-footer">
-<div class="footer-text text-center py-3">
-<a href="https://github.com/Nydigorith/AraLink" target="_blank">Download Source Code</a>
-           
+    <footer class="page-footer">
+        <div class="footer-text text-center py-3">
+            <a href="https://github.com/Nydigorith/AraLink" target="_blank">Download Source Code</a>
+
         </div>
-</footer>
-<!-- Footer -->
+    </footer>
+    <!-- Footer -->
 
     <!-- Back To Top -->
     <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
@@ -312,13 +314,25 @@ if (!empty($fetch['images'])) {
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered px-3" role="document">
             <div class="modal-content">
+                <div class="modal-header">
+
+                    <h5 class="modal-title mx-auto">Class Code</h5>
+                </div>
                 <div class="modal-body  text-center">
                     <h3 id="select_txt" class="class-code"><?php echo $fetch['classcode']  ?></h3>
-                    <div class="copy-code close-fade " data-dismiss="modal" onclick="copy_data(select_txt)" id="copy-code">copy</div>
+                </div>
+
+                <div class="modal-footer">
+
+                    <input type="button" class="btn btn-secondary" id="copy-code" data-dismiss="modal" value="Copy"
+                        onclick="copy_data(select_txt)">
+                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
                 </div>
             </div>
         </div>
     </div>
+
+
 
     <!-- Loading -->
     <script src="js/pace.js"></script>
