@@ -61,7 +61,7 @@ if (!empty($fetch['images'])) {
 
     <!-- Icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
@@ -90,8 +90,8 @@ if (!empty($fetch['images'])) {
             margin: 0px;
             padding: 0px;
             display: flex;
-flex-direction: column;
-          
+            flex-direction: column;
+
 
         }
 
@@ -168,13 +168,15 @@ flex-direction: column;
             .fa-image {
                 padding-top: 305px;
                 margin-right: -15px;
+                font-size: 17px;
             }
         }
 
         @media (max-width: 575px) {
             .fa-image {
-                padding-top: 180px;
+                padding-top: 185px;
                 margin-right: 0px;
+                font-size: 14px;
             }
         }
 
@@ -182,8 +184,9 @@ flex-direction: column;
 
         @media (max-width: 768px) and (min-width: 575px) {
             .fa-image {
-                padding-top: 180px;
+                padding-top: 185px;
                 margin-right: -15px;
+                font-size: 14px;
             }
         }
 
@@ -276,17 +279,18 @@ flex-direction: column;
 
         }
 
-        #image-preview {
+        /*   #image-preview {
 
             height: 105px;
-            width: 440px;
+            width: 4400px;
             object-fit: cover;
-
+            overflow: hidden;
 
         }
 
         #image-div {
-            object-fit: cover;
+            text-align:center;
+             object-fit: content; 
             position: relative;
             height: 170px;
             width: 480px;
@@ -302,10 +306,71 @@ flex-direction: column;
                 object-fit: cover;
 
             }
+        } */
+
+        .imageContainer {
+            height: 105px;
+            width: 430px;
+            overflow: hidden;
+            position: relative;
+            margin: auto;
+
         }
+
+        .imageCenterer {
+            width: 1000px;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            margin-left: -500px;
+        }
+
+        .imageCenterer img {
+            display: block;
+            margin: 0 auto;
+            height: 105px;
+            width: 430px;
+            object-fit: cover;
+        }
+
+
+        @media (max-width:575px) {
+
+            .imageContainer {
+                height: 105px;
+                margin: auto;
+
+                width: 78vw;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .imageCenterer img {
+                display: block;
+                margin: 0 auto;
+                /* height: 105px;
+           
+                width: 85vw; */
+                object-fit: cover;
+            }
+        }
+
+        @media (min-width:420px) and (max-width:576px) {
+
+            .upload-modal .modal-dialog {
+                margin: 0px 3.5vw;
+            }
+        }
+
+
+
+
+
 
         .browse {
             margin-top: -70px;
+            margin-left: 40%;
+            position: relative;
 
 
         }
@@ -319,9 +384,10 @@ flex-direction: column;
             text-align: left !important;
             padding-left: 25px !important;
         }
+
         .menu-buttons {
-            padding-left:30px;
-            padding-bottom:30px;
+            padding-left: 30px;
+            padding-bottom: 30px;
         }
     </style>
 
@@ -353,17 +419,17 @@ flex-direction: column;
         <div class="jumbotron d-flex align-items-center text-center">
             <div class="container">
                 <h1 class="jumbotron-heading"><?php  echo $fetch['classname']?><a data-toggle="modal"
-                        data-target="#change_code_modal"><i class="fa fa-share" aria-hidden="true"></i></a>
+                        data-target="#change_code_modal"><i class="fas fa-share" aria-hidden="true"></i></a>
                 </h1>
             </div>
             <div class="jumbotron-upload text-right"><a data-toggle="modal" data-target="#upload_image_modal">
-                    <i class="fa fa-image" aria-hidden="true"></i></a>
+                    <i class="fas fa-image" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
-<div class="menu-buttons ">
-    <button type="button" class="btn btn-secondary" onclick="vidMenu()">Video</button>
-    <button type="button" class="btn btn-secondary" onclick="subMenu()">Subject</button>
+    <div class="menu-buttons ">
+        <button type="button" class="btn btn-secondary" onclick="vidMenu()">Video</button>
+        <button type="button" class="btn btn-secondary" onclick="subMenu()">Subject</button>
     </div>
     <div class="video_menu" id="video_menu">
         <div class="content">
@@ -454,7 +520,7 @@ flex-direction: column;
                             <input type="hidden" name="linkcode" id="linkcode" value="<?php  echo $varivari?>"
                                 class="form-control" />
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footerr text-right">
                             <input type="hidden" name="video_id" id="video_id" />
                             <input type="hidden" name="video_operation" id="video_operation" />
                             <input type="submit" name="video_action" id="video_action" class="btn btn-primary"
@@ -505,7 +571,7 @@ flex-direction: column;
                                     class="form-control" />
                             </div>
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footerr text-right">
                             <input type="hidden" name="subject_id" id="subject_id" />
                             <input type="hidden" name="subject_operation" id="subject_operation" />
                             <input type="submit" name="subject_action" id="subject_action" class="btn btn-primary"
@@ -544,7 +610,7 @@ flex-direction: column;
 
 
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footerr text-right">
                             <input type="submit" class="btn btn-primary" name="check-name" value="Change">
                             <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
                         </div>
@@ -600,13 +666,23 @@ flex-direction: column;
                                 onchange="document.getElementById('image-preview').src = window.URL.createObjectURL(this.files[0])">
 
 
-                            <div id="image-div " class="text-center">
-                                <img id="image-preview" />
-                                <input type="button" class=" browse btn btn-secondary" value="Browse"
-                                    onclick="document.getElementById('image').click();" />
+
+
+                            <div class="imageContainer ">
+                                <div class="imageCenterer">
+                                    <img id="image-preview" />
+                                </div>
                             </div>
+
+                            <input type="button" class=" browse btn btn-secondary" value="Browse"
+                                onclick="document.getElementById('image').click();" />
+
+
+
+
                     </div>
-                    <div class="modal-footer">
+
+                    <div class="modal-footerr text-right">
                         <input type="submit" class="btn btn-primary" name="upload-image" id="btn" value="Upload">
                         <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
                     </div>
@@ -623,7 +699,7 @@ flex-direction: column;
 
             <!-- Back To Top -->
             <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
-                    class="fa fa-chevron-up pt-2"></i></a>
+                    class="fas fa-chevron-up pt-2"></i></a>
 
             <!-- Loading -->
             <script src="js/pace.js"></script>
@@ -885,14 +961,14 @@ flex-direction: column;
                                 "targets": [0, 1, 2, 3],
                                 "className": "text-left pl-3",
 
-                               
+
 
                             },
                             {
                                 "targets": [1],
                                 "className": "text-left pl-3",
 
-                                
+
 
                             },
                         ],

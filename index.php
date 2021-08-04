@@ -108,14 +108,10 @@ require_once "controllerUserData.php";
         height: 100%;
     }
   
-    .modal-content {
-        border-radius: 10px;    
-    }
+    
   
     .modal-title  {
-    /*     border: pink solid 1px;
-    border-radius: 50px; */
-    background-color:pink;
+   
     
 }
 @media (min-width: 580px) {
@@ -192,7 +188,7 @@ require_once "controllerUserData.php";
                                 onkeypress="return event.charCode != 32" maxlength="8" required>
                         </div>
                         
-                        <div class="modal-footer">
+                        <div class="modal-footerr text-right">
                             <input type="submit" class="btn btn-primary" name="submit" value="Continue">
                             <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
                         </div>

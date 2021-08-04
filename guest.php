@@ -46,7 +46,7 @@ require "db.php";
 
     <!-- Icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
@@ -122,7 +122,7 @@ flex-direction: column;
 <div class="videos">
         <div class="container video-selection text-center">
             <div class="text-center">
-                <div class="filter p-4">
+                <div class="filter pb-4">
                     <form id="form1" method="POST">
                         <label class="filter-selection" value='ALL'>
                             <input class="radio-filter" onchange="this.form.submit();" type="radio" name="subject"
@@ -261,7 +261,7 @@ flex-direction: column;
 
     <!-- Back To Top -->
     <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
-            class="fa fa-chevron-up pt-2"></i></a>
+            class="fas fa-chevron-up pt-2"></i></a>
 
     <!-- Loading -->
     <script src="js/pace.js"></script>

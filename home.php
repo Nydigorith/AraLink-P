@@ -61,7 +61,7 @@ if (!empty($fetch['images'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <!-- Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
@@ -157,7 +157,7 @@ flex-direction: column;
         <div class="jumbotron d-flex align-items-center text-center">
             <div class="container">
                 <h1 class="jumbotron-heading"><?php  echo $fetch['classname']?><a data-toggle="modal"
-                        data-target="#copy_code_modal"><i class="fa fa-share" aria-hidden="true"></i></a></h1>
+                        data-target="#copy_code_modal"><i class="fas fa-share" aria-hidden="true"></i></a></h1>
             </div>
         </div>
     </div>
@@ -298,15 +298,14 @@ flex-direction: column;
     <!-- Footer -->
     <footer class="page-footer">
         <div class="footer-text text-center py-2">
-            <a href="https://github.com/Nydigorith/AraLink" target="_blank">Download Source Code</a>
-
+            <a href="https://github.com/Nydigorith/AraLink" target="_blank"> Download Source Code</a>
         </div>
     </footer>
     <!-- Footer -->
 
     <!-- Back To Top -->
     <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
-            class="fa fa-chevron-up pt-2"></i></a>
+            class="fas fa-chevron-up pt-2"></i></a>
 
     <!-- Copied Message -->
     <div class="copied btn btn-dark" id="copied">Copied to clipboard</div>
@@ -324,7 +323,7 @@ flex-direction: column;
                     <h3 id="select_txt" class="class-code"><?php echo $fetch['classcode']  ?></h3>
                 </div>
 
-                <div class="modal-footer">
+                <div class="modal-footerr text-right">
 
                     <input type="button" class="btn btn-secondary" id="copy-code" data-dismiss="modal" value="Copy"
                         onclick="copy_data(select_txt)">

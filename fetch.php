@@ -19,7 +19,7 @@ foreach($result as $row)
 	$sub_array[] = $row["subjectcode"];
 
 	$sub_array[] = '<button type="button" name="updatee" id="'.$row["id"].'" class="btn btn-primary btn-sm update"></button>';
-	$sub_array[] = '<button type="button" name="deletee" id="'.$row["id"].'" class="btn btn-danger btn-sm deletee"><i class="fa fa-trash" aria-hidden="true"></i></button>';
+	$sub_array[] = '<button type="button" name="deletee" id="'.$row["id"].'" class="btn btn-danger btn-sm deletee"><i class="fas fa-trash" aria-hidden="true"></i></button>';
 	$data[] = $sub_array;
 }
 $output = array(
