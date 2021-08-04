@@ -37,6 +37,7 @@ if($email != false){
 
     <!-- Icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
@@ -48,10 +49,10 @@ if($email != false){
 
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-4 offset-md-4 form">
+    <div class="row p-4">
+            <div class="form col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
 
-                <form action="login" method="POST" autocomplete="off">
+                <form action="login" method="POST" autocomplete="off" onsubmit="hidebutton()">
                     <h2 class="text-center">New Password</h2>
                     <?php 
                     if(isset($_SESSION['info'])){
@@ -98,7 +99,8 @@ if($email != false){
                         </div>
                     </div>
                     <div class="form-group">
-                        <input class="form-control button" type="submit" name="change-password" value="Change">
+                    <button id="button-show" class="form-control button" type="submit" style="display:none;" disabled><i class="fas fa-spinner fa-spin"></i> </button>
+                        <input id="button-hide" class="form-control button" type="submit" name="change-password" value="Change">
                     </div>
                 </form>
             </div>
@@ -108,6 +110,13 @@ if($email != false){
     <script src="js/pace.js"></script>
 
     <script>
+
+
+        function hidebutton (){
+            document.getElementById("button-hide").style.display="none";
+            document.getElementById("button-show").style.display="block";
+        }
+  
         const togglePassword = document.querySelector('#togglePassword');
         const password = document.querySelector('#password');
 

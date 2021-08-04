@@ -16,6 +16,7 @@ if($email == false){
     <link rel="icon" href="img/logo.png">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 
     <!-- Icon -->
@@ -30,9 +31,9 @@ if($email == false){
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-4 offset-md-4 form">
-                <form action="reset-otp" method="POST" autocomplete="off">
+    <div class="row p-4">
+            <div class="form col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+                <form action="reset-otp" method="POST" autocomplete="off" onsubmit="hidebutton()">
                     <h2 class="text-center">Code Verification</h2>
                     <?php 
                     if(isset($_SESSION['info'])){
@@ -61,7 +62,8 @@ if($email == false){
                         <input class="form-control" type="text" name="otp" placeholder="Enter code" maxlength="6" required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control button" type="submit" name="check-reset-otp" value="Submit">
+                        <button id="button-show" class="form-control button" type="submit" style="display:none;" disabled><i class="fas fa-spinner fa-spin"></i> </button>
+                        <input id="button-hide" class="form-control button" type="submit" name="check-reset-otp" value="Submit">
                     </div>
                 </form>
             </div>
@@ -69,5 +71,11 @@ if($email == false){
     </div>
     <!-- Loading -->
     <script src="js/pace.js"></script>
+    <script>
+        function hidebutton (){
+            document.getElementById("button-hide").style.display="none";
+            document.getElementById("button-show").style.display="block";
+        }
+    </script>
 </body>
 </html>
