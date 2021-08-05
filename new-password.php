@@ -53,7 +53,9 @@ if($email != false){
             <div class="form col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
 
                 <form action="login" method="POST" autocomplete="off" onsubmit="hidebutton()">
-                    <h2 class="text-center">New Password</h2>
+                    <!-- <h2 class="text-center">New Password</h2> -->
+                    <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
+                    <p class="text-center">Enter your new password</p>
                     <?php 
                     if(isset($_SESSION['info'])){
                         ?>
@@ -81,6 +83,7 @@ if($email != false){
                     <?php
                     }
                     ?>
+                     <label class="label-notes"for="">Combnation of Letters and number 8-20 cahracter</label>
                     <div class="form-group input-group">
                         <input class="form-control" type="password" name="password" id="password" placeholder="Password"
                             required>
@@ -89,7 +92,6 @@ if($email != false){
                         </div>
                     </div>
 
-                    <label for="">Combnation of Letters and number 8-20 cahracter</label>
                     <div class="form-group input-group">
 
                         <input class="form-control" type="password" name="cpassword" id="cpassword"
@@ -97,7 +99,9 @@ if($email != false){
                         <div class="input-group-append">
                             <span class="bi bi-eye-slash input-group-text" id="togglecPassword"></span>
                         </div>
+                        
                     </div>
+                    
                     <div class="form-group">
                     <button id="button-show" class="form-control button" type="submit" style="display:none;" disabled><i class="fas fa-spinner fa-spin"></i> </button>
                         <input id="button-hide" class="form-control button" type="submit" name="change-password" value="Change">

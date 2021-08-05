@@ -29,7 +29,7 @@
                 <form action="signup" method="POST" autocomplete="" onsubmit="hidebutton()">
                 <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
                    <!--  <h2 class="text-center">Signup Form</h2> -->
-                    <p class="text-center">It's quick and easy.</p>
+                    <p class="text-center">Fill out the form to sign up.</p>
                     <?php
                     if(count($errors) == 1){
                         ?>
@@ -62,6 +62,7 @@
                     <div class="form-group">
                         <input class="form-control" type="email" name="email" placeholder="Email Address" required value="<?php echo $email ?>">
                     </div>
+                    <label class="label-notes"for="">Combnation of Letters and number 8-20 cahracter</label>
                     <div class="form-group input-group">
                         <input class="form-control" type="password" name="password" id ="password" placeholder="Password"  required>
                         <div class="input-group-append">
@@ -69,7 +70,7 @@
                         </div>
                     </div>
 
-                    <label for="">Combnation of Letters and number 8-20 cahracter</label> 
+                    
                     <div class="form-group input-group">
                    
                         <input class="form-control" type="password" name="cpassword" id ="cpassword" placeholder="Confirm password"  required>

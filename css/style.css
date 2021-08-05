@@ -32,6 +32,16 @@ font-family: 'Poppins', sans-serif;
 .btn {
   border-radius: 5px;
 }
+input {
+  border-radius: 10px; 
+  
+}
+input[type="submit"]:focus {
+  outline: none !important; 
+  border: none !important;
+  box-shadow: none !important;
+  
+}
 /* Navbar Button */
  .nav-item .btn {
     width: 150px;

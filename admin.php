@@ -1,7 +1,7 @@
 <?php
 
-include 'db.php';
-include 'php/php-controller.php';
+require 'db.php';
+require_once 'php/php-controller.php';
 $email = $_SESSION['email'];
 $password = $_SESSION['password'];
 $varivari= $_SESSION["classcode"];
@@ -62,6 +62,7 @@ if (!empty($fetch['images'])) {
     <!-- Icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">

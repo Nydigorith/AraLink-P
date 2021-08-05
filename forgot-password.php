@@ -29,9 +29,9 @@
         <div class="row p-4">
             <div class="form col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
                 <form action="forgot-password" method="POST" autocomplete="" onsubmit="hidebutton()">
-                
-                    <h2 class="text-center">Forgot Password</h2>
-                    <p class="text-center">Enter your email address</p>
+                <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
+                    <!-- <h2 class="text-center">Forgot Password</h2> -->
+                    <p class="text-center">Enter your email address to reset your passwork</p>
                     <?php
                         if(count($errors) > 0){
                             ?>
