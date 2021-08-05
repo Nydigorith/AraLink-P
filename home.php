@@ -1,5 +1,5 @@
 <?php 
-require_once "controllerUserData.php";
+require_once 'php/php-controller.php';
 require "db.php";
 $email = $_SESSION['email'];
 $password = $_SESSION['password'];
@@ -13,13 +13,9 @@ if($email != false && $password != false){
         $fetch_code = $fetch['code'];
         $fetch_classcode = $fetch['classcode'];
         $_SESSION["classcode"] = $fetch_classcode;
-        if($fetch_status == "verified"){
-            if($fetch_code != 0){
-                $info = "We've sent a passwrod reset otp to your email - $email";
-                        $_SESSION['info'] = $info;
-                header('Location: reset-otp');
-            }
-        }else{
+        if($fetch_status == "notverified"){
+            $info = "It's look like you haven't still verify your email - $email";
+            $_SESSION['info'] = $info;
             header('Location: otp');
         }
     }
@@ -147,7 +143,7 @@ flex-direction: column;
         <div class="collapse navbar-collapse " id="navigation_bar">
             <ul class="navbar-nav ml-auto flex-sm-row pr-2">
                 <div class="nav-item left col-sm-6 "> <a href="admin" class="btn btn-light">Admin</a></div>
-                <div class="nav-item right col-sm-6"> <a href="logout" class="btn btn-light">Logout</a></div>
+                <div class="nav-item right col-sm-6"> <a href="php/logout" class="btn btn-light">Logout</a></div>
             </ul>
         </div>
     </nav>

@@ -1,4 +1,4 @@
-<?php require_once "controllerUserData.php"; 
+<?php require_once 'php/php-controller.php';
 unset($_SESSION["info"]);
 ?>
 <!DOCTYPE html>
@@ -90,6 +90,11 @@ togglePassword.addEventListener('click', function (e) {
     // toggle the eye / eye slash icon
     this.classList.toggle('bi-eye');
 });
+
+/* Remove Confirm Form Resubmission  */
+if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
     </script>
 </body>
 </html>

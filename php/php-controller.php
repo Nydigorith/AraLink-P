@@ -31,6 +31,15 @@ $errors = array();
                 $encpass = password_hash($password, PASSWORD_BCRYPT);
                 $code = rand(999999, 111111);
                 $status = "notverified";
+
+                $query = $conn->prepare("SELECT * FROM classadmin WHERE classcode = :classcode");
+                $query->execute([':classcode' => $classcode]);
+                if( $query->rowCount() > 0){
+                    $classcode =    substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,8))), 1, 8);
+                } else {
+
+
+                
                 $query = $conn->prepare("INSERT INTO classadmin (name, email, password, code, status, classname, classcode)
                                 values(:name, :email, :password, :code, :status, :classname, :classcode)");
                 $result=$query->execute([':name' => $name, ':email' => $email, ':password' => $encpass, ':code' => $code,':status' => $status,':classname' => $classname,':classcode' => $classcode]);
@@ -52,6 +61,7 @@ $errors = array();
                     }else{
                         $errors['db-error'] = "Failed while inserting data into database!";
                     }
+                }
                 }
             } else{
                 $errors['password'] = "password does not meet m inimum requoirements";
@@ -269,6 +279,14 @@ $errors = array();
         </script> 
             <?php  
     } 
+
+    /* Delete Image */
+    if(isset($_POST['remove-image'])) {
+        $varivari= $_SESSION["classcode"];
+        
+        $query  = $conn->prepare("UPDATE classadmin SET images = '' WHERE classcode = '$varivari'");
+       $query->execute(); 
+    }
     
     /* Index */
     /* Guest */

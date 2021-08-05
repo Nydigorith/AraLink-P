@@ -1,4 +1,4 @@
-<?php require_once "controllerUserData.php"; ?>
+<?php require_once 'php/php-controller.php'; ?>
 <?php 
 $email = $_SESSION['email'];
 if($email == false){
@@ -138,6 +138,10 @@ if($email != false){
 
             this.classList.toggle('bi-eye');
         });
+        /* Remove Confirm Form Resubmission  */
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
     </script>
 
 </body>

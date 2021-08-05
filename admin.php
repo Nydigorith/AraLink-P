@@ -1,7 +1,7 @@
 <?php
 
 include 'db.php';
-include 'controllerUserData.php';
+include 'php/php-controller.php';
 $email = $_SESSION['email'];
 $password = $_SESSION['password'];
 $varivari= $_SESSION["classcode"];
@@ -408,7 +408,7 @@ if (!empty($fetch['images'])) {
 
 
                 <div class="nav-item left col-sm-6 "> <a href="home" class="btn btn-light">Videos</a></div>
-                <div class="nav-item right col-sm-6"> <a href="logout" class="btn btn-light">Logout</a></div>
+                <div class="nav-item right col-sm-6"> <a href="php/logout" class="btn btn-light">Logout</a></div>
             </ul>
         </div>
     </nav>
@@ -680,17 +680,24 @@ if (!empty($fetch['images'])) {
 
 
 
-                    </div>
+                           
 
-                    <div class="modal-footerr text-right">
-                        <input type="submit" class="btn btn-primary" name="upload-image" id="btn" value="Upload">
-                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
-                    </div>
-                    </form>
+
+
 
                 </div>
+
+                <div class="modal-footerr text-right">
+                    <input type="submit" class="btn btn-primary" name="upload-image" id="btn" value="Upload">
+                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
+                </form>
+                <form action="admin" method="post" enctype="multipart/form-data">   
+                            <input type="submit" class="btn btn-primary" name="remove-image" value="Remove Image" onclick="return confirm('Are you sure?');">
+                    </form>
+            </div>
             </div>
         </div>
+    </div>
     </div>
 
     <footer class="page-footer">
@@ -856,7 +863,7 @@ if (!empty($fetch['images'])) {
                         var links = $('#links').val();
                         var linkcode = $('#linkcode').val();
                         $.ajax({
-                            url: "insert.php",
+                            url: "input-controller.php",
                             method: 'POST',
                             data: new FormData(this),
                             contentType: false,
@@ -872,7 +879,7 @@ if (!empty($fetch['images'])) {
                     $(document).on('click', '.update', function () {
                         var video_id = $(this).attr("id");
                         $.ajax({
-                            url: "fetch_edit.php",
+                            url: "vfetch.php",
                             method: "POST",
                             data: {
                                 video_id: video_id
@@ -901,7 +908,7 @@ if (!empty($fetch['images'])) {
                         var video_id = $(this).attr("id");
                         if (confirm("Are you sure you want to delete this user?")) {
                             $.ajax({
-                                url: "insert.php",
+                                url: "input-controller.php",
                                 method: "POST",
                                 data: {
                                     video_id: video_id
@@ -936,7 +943,7 @@ if (!empty($fetch['images'])) {
                         "order": [],
                         "info": false,
                         "ajax": {
-                            url: "fetch.php",
+                            url: "sfetch.php",
                             type: "POST"
                         },
                         "columnDefs": [{
@@ -980,7 +987,7 @@ if (!empty($fetch['images'])) {
                         var subjects = $('#subjects').val();
                         var subjectcode = $('#subjectcode').val();
                         $.ajax({
-                            url: "insert.php",
+                            url: "input-controller.php",
                             method: 'POST',
                             data: new FormData(this),
                             contentType: false,
@@ -998,7 +1005,7 @@ if (!empty($fetch['images'])) {
                         var subject_id = $(this).attr("id");
                         if (confirm("Are you sure you want to delete this user?")) {
                             $.ajax({
-                                url: "insert.php",
+                                url: "input-controller.php",
                                 method: "POST",
                                 data: {
                                     subject_id: subject_id

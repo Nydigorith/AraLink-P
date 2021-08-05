@@ -1,4 +1,4 @@
-<?php require_once "controllerUserData.php"; ?>
+<?php require_once 'php/php-controller.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,6 +62,11 @@
         function hidebutton (){
             document.getElementById("button-hide").style.display="none";
             document.getElementById("button-show").style.display="block";
+        }
+
+        /* Remove Confirm Form Resubmission  */
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
         }
     </script>
 </body>
