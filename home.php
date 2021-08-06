@@ -311,20 +311,22 @@ flex-direction: column;
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered px-3" role="document">
             <div class="modal-content">
-                <div class="modal-header">
 
+                <div class="modal-header">
                     <h5 class="modal-title mx-auto">Class Code</h5>
                 </div>
+
                 <div class="modal-body  text-center">
                     <h3 id="select_txt" class="class-code"><?php echo $fetch['classcode']  ?></h3>
-                </div>
-
-                <div class="modal-footerr text-right">
-
-                    <input type="button" class="btn btn-secondary" id="copy-code" data-dismiss="modal" value="Copy"
+                    
+                    <div class="modal-footerr text-right">
+                        
+                        <input type="button" class="btn btn-secondary" id="copy-code" data-dismiss="modal" value="Copy"
                         onclick="copy_data(select_txt)">
-                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

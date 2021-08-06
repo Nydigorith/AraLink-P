@@ -49,8 +49,8 @@ if($email != false){
 
 <body>
     <div class="container">
-    <div class="row p-4">
-            <div class="form col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+    <div class="row p-4 justify-content-center">
+            <div class="form">
 
                 <form action="login" method="POST" autocomplete="off" onsubmit="hidebutton()">
                     <!-- <h2 class="text-center">New Password</h2> -->

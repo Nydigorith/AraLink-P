@@ -59,3 +59,10 @@ html,body{
     font-size: 14px;
 }
 
+.reset-code {
+    margin-top:-15px;
+    /* font-size:15px; */
+}
+.alert{
+    word-wrap:break-word;
+}

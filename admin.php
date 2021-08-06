@@ -315,6 +315,7 @@ if (!empty($fetch['images'])) {
             overflow: hidden;
             position: relative;
             margin: auto;
+            margin-top:-12px;
 
         }
 
@@ -520,14 +521,14 @@ if (!empty($fetch['images'])) {
                             </div>
                             <input type="hidden" name="linkcode" id="linkcode" value="<?php  echo $varivari?>"
                                 class="form-control" />
-                        </div>
-                        <div class="modal-footerr text-right">
-                            <input type="hidden" name="video_id" id="video_id" />
-                            <input type="hidden" name="video_operation" id="video_operation" />
-                            <input type="submit" name="video_action" id="video_action" class="btn btn-primary"
-                                value="Add" />
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
+                                <div class="modal-footerr text-right">
+                                    <input type="hidden" name="video_id" id="video_id" />
+                                    <input type="hidden" name="video_operation" id="video_operation" />
+                                    <input type="submit" name="video_action" id="video_action" class="btn btn-primary"
+                                    value="Add" />
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
                     </form>
                 </div>
             </div>
@@ -571,13 +572,13 @@ if (!empty($fetch['images'])) {
                                 <input type="hidden" name="subjectcode" id="subjectcode" value="<?php  echo $varivari?>"
                                     class="form-control" />
                             </div>
-                        </div>
-                        <div class="modal-footerr text-right">
-                            <input type="hidden" name="subject_id" id="subject_id" />
-                            <input type="hidden" name="subject_operation" id="subject_operation" />
-                            <input type="submit" name="subject_action" id="subject_action" class="btn btn-primary"
+                            <div class="modal-footerr text-right">
+                                <input type="hidden" name="subject_id" id="subject_id" />
+                                <input type="hidden" name="subject_operation" id="subject_operation" />
+                                <input type="submit" name="subject_action" id="subject_action" class="btn btn-primary"
                                 value="Add" />
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -610,11 +611,11 @@ if (!empty($fetch['images'])) {
  -->
 
 
-                        </div>
-                        <div class="modal-footerr text-right">
-                            <input type="submit" class="btn btn-primary" name="check-name" value="Change">
-                            <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
-                        </div>
+ <div class="modal-footerr text-right">
+     <input type="submit" class="btn btn-primary" name="check-name" value="Change">
+     <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
+    </div>
+</div>
                     </form>
 
                 </div>
@@ -661,6 +662,8 @@ if (!empty($fetch['images'])) {
                         <?php
                 } unset($_SESSION["info"])
                 ?>
+                 <form id="rmeove-image" action="admin" method="post" enctype="multipart/form-data">   
+                            </form>
                         <form action="admin" method="post" enctype="multipart/form-data">
 
                             <input type="file" id="image" name="image" style="display: none;"
@@ -669,7 +672,7 @@ if (!empty($fetch['images'])) {
 
 
 
-                            <div class="imageContainer ">
+                            <div class="imageContainer">
                                 <div class="imageCenterer">
                                     <img id="image-preview" />
                                 </div>
@@ -686,16 +689,17 @@ if (!empty($fetch['images'])) {
 
 
 
-                </div>
-
-                <div class="modal-footerr text-right">
-                    <input type="submit" class="btn btn-primary" name="upload-image" id="btn" value="Upload">
-                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
-                </form>
-                <form action="admin" method="post" enctype="multipart/form-data">   
-                            <input type="submit" class="btn btn-primary" name="remove-image" value="Remove Image" onclick="return confirm('Are you sure?');">
-                    </form>
-            </div>
+                                
+                                <div class="modal-footerr text-right pt-3">
+                                    
+                                    <input type="submit" class="btn btn-primary" name="upload-image" id="btn" value="Upload">
+                                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
+                                    <input type="submit"  form="saveForm"class="btn btn-primary" name="rmeove-image" value="Remove Image" onclick="return confirm('Are you sure?');">
+                                    
+                                </form>
+                               
+                        </div>
+                    </div>
             </div>
         </div>
     </div>

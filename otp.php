@@ -71,10 +71,10 @@ if($email == false){
                 
                 <form action="otp" method="post" enctype="multipart/form-data">   
                <!--  <input class="form-control"id="otp-check" type="hidden" name="otp-check" > -->
-               <div class="form-group">
+               
                 <input class="form-control" type="hidden" name="email" value="<?php echo $email ?>">
-                            <input type="submit" class="btn reset-code text-center p-0" name="resend" value="Resend Code">
-                            </div>
+                            <input type="submit" class="btn reset-code text-center p-0 text-left" name="resend" value="Resend Code">
+                       
                     </form>
             </div>
         </div>

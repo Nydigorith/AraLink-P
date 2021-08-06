@@ -26,8 +26,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="row p-4">
-            <div class="form col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+        <div class="row p-4 justify-content-center">
+            <div class="form">
                 <form action="forgot-password" method="POST" autocomplete="" onsubmit="hidebutton()">
                 <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
                     <!-- <h2 class="text-center">Forgot Password</h2> -->

@@ -31,8 +31,8 @@ if($email == false){
 </head>
 <body>
     <div class="container">
-    <div class="row p-4">
-            <div class="form col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+    <div class="row p-4 justify-content-center">
+            <div class="form">
                 <form action="reset-otp" method="POST" autocomplete="off" onsubmit="hidebutton()">
                     <!-- <h2 class="text-center">Code Verification</h2> -->
                     <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
@@ -67,6 +67,13 @@ if($email == false){
                         <input id="button-hide" class="form-control button" type="submit" name="check-reset-otp" value="Submit">
                     </div>
                 </form>
+                <form action="otp" method="post" enctype="multipart/form-data">   
+               <!--  <input class="form-control"id="otp-check" type="hidden" name="otp-check" > -->
+               
+                <input class="form-control" type="hidden" name="email" value="<?php echo $email ?>">
+                            <input type="submit" class="btn reset-code text-center p-0 text-left" name="resendd" value="Resend Code">
+                       
+                    </form>
             </div>
         </div>
     </div>

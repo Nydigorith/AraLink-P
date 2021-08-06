@@ -290,7 +290,7 @@ $errors = array();
 
 
 
-    /* Delete Image */
+    /* resenr for otp */
     if(isset($_POST['resend'])) {
         $email = $_POST['email'];
       
@@ -310,6 +310,37 @@ $errors = array();
                 $_SESSION['info'] = $info;
                 $_SESSION['email'] = $email;
                 header('location: otp');
+                exit();
+            }else{
+                $errors['otp-error'] = "Failed while sending code!";
+            }
+        }else{
+            $errors['db-error'] = "Something went wrong!";
+        }
+   /*  } else {
+        $errors['db-error'] = "put a text!";
+    } */
+    } 
+    /* resenr for reset-otp */
+    if(isset($_POST['resendd'])) {
+        $email = $_POST['email'];
+      
+    /*     if ($_POST['otp-check'] != "" ) { */
+          
+         
+        $code = rand(999999, 111111);
+        $query=  $conn->prepare("UPDATE classadmin SET code = :code WHERE email = :email");
+        $result = $query->execute([':code' => $code, ':email' => $email]);       
+        if($result){
+            $subject = "Password Reset Code";
+            $message = "Your password reset code is $code";
+            $sender = "From: shahiprem7890@gmail.com";
+            if(mail($email, $subject, $message, $sender)){
+                $info = "Code Resend to $email.";
+                
+                $_SESSION['info'] = $info;
+                $_SESSION['email'] = $email;
+                header('location: reset-otp');
                 exit();
             }else{
                 $errors['otp-error'] = "Failed while sending code!";

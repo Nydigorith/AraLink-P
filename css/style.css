@@ -150,7 +150,7 @@ padding-left:25px;
 }
 
 .navbar-toggler .icon-bar:nth-of-type(1) {
-  transform: rotate(45deg);
+  transform: rotate(44deg);
   transform-origin: 10% 10%;
 }
 
@@ -160,7 +160,7 @@ padding-left:25px;
 }
 
 .navbar-toggler .icon-bar:nth-of-type(3) {
-  transform: rotate(-45deg);
+  transform: rotate(-44deg);
   transform-origin: 10% 90%;
 }
 
@@ -212,9 +212,13 @@ padding-left:25px;
 .modal-footer .btn {
   width: 100px;
 }
+.modal-content {
+  border-top: 13px solid rgb(15,165,100);
+}
 .modal-header {
-background-color: rgb(15,165,100);
-color:white;
+/* background-color: rgb(15,165,100);
+color:white; */
+
 padding:10px 0px;
 border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -327,11 +331,14 @@ label {
     border: 1px solid #999999;
 }
 
-@media (max-width:576px) and (min-width: 420px)  {
+@media (max-width:769px) and (min-width: 768px)  {
 
-  .video-show {
-  padding:0px 60px;
-}
+  .nav-item .btn {
+    width: 150px;
+    margin-top: 6px;
+    
+    
+  }
 }
 
 .card:hover {
