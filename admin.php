@@ -96,22 +96,7 @@ if (!empty($fetch['images'])) {
 
         }
 
-        .back-to-top {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            display: none;
-            color: rgb(27, 27, 19);
-            background-color: rgb(254, 221, 2);
-            border: 1px solid rgb(254, 221, 2);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-        }
-
-        .back-to-top:hover {
-            color: rgb(27, 27, 19)9;
-            background-color: rgb(254, 221, 2);
-            border: 1px solid rgb(27, 27, 19);
-        }
+     
 
         .copied {
             display: none;
@@ -261,13 +246,39 @@ if (!empty($fetch['images'])) {
         }
 
         ::-ms-clear {
-            display: none;
+            display: none !important;
         }
+        ::-webkit-search-cancel-button {
+    -webkit-appearance: none !important;
+}
 
         #video_table,
         #subject_table {
             border: 1px solid black;
+           
         }
+  
+ 
+
+        div.dataTables_filter input { border: 1px solid black !important ; }
+
+table#video_table.dataTable tbody tr:hover {
+  background-color: green;
+}
+ 
+/* table#video_table.dataTable tbody tr:hover > .sorting_1 {
+  background-color: pink;
+}  */
+ 
+table#video_table.dataTable th {
+  background-color: green;
+}
+table#video_table.dataTable tbody tr {
+  background-color: black;
+}
+ 
+ 
+
 
         .edit {
             /* padding:100px; */
@@ -308,6 +319,13 @@ if (!empty($fetch['images'])) {
 
             }
         } */
+
+        #video_modal, .modal-content {
+            padding: 0 2px;
+        }
+        #subject_modal, .modal-content {
+            padding: 0 2px;
+        }
 
         .imageContainer {
             height: 105px;
@@ -373,7 +391,7 @@ if (!empty($fetch['images'])) {
             margin-top: -70px;
             margin-left: 40%;
             position: relative;
-
+            width: 100px;
 
         }
 
@@ -388,8 +406,12 @@ if (!empty($fetch['images'])) {
         }
 
         .menu-buttons {
+           
             padding-left: 30px;
             padding-bottom: 30px;
+        }
+        .menu-buttons .btn{
+            width: 100px;
         }
     </style>
 
@@ -410,7 +432,7 @@ if (!empty($fetch['images'])) {
 
 
                 <div class="nav-item left col-sm-6 "> <a href="home" class="btn btn-light">Videos</a></div>
-                <div class="nav-item right col-sm-6"> <a href="php/logout" class="btn btn-light">Logout</a></div>
+                <div class="nav-item right col-sm-6"> <a href="logout" class="btn btn-light">Logout</a></div>
             </ul>
         </div>
     </nav>
@@ -465,7 +487,7 @@ if (!empty($fetch['images'])) {
                     <form method="post" id="video_form" enctype="multipart/form-data">
                         <div class="modal-header">
                             <!--  <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-                            <h4 class="modal-title">Add Video</h4>
+                            <h4 class="modal-title mx-auto">Add Video</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
@@ -562,7 +584,7 @@ if (!empty($fetch['images'])) {
                 <div class="modal-content">
                     <form method="post" id="subject_form" enctype="multipart/form-data">
                         <div class="modal-header">
-                            <h4 class="modal-title">Add Subject</h4>
+                            <h4 class="modal-title mx-auto">Add Subject</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
@@ -694,7 +716,7 @@ if (!empty($fetch['images'])) {
                                     
                                     <input type="submit" class="btn btn-primary" name="upload-image" id="btn" value="Upload">
                                     <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
-                                    <input type="submit"  form="saveForm"class="btn btn-primary" name="rmeove-image" value="Remove Image" onclick="return confirm('Are you sure?');">
+                                    <input type="submit"  form="saveForm"class="btn btn-primary" name="rmeove-image" value="Remove" onclick="return confirm('Are you sure?');">
                                     
                                 </form>
                                

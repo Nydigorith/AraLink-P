@@ -143,7 +143,7 @@ flex-direction: column;
         <div class="collapse navbar-collapse " id="navigation_bar">
             <ul class="navbar-nav ml-auto flex-sm-row pr-2">
                 <div class="nav-item left col-sm-6 "> <a href="admin" class="btn btn-light">Admin</a></div>
-                <div class="nav-item right col-sm-6"> <a href="php/logout" class="btn btn-light">Logout</a></div>
+                <div class="nav-item right col-sm-6"> <a href="logout" class="btn btn-light">Logout</a></div>
             </ul>
         </div>
     </nav>
@@ -172,7 +172,7 @@ flex-direction: column;
                            
                             $query = $conn->prepare("SELECT * FROM classsubject WHERE subjectcode = :codihe");
                             $result  =  $query->execute([':codihe' => $fetch_classcode]);
-                            echo "<style>.filter-selection[value='ALL']{background-color: yellow;}></style>"; 
+                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(15,165,100);}></style>"; 
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
@@ -204,7 +204,7 @@ flex-direction: column;
                         if ($subject == "ALL") {
                             $query = $conn->prepare("SELECT * FROM classvideo WHERE linkcode = :codihe");
                             $result  =  $query->execute([':codihe' => $fetch_classcode]);
-                            echo "<style>.filter-selection[value='ALL']{background-color: yellow;}></style>"; 
+                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(15,165,100);}></style>"; 
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
@@ -230,7 +230,7 @@ flex-direction: column;
                         } else {
                             $query = $conn->prepare("SELECT * FROM classvideo WHERE subjects = :subject AND linkcode = :codihe");
                             $result  =  $query->execute([':subject' => $subject, ':codihe' => $fetch_classcode]);
-                             echo "<style>.filter-selection[value='$subject']{background-color: yellow;}.filter-selection[value=ALL]{background-color: white;}</style>";   
+                             echo "<style>.filter-selection[value='$subject']{background-color: rgb(15,165,100);}.filter-selection[value=ALL]{background-color: white;}</style>";   
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){                           
