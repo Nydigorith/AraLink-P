@@ -280,6 +280,10 @@ table#video_table.dataTable tbody tr {
   background-color: gray;
 }
  
+.btn-icon {
+    padding:10px;
+    /* border-radius:5px; */
+}
  
 
 
@@ -379,6 +383,9 @@ table#video_table.dataTable tbody tr {
             }
 
         }
+        .modal-footerrr {
+            padding-top:50px;
+        }
 
         @media (min-width:420px) and (max-width:576px) {
 
@@ -388,39 +395,17 @@ table#video_table.dataTable tbody tr {
         }
 
 
+ 
+        .in-image {
+            display:         flex;
+        margin-top: -70px;
 
-      /*   @media (max-width:419px) {
-
-
-            .browse {
-                margin-top: -70px;
-            margin-left: 38%;
-            position: relative;
-            
+  justify-content: center;
+  position: relative;
             
 
-        }
-}
-        
-
-@media (min-width:576px) {
-        .browse {
-            margin-top: -70px;
-            margin-left: 40%;
-            position: relative;
-            width: 100px;
-
-        }
-    }
-@media (max-width:576px) {
-        .browse {
-            margin-top: -70px;
-            margin-left: 36%;
-            position: relative;
-            width: 100px;
-
-        }
-    } */
+     
+       
 
         .dt-body-center {
             text-align: left !important;
@@ -716,13 +701,14 @@ table#video_table.dataTable tbody tr {
                     }
                 ?>
                         </div>
+                        
                         <?php
                 } unset($_SESSION["info"])
                 ?>
-                 <form id="rmeove-image" action="admin" method="post" enctype="multipart/form-data">   
-                            </form>
+                 <div class="label-notes">Please use a png image less than 100kb (Image will automatically fit)</div>
+                      <form id="deleteForm" action="admin" method="post" enctype="multipart/form-data">   
+                    </form>
                         <form action="admin" method="post" enctype="multipart/form-data">
-
                             <input type="file" id="image" name="image" style="display: none;"
                                 onchange="document.getElementById('image-preview').src = window.URL.createObjectURL(this.files[0])">
 
@@ -735,13 +721,12 @@ table#video_table.dataTable tbody tr {
                                 </div>
                             </div>
 
-                            
-
-                                <input type="button" class=" browse btn btn-secondary" value="Browse"
+<div class="in-image">
+                                <input type="button" class=" browse btn btn-secondary mx-1" value="Browse"
                                 onclick="document.getElementById('image').click();" />
+                                <button type="submit" class="btn btn-primary btn-icon mr-2" name="upload-image" id="btn" value="Upload"> <i class="fas fa-upload"></i> </button>
 
-
-
+                                </div>
 
 
                            
@@ -750,14 +735,14 @@ table#video_table.dataTable tbody tr {
 
 
                                 
-                                <div class="modal-footerr text-right pt-3">
+                                <div class="modal-footerrr modal-footerr text-right ">
                                     
-                                    <input type="submit" class="btn btn-primary" name="upload-image" id="btn" value="Upload">
+                                   
                                     <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
-                                    <input type="submit"  form="saveForm"class="btn btn-primary" name="remove-image" value="Remove" onclick="return confirm('Are you sure?');">
+                                    <input type="submit"form="deleteForm" class="btn btn-primary" name="remove-image" value="Remove" onclick="return confirm('Are you sure?');">
                                     
                                 </form>
-                               
+                           
                         </div>
                     </div>
             </div>
