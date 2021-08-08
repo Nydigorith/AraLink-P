@@ -754,7 +754,7 @@ table#video_table.dataTable tbody tr {
                                     
                                     <input type="submit" class="btn btn-primary" name="upload-image" id="btn" value="Upload">
                                     <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
-                                    <input type="submit"  form="saveForm"class="btn btn-primary" name="rmeove-image" value="Remove" onclick="return confirm('Are you sure?');">
+                                    <input type="submit"  form="saveForm"class="btn btn-primary" name="remove-image" value="Remove" onclick="return confirm('Are you sure?');">
                                     
                                 </form>
                                
