@@ -389,7 +389,7 @@ table#video_table.dataTable tbody tr {
 
 
 
-        @media (max-width:419px) {
+      /*   @media (max-width:419px) {
 
 
             .browse {
@@ -420,7 +420,7 @@ table#video_table.dataTable tbody tr {
             width: 100px;
 
         }
-    }
+    } */
 
         .dt-body-center {
             text-align: left !important;
@@ -445,7 +445,6 @@ table#video_table.dataTable tbody tr {
             .dipnone {
     display:none !important;
 }
-
         }
 
         
@@ -736,7 +735,7 @@ table#video_table.dataTable tbody tr {
                                 </div>
                             </div>
 
-                            <input type="button" class=" browse btn btn-secondary" value="Browse"
+                            <input type="button" name="remove-image"class=" browse btn btn-secondary" value="Browse"
                                 onclick="document.getElementById('image').click();" />
 
 
