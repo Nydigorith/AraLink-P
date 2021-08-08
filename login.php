@@ -1,5 +1,6 @@
 <?php require_once 'php/php-controller.php';
-unset($_SESSION["info"]);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,22 +32,23 @@ unset($_SESSION["info"]);
 <div class="container">
 <div class="row p-4 justify-content-center">
             <div class="form">
+                
                 <form action="login" method="POST" autocomplete=""onsubmit="hidebutton()">
                     <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
+                    <?php 
+                if(isset($_SESSION['info']) != "Your password changed. Now you can login with your new password."){
+                    unset($_SESSION["info"]);
+                }
+             else {
+                ?>
+                <div class="alert alert-success text-center">
+                <?php echo $_SESSION['info']; ?>
+                </div>
+                <?php 
+         } unset($_SESSION["info"]); 
+            ?>
                     <p class="text-center">Login with your email and password.</p>
-                    <?php
-                    if(count($errors) > 0){
-                        ?>
-                        <div class="alert alert-danger text-center">
-                            <?php
-                            foreach($errors as $showerror){
-                                echo $showerror;
-                            }
-                            ?>
-                        </div>
-                        <?php
-                    }
-                    ?>
+                   
                     <div class="form-group">
                         <input class="form-control" type="email" name="email" placeholder="Email Address" required value="<?php echo $email ?>">
                     </div>

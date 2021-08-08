@@ -52,7 +52,7 @@ if($email != false){
     <div class="row p-4 justify-content-center">
             <div class="form">
 
-                <form action="login" method="POST" autocomplete="off" onsubmit="hidebutton()">
+                <form action="new-password" method="POST" autocomplete="off" onsubmit="hidebutton()">
                     <!-- <h2 class="text-center">New Password</h2> -->
                     <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
                     <p class="text-center">Enter your new password</p>

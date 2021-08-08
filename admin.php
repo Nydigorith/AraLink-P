@@ -15,7 +15,7 @@ if($email != false && $password != false){
         $_SESSION["classcode"] = $fetch_classcode;
     }
 }else{
-    header('Location: login-user.php');
+    header('Location: login');
 }
 
 $query = $conn->prepare("SELECT * FROM classadmin WHERE classcode = :varivari");
@@ -402,6 +402,7 @@ table#video_table.dataTable tbody tr {
 
   justify-content: center;
   position: relative;
+        }
             
 
      
@@ -675,7 +676,7 @@ table#video_table.dataTable tbody tr {
 
                         <h5 class="modal-title mx-auto">Select Image File</h5>
                     </div>
-                    <div class="modal-body ">
+                    <div class="modal-body  ">
 
                         <?php 
                 if(isset($_SESSION['info'])){
@@ -730,16 +731,11 @@ table#video_table.dataTable tbody tr {
 
 
                            
-
-
-
-
-                                
                                 <div class="modal-footerrr modal-footerr text-right ">
                                     
                                    
-                                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
                                     <input type="submit"form="deleteForm" class="btn btn-primary" name="remove-image" value="Remove" onclick="return confirm('Are you sure?');">
+                                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
                                     
                                 </form>
                            
@@ -752,7 +748,7 @@ table#video_table.dataTable tbody tr {
 
     <footer class="page-footer">
         <div class="footer-text text-center py-2">
-            <a href="https://github.com/Nydigorith/AraLink" target="_blank">Download Source Code</a>
+            <a href="https://github.com/Nydigorith/AraLink" target="_blank">Clone or Download Source Code</a>
 
             <!-- Back To Top -->
             <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i

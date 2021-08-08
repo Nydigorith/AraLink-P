@@ -125,7 +125,7 @@ require_once 'php/php-controller.php';
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-light sticky-top nav-index">
-        <a href="index" class="navbar-brand pl-3"><img src="img/nav-logo.png" width="190px" height="50px"></a>
+        <a href="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"target="_blank"  class="navbar-brand pl-3"><img src="img/nav-logo.png" width="190px" height="50px"></a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navigation_bar"
             aria-controls="navigation_bar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>

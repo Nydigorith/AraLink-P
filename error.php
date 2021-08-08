@@ -28,27 +28,18 @@
         height: 100%;
         margin: 0px;
         padding: 0px;
-        display: flex;
-flex-direction: column;
+ /*        display: flex;
+flex-direction: column; */
     }
  
 
-    /* Back To Top */
-    .back-to-top {
-        position: fixed;
-        bottom: 25px;
-        right: 25px;
-        display: none;
-        color: rgb(27, 27, 19);
-        background-color: rgb(254, 221, 2);
-        border: 1px solid rgb(254, 221, 2);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    }
-
-    .back-to-top:hover {
-        color: rgb(27, 27, 19)9;
-        background-color: rgb(254, 221, 2);
-        border: 1px solid rgb(27, 27, 19);
+    /* .pt-10 {
+        padding-top:180px;
+    } */
+    .error404 {
+        font-size:200px;
+        font-weight:bold;
+        margin:0px;
     }
 </style>
 </head>
@@ -73,21 +64,22 @@ flex-direction: column;
         </div>
     </nav>
 
-<div class="text-center  align-items-center">
-  <h1>Error 404</h1>
-  <h3><a href="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"target="_blank" >Looks like you are lost</a></h3> 
+<div class="text-center  m-auto pt-10">
+  <h1 class="error404 m-0 p-0">404</h1>
+  <h3 class="m-0 p-0">Page Not Found</a></h3> 
+  <h5  class="m-0 p-0">We're sorry, the page you requested could not be found. Please <br> go back to the homepage or contact us at aralink.xyz@gmail.com</h5> 
  
 </div>
 
 
 
    <!-- Footer -->
-   <footer class="page-footer">
+  <!--  <footer class="page-footer">
         <div class="footer-text text-center py-2">
             <a href="https://github.com/Nydigorith/AraLink" target="_blank">Download Source Code</a>
 
         </div>
-    </footer>
+    </footer> -->
     
 
     <!-- Loading -->

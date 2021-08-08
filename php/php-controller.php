@@ -34,10 +34,10 @@ $mail->SMTPAuth = true;
 $mail->SMTPSecure = 'tls';            
 $mail->isHTML(true);
 
-$mail->Username = "smtpwebsitesmtp@gmail.com";
-$mail->Password = 'fmixiahnstilmmpb'; 
+$mail->Username = "aralink.xyz@gmail.com";
+$mail->Password = 'khpdauesnaeizzmv'; 
 
-$mail->setFrom('fds@gmail.com','AraLink');
+$mail->setFrom('aralink.xyz@gmail.com','AraLink');
 
 
 
@@ -52,15 +52,22 @@ $errors = array();
         $classname = $_POST['classname'];
 
         if(preg_match("~@gmail\.com$~",$email)){
-            if(preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,20}$/', $password)) {
+
+            $query = $conn->prepare("SELECT * FROM classadmin WHERE email = :email");
+            $query->execute([':email' => $email]);
+            if( $query->rowCount() > 0){
+                $errors[':email'] = "Email that you have entered is already exist!";
+            } else {
+
                 if($password !== $cpassword){
                     $errors['password'] = "Confirm password not matched!";
-                }
-                $query = $conn->prepare("SELECT * FROM classadmin WHERE email = :email");
-                $query->execute([':email' => $email]);
-                if( $query->rowCount() > 0){
-                    $errors[':email'] = "Email that you have entered is already exist!";
-                }
+                } else {
+                if(preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,20}$/', $password)) {
+
+
+                
+    
+               
                 if(count($errors) === 0){
                 $classcode =    substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,8))), 1, 8);
                 $encpass = password_hash($password, PASSWORD_BCRYPT);
@@ -96,17 +103,21 @@ $errors = array();
                             header('location: otp');
                             exit();
                         }else{
-                            $errors['otp-error'] = "Failed while sending code! $mail->ErrorInfo;";
+                            $errors['otp-error'] = "Failed while sending code!";
                         }
                     }else{
                         $errors['db-error'] = "Failed while inserting data into database!";
                     }
                 }
-                }
+                
+            }
             } else{
                 $errors['password'] = "password does not meet m inimum requoirements";
             }
-        }else{
+        }
+    }
+}
+        else{
             $errors['email'] = "bobo gmail nga e.";
         }
     }
@@ -249,25 +260,29 @@ $errors = array();
         $_SESSION['info'] = "";
         $password = $_POST['password'];
         $cpassword =  $_POST['cpassword'];
-        if(preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,20}$/', $password)) {
+
             if($password !== $cpassword){
                 $errors['password'] = "Confirm password not matched!";
-            } else{
+            } else{ 
+                if(preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,20}$/', $password)) {
             /* $code = 0; */
             $email = $_SESSION['email'];
             $encpass = password_hash($password, PASSWORD_BCRYPT);
             $query = $conn->prepare("UPDATE classadmin SET password = :password WHERE email = :email");
             $result=$query->execute([':password' => $encpass, ':email' => $email]);
+      
                 if($result){
+                    $info = "Your password changed. Now you can login with your new password.";
+                    $_SESSION['info'] = $info;
                     header('Location: login');
                 }else{
                     $errors['db-error'] = "Failed to change your password!";
                 }
-            }
-        } else {
+            }else {
                 $errors['password'] = "password does not meet m inimum requoirements";
         }
     }
+}
 
     /* Login Now */
     if(isset($_POST['login-now'])){
@@ -289,12 +304,13 @@ $errors = array();
     if(isset($_POST["upload-image"])){ 
         $varivari= $_SESSION["classcode"];
         $img_size = $_FILES['image']['size'];
-        if ($img_size < 102400) {
+       
             if(!empty($_FILES["image"]["name"])) { 
                 $fileName = basename($_FILES["image"]["name"]); 
                 $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
                 $allowTypes = array('png'); 
                 if(in_array($fileType, $allowTypes)){ 
+                    if ($img_size < 16000000) {
                     $image = $_FILES['image']['tmp_name']; 
                     $imgContent = addslashes(file_get_contents($image)); 
                     $query  = $conn->prepare("UPDATE classadmin SET images = '$imgContent' WHERE classcode = '$varivari'");
@@ -305,16 +321,19 @@ $errors = array();
                     }else{ 
                         $errors['images'] = "File upload failed, please try again."; 
                     }  
+                
+                }else{ 
+                    $errors['images'] = "Please upload less than 100kb"; 
+                }
                 }else{ 
                     $errors['images'] = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
                 } 
             }else{ 
                 $errors['images'] = 'Please select an image file to upload.'; 
-            } 
-        }else{ 
-            $errors['images'] = "Please follow"; 
-        }
+            }
         ?>
+        
+        
         <script>
             var message = "e";
         </script> 

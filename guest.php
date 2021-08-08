@@ -1,13 +1,20 @@
 <?php 
 require "db.php"; 
  $codihe = $_GET['c'];
+ if ($codihe == '') {
+    header('Location: index');
+ }
 
     $query = $conn->prepare("SELECT * FROM classadmin WHERE classcode = :codihe");
     $query->execute([':codihe' => $codihe]);
+    if($query->rowCount() > 0){
     if($query){
     $fetch = $query->fetch(PDO::FETCH_ASSOC);
        $scode = $fetch['classcode'];
     }
+} else {
+    header('Location: index');
+}
 
     $background = 'data:image/png;base64,'.base64_encode($fetch['images']);
     if (!empty($fetch['images'])) {
