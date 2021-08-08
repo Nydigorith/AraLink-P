@@ -735,8 +735,11 @@ table#video_table.dataTable tbody tr {
                                 </div>
                             </div>
 
-                            <input type="button" name="remove-image"class=" browse btn btn-secondary" value="Browse"
+                            
+
+                                <input type="button" class=" browse btn btn-secondary" value="Browse"
                                 onclick="document.getElementById('image').click();" />
+
 
 
 
