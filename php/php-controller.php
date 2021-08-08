@@ -6,6 +6,41 @@ require "db.php";
 $email = "";
 $classname = "";
 $name = "";
+
+
+require 'php/PHPMailer.php';
+require 'php/SMTP.php';
+require 'php/Exception.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+$mail = new PHPMailer();
+
+$mail->SMTPDebug  = 2;  
+$mail->Port       = 587;
+
+
+
+
+$mail->isSMTP();
+
+$mail->Host = "smtp.gmail.com";
+
+
+
+$mail->SMTPAuth = true; 
+$mail->SMTPSecure = 'tls';            
+$mail->isHTML(true);
+
+$mail->Username = "smtpwebsitesmtp@gmail.com";
+$mail->Password = 'fmixiahnstilmmpb'; 
+
+$mail->setFrom('fds@gmail.com','AraLink');
+
+
+
 $errors = array();
 
     /* Signup */
@@ -44,10 +79,15 @@ $errors = array();
                                 values(:name, :email, :password, :code, :status, :classname, :classcode)");
                 $result=$query->execute([':name' => $name, ':email' => $email, ':password' => $encpass, ':code' => $code,':status' => $status,':classname' => $classname,':classcode' => $classcode]);
                     if($result){
-                        $subject = "Email Verification Code";
-                        $message = "Your verification code is $code";
-                        $sender = "From: smtpwebsitesmtp@gmail.com";
-                        if(mail($email, $subject, $message, $sender)){
+        
+
+                        $mail->addAddress($email);
+                        $mail->Subject='Email Verification Code';
+                        $mail->Body="Your verification code is <b>$code</b>";
+
+
+
+                        if($mail->send()){
                             $info = "We've sent a verification code to your email - $email";
                             $_SESSION['info'] = $info;
                             $_SESSION['email'] = $email;
@@ -56,7 +96,7 @@ $errors = array();
                             header('location: otp');
                             exit();
                         }else{
-                            $errors['otp-error'] = "Failed while sending code!";
+                            $errors['otp-error'] = "Failed while sending code! $mail->ErrorInfo;";
                         }
                     }else{
                         $errors['db-error'] = "Failed while inserting data into database!";
@@ -148,10 +188,11 @@ $errors = array();
                 $query=  $conn->prepare("UPDATE classadmin SET code = :code WHERE email = :email");
                 $result = $query->execute([':code' => $code, ':email' => $email]);       
                 if($result){
-                    $subject = "Password Reset Code";
-                    $message = "Your password reset code is $code";
-                    $sender = "From: shahiprem7890@gmail.com";
-                    if(mail($email, $subject, $message, $sender)){
+                    $mail->addAddress($email);
+                    $mail->Subject='Email Verification Code';
+                    $mail->Body="Your verification code is <b>$code</b>";
+
+                    if($mail->send()){
                         $info = "We've sent a passwrod reset otp to your email - $email";
                         $_SESSION['info'] = $info;
                         $_SESSION['email'] = $email;
@@ -301,10 +342,12 @@ $errors = array();
         $query=  $conn->prepare("UPDATE classadmin SET code = :code WHERE email = :email");
         $result = $query->execute([':code' => $code, ':email' => $email]);       
         if($result){
-            $subject = "Password Reset Code";
-            $message = "Your password reset code is $code";
-            $sender = "From: shahiprem7890@gmail.com";
-            if(mail($email, $subject, $message, $sender)){
+         
+            $mail->addAddress($email);
+            $mail->Subject='Email Verification Code';
+            $mail->Body="Your verification code is <b>$code</b>";
+
+            if($mail->send()){
                 $info = "Code Resend to $email.";
                 
                 $_SESSION['info'] = $info;
@@ -332,10 +375,11 @@ $errors = array();
         $query=  $conn->prepare("UPDATE classadmin SET code = :code WHERE email = :email");
         $result = $query->execute([':code' => $code, ':email' => $email]);       
         if($result){
-            $subject = "Password Reset Code";
-            $message = "Your password reset code is $code";
-            $sender = "From: shahiprem7890@gmail.com";
-            if(mail($email, $subject, $message, $sender)){
+            $mail->addAddress($email);
+            $mail->Subject='Email Verification Code';
+            $mail->Body="Your verification code is <b>$code</b>";
+
+            if($mail->send()){
                 $info = "Code Resend to $email.";
                 
                 $_SESSION['info'] = $info;

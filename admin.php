@@ -175,6 +175,9 @@ if (!empty($fetch['images'])) {
                 font-size: 14px;
             }
         }
+        @media (max-width: 768px){
+            
+        }
 
 
         table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child,
@@ -274,7 +277,7 @@ table#video_table.dataTable th {
   background-color: green;
 }
 table#video_table.dataTable tbody tr {
-  background-color: black;
+  background-color: gray;
 }
  
  
@@ -364,6 +367,7 @@ table#video_table.dataTable tbody tr {
                 overflow: hidden;
                 position: relative;
             }
+   
 
             .imageCenterer img {
                 display: block;
@@ -373,6 +377,7 @@ table#video_table.dataTable tbody tr {
                 width: 85vw; */
                 object-fit: cover;
             }
+
         }
 
         @media (min-width:420px) and (max-width:576px) {
@@ -384,9 +389,21 @@ table#video_table.dataTable tbody tr {
 
 
 
+        @media (max-width:419px) {
 
 
+            .browse {
+                margin-top: -70px;
+            margin-left: 38%;
+            position: relative;
+            
+            
 
+        }
+}
+        
+
+@media (min-width:576px) {
         .browse {
             margin-top: -70px;
             margin-left: 40%;
@@ -394,6 +411,16 @@ table#video_table.dataTable tbody tr {
             width: 100px;
 
         }
+    }
+@media (max-width:576px) {
+        .browse {
+            margin-top: -70px;
+            margin-left: 36%;
+            position: relative;
+            width: 100px;
+
+        }
+    }
 
         .dt-body-center {
             text-align: left !important;
@@ -413,6 +440,15 @@ table#video_table.dataTable tbody tr {
         .menu-buttons .btn{
             width: 100px;
         }
+
+        @media (max-width: 800px) {
+            .dipnone {
+    display:none !important;
+}
+
+        }
+
+        
     </style>
 
 
@@ -465,7 +501,7 @@ table#video_table.dataTable tbody tr {
                         <th width="25%">Lesson</th>
                         <th width="10%">Subject</th>
                         <th width="5%">Date</th>
-                        <th width="30%">Link</th>
+                        <th class="dipnone" width="30%">Link</th>
                         <th>Code</th>
                         <th width="0%"></th>
                         <th class="table-delete" width="0%"></th>
@@ -837,6 +873,8 @@ table#video_table.dataTable tbody tr {
                             url: 'vfetch.php',
                             type: "POST"
                         },
+
+                        
                         "columnDefs": [{
                                 "targets": [0, 3, 4],
                                 "orderable": false,
@@ -851,12 +889,22 @@ table#video_table.dataTable tbody tr {
 
                             },
                             {
+                                "targets": [4],
+                                'createdCell':  function (td) {
+                           $(td).addClass('dipnone');
+                        
+                           // $(td).parent('tr').attr('data-id', rowData[0]); // adds the data attribute to the parent this cell row
+                        }
+
+                            },
+                            {
                                 "targets": [7],
                                 "className": "text-right pr-3",
                                 "autoWidth": false
                                 /* "width": "%" */
 
                             },
+                      
                             {
                                 "targets": [0, 5],
                                 "visible": false,
