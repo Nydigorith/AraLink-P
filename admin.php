@@ -143,9 +143,9 @@ if (!empty($fetch['images'])) {
         }
 
         @media (max-width: 581px) and (min-width: 381px) {
-            .name-modal .name {
-                padding-left: 18vw;
-                padding-right: 18vw;
+            .name-modal .modal {
+                padding-left: 12vw;
+                padding-right: 12vw;
             }
         }
 
@@ -341,6 +341,7 @@ table#video_table.dataTable tbody tr {
             position: relative;
             margin: auto;
             margin-top:-12px;
+            border: 2px gray solid;
 
         }
 
@@ -439,7 +440,7 @@ table#video_table.dataTable tbody tr {
 
 
      
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAABQCAYAAAC+neOMAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA5tJREFUeJzt2s9rHGUYwPHvM9lpKjYQFENBEIzSelHwPxBMeuhNJYtxAioehKyiNw8ik148CFLqtpG9WEI6G38h1EhPQgTvnjVCD4pVPBg8eKhJ5vHS3Wzipju7O+/7TuH5nmZnZncePpmEd4eAZVmWZVmWZVmWZVmWZVmWZVnWEEmRk9I0jU6fOfPYvsgD5PkfjST5RUTU9XCuaq6tPRhFk7NM5Lf3pqd/euv8+duD3nNXqDRNo5mzZxuq+o4gD3cPKD9C/m5jaemrEub2VvPatScj5ENE5nt2/6Oqn8Qn4vder9f/Pu69x0K1Wq147/6pDYQXjjtHlZU3ll66MOLcXmu22/NRrtcRua/vCarbTERzjcXFX/sd7gvVarXi3VNTnwo8P3gEvdBIkpXiI/vvyvrGOY30usDJu52ncFMieaYfVnR0R7q1Vds9NZUVQwKQ9EqWrRSc2XtFkQAEZjXX71prnz9y9NghqHRrqzbz2+/rAgvDjVNNrGGQOgnM7tX2/od1CGrm1q0PEF4cbaxqYY2C1NOjuxO7m5du3Jjs7OhCfZRlT6jy9njjVQOr2W7Pj4EEgIg8VdvZea3zOurZWBCRQuuqAZcIitVst+dF+XocpJ66f4IOfvVUHi/hg+8UBqtkJODApAslogNXp0NexCtW+Uig8G9nu/eO+qGsCxzkB8sFEoCgXZPeO+ozhZ0yL3Tnk51iuUICEGh1trtQy0myI+jLqrpf9gVdYa1m2ZwrJJSPl5Pk287LQ+uoRpJsRsLivYC1mmVzObLpBAldf+hE7c3ePX2XA6tZtpArGyIy4WCIsb8bOkeK41fr9fqhm+XYdVNVsUIgwYDnUVXDCoUEBZ5wVgUrJBIUfBQcGuvy+sazRPpNKCQoCAXhsKqABENAgX+sqiDBkFDgD6tKSDACFLjH0jz6vkpIMCIUuMVS1X1HP4SRkGAMKHB9Z5Xd6EgwJhTcK1jjIUEJUFB1rPGRoCQoqCpWOUhQIhRUDas8JCgZCqqCVS4SOICC0FjlI4EjKAiF5QYJHEKBbyx3SOAYCnxhuUUCD1Dg/LuhcyTwBAWusPwggUcoKBvLHxJ4hoKysPwiQQAoGBfLPxIEgoJRscIgQUAoGBYrHBIEhoKiWGGRoM+/T/tuOUm+EOE5Vf3r6DFV3Ud5/8/t7VdCIkEF7qhOF69enY7jyQWBp4EY+FlEv1xOkpuhZ7Msy7Isy7Isy7IsyxrcfzNeLxtxSlaeAAAAAElFTkSuQmCC");
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAABQCAYAAAC0wU3eAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAihJREFUeJzt1bFrE1EcwPHv7y6FQpwUxAyd1U03B2kt8dpJHSTdROziIILW/8JiCs5FQYVizihCQWwlFRz8F3RWEBdxEB007zloQ+7say6X9xKQ33e7u/dy78O9y4GmaZqmaZqmaZqmaZqmaZqmjZa4Ltw5+3QOY2szh7rpUrrUHeeiXK0lz04Ya04emJ56fHXz/Pf89WjPSfV0WbCvJWLjw5f4fqvRisMvdf+aSbpgrXkrcO/bj58vVpMH1fyYfzBr9XTZiKzvHotwadKgZpIuYKPnwPTfNc1GtrqZB0XZSU/OGZF1QTLbb5KgPKS3JjgTmepG/7kMxhpO5SG9yRMAuSC9NWFP9x9nMLGdumvhvevHxwkaBMFiROy1/lMZzI3Ohc8SMz9pUBGIjczlm68amW2255ZqLrZrtsuOwFHXDa3l4czB7hXff9tFIbe2G4/yl5zfmUmARoHAPhgYL2hUCDg+mrutvLz4SWLmsbxzjfHxDvmAwIAn07vZYrvGLzoIx1xjyj4hXxAoiIEwIJ8QGAIDfkG+ITAkBvyAQkCgBAbg9lzrSKUS75QBhYJASQyUA4WEwAgYGA708avUQ0JgRAwUBm2JMEtACHjAQDGQM08Q8ISBP6C4EnVE5HjhSR4h4BEDQ4I8Q8AzBgqCAkAgAAYGgAJBIBAGHKCAEAiIgRwoMAQCYwBWk/bh2HIdMW9Wthtboe+naZqmaZqmaZqmaZqmadp/3G8I8Zhwt9JbhAAAAABJRU5ErkJggg==");
     background-repeat: no-repeat, repeat;
     background-position: right .7em top 50%, 0 0;
     background-size: .65em auto, 100%;
@@ -691,10 +692,10 @@ table#video_table.dataTable tbody tr {
                     <div class="modal-body  ">
 
                         <?php 
-                if(isset($_SESSION['info'])){
+                if(isset($_SESSION['info-image'])){
                 ?>
                         <div class="alert alert-success text-center">
-                            <?php echo $_SESSION['info']; ?>
+                            <?php echo $_SESSION['info-image']; ?>
                         </div>
                         <?php
                 }
@@ -716,7 +717,7 @@ table#video_table.dataTable tbody tr {
                         </div>
                         
                         <?php
-                } unset($_SESSION["info"])
+                } unset($_SESSION["info-image"])
                 ?>
                  <div class="label-notes">Please use a png image less than 100kb (Image will automatically fit)</div>
                       <form id="deleteForm" action="admin" method="post" enctype="multipart/form-data">   

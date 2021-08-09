@@ -96,7 +96,7 @@ $errors = array();
 
                         if($mail->send()){
                             $info = "We've sent a verification code to your email - $email";
-                            $_SESSION['info'] = $info;
+                            $_SESSION['info-otp'] = $info;
                             $_SESSION['email'] = $email;
                             $_SESSION['password'] = $password;
                         
@@ -125,7 +125,7 @@ $errors = array();
 
     /* Click Verification Button */
      if(isset($_POST['check'])){
-        $_SESSION['info'] = "";
+       /*  $_SESSION['info'] = ""; */
         $otp_code = $_POST['otp'];
         if (preg_match('/^([0-9]*)$/', $otp_code)) {
             $query = $conn->prepare("SELECT * FROM classadmin WHERE code = :code");
@@ -173,7 +173,7 @@ $errors = array();
                         header('location: home');
                     }else{
                         $info = "It's look like you haven't still verify your email - $email";
-                        $_SESSION['info'] = $info;
+                        $_SESSION['info-otp'] = $info;
                         header('location: otp');
                      }
                 }else{
@@ -205,7 +205,7 @@ $errors = array();
 
                     if($mail->send()){
                         $info = "We've sent a passwrod reset otp to your email - $email";
-                        $_SESSION['info'] = $info;
+                        $_SESSION['info-rotp'] = $info;
                         $_SESSION['email'] = $email;
                         header('location: reset-otp');
                         exit();
@@ -225,7 +225,7 @@ $errors = array();
 
     /* Check Reset OTP */
     if(isset($_POST['check-reset-otp'])){
-        $_SESSION['info'] = "";
+        /* $_SESSION['info'] = ""; */
         $otp_code = $_POST['otp'];
         $query  = $conn->prepare("SELECT * FROM classadmin WHERE code = :code");
         $query->execute([':code' => $otp_code]);
@@ -237,7 +237,7 @@ $errors = array();
                 $email = $fetch['email'];
                 $_SESSION['email'] = $email;
                 $info = "Please create a new password that you don't use on any other site.";
-                $_SESSION['info'] = $info;
+                $_SESSION['info-np'] = $info;
                 $query = $conn->prepare("UPDATE classadmin SET code = :code WHERE email = :email");
                 $result=$query->execute([':code' => $code, ':email' => $email]);
                 if ($result) {
@@ -257,7 +257,7 @@ $errors = array();
 
     /* Change Password */
     if(isset($_POST['change-password'])){
-        $_SESSION['info'] = "";
+ /*        $_SESSION['info'] = ""; */
         $password = $_POST['password'];
         $cpassword =  $_POST['cpassword'];
 
@@ -273,7 +273,7 @@ $errors = array();
       
                 if($result){
                     $success = "Your password changed. Now you can login with your new password.";
-                    $_SESSION['success'] = $success;
+                    $_SESSION['info-success'] = $success;
                     header('Location: login');
                 }else{
                     $errors['db-error'] = "Failed to change your password!";
@@ -317,7 +317,7 @@ $errors = array();
                     $result = $query->execute(); 
                     if($result){ 
                         $info = "Uploaded Succesfully";
-                        $_SESSION['info'] = $info;
+                        $_SESSION['info-image'] = $info;
                     }else{ 
                         $errors['images'] = "File upload failed, please try again."; 
                     }  
@@ -369,7 +369,7 @@ $errors = array();
             if($mail->send()){
                 $info = "Code Resend to $email.";
                 
-                $_SESSION['info'] = $info;
+                $_SESSION['info-otp'] = $info;
                 $_SESSION['email'] = $email;
                 header('location: otp');
                 exit();
@@ -401,7 +401,7 @@ $errors = array();
             if($mail->send()){
                 $info = "Code Resend to $email.";
                 
-                $_SESSION['info'] = $info;
+                $_SESSION['info-rotp'] = $info;
                 $_SESSION['email'] = $email;
                 header('location: reset-otp');
                 exit();

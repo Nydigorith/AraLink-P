@@ -79,7 +79,7 @@ flex-direction: column;
 
 
         .copied {
-          /*   display: none; */
+            display: none;
           text-align:center;
             position: fixed;
             left: 50%;
@@ -116,12 +116,27 @@ flex-direction: column;
             }
         }
 
-      /*   @media (max-width: 581px) and (min-width: 381px) {
+
+
+       /*  .modal-dialog .modal-footerr  {
+                text-align:right!important;
+            }
+ */
+        @media (max-width: 581px) and (min-width: 381px) {
             .modal {
-                padding-left: 23vw;
-                padding-right: 23vw;
+                padding-left: 12vw;
+                padding-right: 12vw;
+            }
+           
+        }
+        /* @media (max-width: 450px) {
+            .modal-dialog .modal-footerr  {
+                text-align:center!important;
             }
         } */
+
+
+
 
         .videos .mb-4 {
             margin-top: 8px;

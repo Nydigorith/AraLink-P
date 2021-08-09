@@ -57,10 +57,10 @@ if($email != false){
                     <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
                     <p class="text-center">Enter your new password</p>
                     <?php 
-                    if(isset($_SESSION['info'])){
+                    if(isset($_SESSION['info-np'])){
                         ?>
                     <div class="alert alert-success text-center">
-                        <?php echo $_SESSION['info']; ?>
+                        <?php echo $_SESSION['info-np']; ?>
                     </div>
                     <?php
                     }

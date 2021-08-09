@@ -48,7 +48,7 @@ require_once 'php/php-controller.php';
         /*   filter: blur(0px) brightness(80%);  */
         /* background-color: #3c94ff; */
         color: white;
-        height: 110%;
+        height: 102%;
         padding-top: 10px;
         position: relative;
         align-items: center;

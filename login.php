@@ -35,13 +35,13 @@
                     <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
                     <p class="text-center">Login with your email and password.</p>
                     <?php 
-                    if(isset($_SESSION['success'])){
+                    if(isset($_SESSION['info-success'])){
                         ?>
                         <div class="alert alert-success text-center">
-                            <?php echo $_SESSION['success']; ?>
+                            <?php echo $_SESSION['info-success']; ?>
                         </div>
                         <?php
-                    } unset($_SESSION["success"]);
+                    } unset($_SESSION["info-success"]);
                     ?>
                     <?php
                     if(count($errors) > 0){

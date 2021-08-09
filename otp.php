@@ -38,10 +38,10 @@ if($email == false){
                     <!-- <h2 class="text-center">Code Verification</h2> -->
                     <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
                     <?php 
-                    if(isset($_SESSION['info'])){
+                    if(isset($_SESSION['info-otp'])){
                         ?>
                         <div class="alert alert-success text-center">
-                            <?php echo $_SESSION['info']; ?>
+                            <?php echo $_SESSION['info-otp']; ?>
                         </div>
                         <?php
                     }
