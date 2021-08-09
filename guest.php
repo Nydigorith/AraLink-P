@@ -190,7 +190,7 @@ flex-direction: column;
                                     }  
                                 } else {
                                     ?>
-                <div class="error-text mx-auto">No video were found </div>';
+                <div class="error-text mx-auto">No video were found </div>
                 <?php
                                 } 
                             }
@@ -243,7 +243,7 @@ flex-direction: column;
                                 }  
                             }else {
                                 ?>
-                <div class="error-text mx-auto">No video were found </div>';
+                <div class="error-text mx-auto">No video were found </div>
                 <?php
                         }
                     }

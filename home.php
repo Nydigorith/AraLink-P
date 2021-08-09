@@ -79,17 +79,17 @@ flex-direction: column;
 
 
         .copied {
-            display: none;
+          /*   display: none; */
+          text-align:center;
             position: fixed;
             left: 50%;
             top: 90%;
             transform: translate(-50%, -50%);
             z-index: 999;
-            padding: 10px;
-            padding-left: 25px;
-            padding-right: 36px;
+            padding: 10px 25px;
+            
             margin-right: 1vw;
-            cursor: pointer;
+            /* cursor: pointer; */
             border: #CFD9E0 solid 1px;
             border-radius: 50px;
             /* background-color: green; */
@@ -98,6 +98,11 @@ flex-direction: column;
             -moz-transition: all 0.5s;
             -o-transition: all 0.5s;
         }
+         @media (max-width: 440px) {
+        .copied {
+            padding: 10px 17px;
+        }
+    } 
 
         .copy-code {
             margin-top: -15px;
@@ -111,12 +116,12 @@ flex-direction: column;
             }
         }
 
-        @media (max-width: 581px) and (min-width: 381px) {
+      /*   @media (max-width: 581px) and (min-width: 381px) {
             .modal {
                 padding-left: 23vw;
                 padding-right: 23vw;
             }
-        }
+        } */
 
         .videos .mb-4 {
             margin-top: 8px;
@@ -223,7 +228,7 @@ flex-direction: column;
                                     }  
                                 } else {
                                     ?>
-                <div class="error-text mx-auto">No video were found </div>';
+                <div class="error-text mx-auto">No video were found </div>
                 <?php
                                 } 
                             }
@@ -276,7 +281,7 @@ flex-direction: column;
                                 }  
                             }else {
                                 ?>
-                <div class="error-text mx-auto">No video were found </div>';
+                <div class="error-text mx-auto">No video were found </div>
                 <?php
                         }
                     }
@@ -332,6 +337,7 @@ flex-direction: column;
     </div>
 
 
+    
 
     <!-- Loading -->
     <script src="js/pace.js"></script>

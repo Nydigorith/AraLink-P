@@ -272,8 +272,8 @@ $errors = array();
             $result=$query->execute([':password' => $encpass, ':email' => $email]);
       
                 if($result){
-                    $info = "Your password changed. Now you can login with your new password.";
-                    $_SESSION['info'] = $info;
+                    $success = "Your password changed. Now you can login with your new password.";
+                    $_SESSION['success'] = $success;
                     header('Location: login');
                 }else{
                     $errors['db-error'] = "Failed to change your password!";

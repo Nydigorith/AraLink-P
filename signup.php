@@ -41,19 +41,6 @@
                             ?>
                         </div>
                         <?php
-                    }elseif(count($errors) > 1){
-                        ?>
-                        <style type="text/css">.alert-success{display:none;}</style>
-                        <div class="alert alert-danger">
-                            <?php
-                            foreach($errors as $showerror){
-                                ?>
-                                <li><?php echo $showerror; ?></li>
-                                <?php
-                            }
-                            ?>
-                        </div>
-                        <?php
                     }
                     ?>
                     <div class="form-group">
