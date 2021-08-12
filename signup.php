@@ -44,13 +44,17 @@
                     }
                     ?>
                     <div class="form-group">
-                        <input class="form-control" type="text" name="name" placeholder="Full Name" required value="<?php echo $name ?>">
+                    <label>Username</label>
+                        <input class="form-control" type="text" name="name" placeholder="Username" required value="<?php echo $name ?>">
                     </div>
                     <div class="form-group">
+                    <label>Email Address</label>
                         <input class="form-control" type="email" name="email" placeholder="Email Address" required value="<?php echo $email ?>">
                     </div>
                     <label class="label-notes"for="">Combnation of Letters and number 8-20 cahracter</label>
+                    <label>Password</label>
                     <div class="form-group input-group">
+                    
                         <input class="form-control" type="password" name="password" id ="password" placeholder="Password"  required>
                         <div class="input-group-append">
                             <span class="bi bi-eye-slash input-group-text" id="togglePassword"></span>
@@ -58,9 +62,9 @@
                     </div>
 
                     
+                    <label>Retype Password</label>
                     <div class="form-group input-group">
-                   
-                        <input class="form-control" type="password" name="cpassword" id ="cpassword" placeholder="Confirm password"  required>
+                        <input class="form-control" type="password" name="cpassword" id ="cpassword" placeholder="Retype Password"  required>
                         <div class="input-group-append">
                         <span class="bi bi-eye-slash input-group-text" id="togglecPassword"></span>
                 </div>
@@ -72,8 +76,8 @@
 
 
                     <div class="form-group">
-                   
-                        <input class="form-control" type="classname" name="classname" placeholder="classname" value="<?php echo $classname?>"required>
+                    <label>Class</label>
+                        <input class="form-control" type="classname" name="classname" placeholder="Class" value="<?php echo $classname?>"required>
                     </div>
                     
                     <div class="form-group">

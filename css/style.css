@@ -248,6 +248,10 @@ border-top-left-radius: 10px;
 .background-image .jumbotron-heading {
   font-size:40px;
 }
+.background-image .fa-edit {
+  font-size: 15px;
+  padding-left:.2vw;
+}
 .background-image .fa-share {
   font-size: 15px;
   padding-left:.2vw;
@@ -265,6 +269,10 @@ border-top-left-radius: 10px;
 
 .background-image .jumbotron-heading {
   font-size:30px;
+}
+.background-image .fa-edit {
+  font-size: 10px;
+  padding-left:.2vw;
 }
 .background-image .fa-share {
   font-size: 10px;
@@ -375,6 +383,10 @@ label {
 
 .text-muted {
 font-size:15px;
+}
+label {
+  margin:0px;
+  padding:0px;
 }
 .error-text {
 

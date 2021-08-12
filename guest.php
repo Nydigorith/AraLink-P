@@ -2,7 +2,7 @@
 require "db.php"; 
  $codihe = $_GET['c'];
  if ($codihe == '') {
-    header('Location: index');
+    header('Location: error');
  }
 
     $query = $conn->prepare("SELECT * FROM classadmin WHERE classcode = :codihe");
@@ -13,7 +13,7 @@ require "db.php";
        $scode = $fetch['classcode'];
     }
 } else {
-    header('Location: index');
+    header('Location: error');
 }
 
     $background = 'data:image/png;base64,'.base64_encode($fetch['images']);

@@ -477,7 +477,7 @@ table#video_table.dataTable tbody tr {
         <div class="jumbotron d-flex align-items-center text-center">
             <div class="container">
                 <h1 class="jumbotron-heading"><?php  echo $fetch['classname']?><a data-toggle="modal"
-                        data-target="#change_code_modal"><i class="fas fa-share" aria-hidden="true"></i></a>
+                        data-target="#change_code_modal"><i class="fas fa-edit" aria-hidden="true"></i></a>
                 </h1>
             </div>
             <div class="jumbotron-upload text-right"><a data-toggle="modal" data-target="#upload_image_modal">
@@ -652,7 +652,7 @@ table#video_table.dataTable tbody tr {
 
                         <h5 class="modal-title mx-auto">Change Name</h5>
                     </div>
-                    <form action="admin.php" method="get" autocomplete="">
+                    <form action="admin.php" method="get">
                         <div class="modal-body">
 
                             <div class="form-group pt-3">

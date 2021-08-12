@@ -31,7 +31,7 @@
 <div class="container">
 <div class="row p-4 justify-content-center">
             <div class="form">
-                <form action="login" method="POST" autocomplete=""onsubmit="hidebutton()">
+                <form action="login" method="POST" onsubmit="hidebutton()">
                     <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
                     <p class="text-center">Login with your email and password.</p>
                     <?php 
@@ -57,10 +57,12 @@
                     }
                     ?>
                     <div class="form-group">
+                    <label>Email Address</label>
                         <input class="form-control" type="email" name="email" placeholder="Email Address" required value="<?php echo $email ?>">
                     </div>
+                    <label>Password</label>
                     <div class="form-group input-group">
-                       
+                    
                        <input class="form-control" type="password" name="password" id="password" placeholder="Password" required> 
                        <div class="input-group-append">
                        <span class="bi bi-eye-slash input-group-text" id="togglePassword"></span>
