@@ -54,7 +54,7 @@ if($email != false){
 
                 <form action="new-password" method="POST" autocomplete="off" onsubmit="hidebutton()">
                     <!-- <h2 class="text-center">New Password</h2> -->
-                    <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
+                    <div class="text-center mb-3"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
                     <p class="text-center">Enter your new password</p>
                     <?php 
                     if(isset($_SESSION['info-np'])){
@@ -83,26 +83,27 @@ if($email != false){
                     <?php
                     }
                     ?>
-                     <label class="label-notes"for="">Combnation of Letters and number 8-20 cahracter</label>
-                    <div class="form-group input-group">
-                        <input class="form-control" type="password" name="password" id="password" placeholder="Password"
-                            required>
+                    
+                     <div class="form-group">
+                         <input class="form-control" type="password" name="password" id="password" onchange="this.setAttribute('value', this.value);" value="" required>
+                         <label>Password</label>
                         <div class="input-group-append">
                             <span class="bi bi-eye-slash input-group-text" id="togglePassword"></span>
                         </div>
                     </div>
-
-                    <div class="form-group input-group">
-
+                    <div class="label-notes">Combnation of Letters and number 8-20 cahracter</div>
+                    <div class="form-group ">
+                        
                         <input class="form-control" type="password" name="cpassword" id="cpassword"
-                            placeholder="Confirm password" required>
+                        onchange="this.setAttribute('value', this.value);" value="" required>
+                        <label>Retype Password</label>
                         <div class="input-group-append">
                             <span class="bi bi-eye-slash input-group-text" id="togglecPassword"></span>
                         </div>
                         
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                     <button id="button-show" class="form-control button" type="submit" style="display:none;" disabled><i class="fas fa-spinner fa-spin"></i> </button>
                         <input id="button-hide" class="form-control button" type="submit" name="change-password" value="Change">
                     </div>

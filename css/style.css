@@ -329,6 +329,7 @@ border-top-left-radius: 10px;
 
 label {
   margin-bottom:2px;
+  font-size:14px;
 }
 
 /* Iframe */
@@ -410,8 +411,9 @@ label {
 }
 
 .label-notes {
-  font-size:12px;
-  padding-bottom:2px;
+  font-size:11px;
+   margin-top:-10px; 
+   padding-bottom:10px; 
 }
 /* .images-notes {
   font-size:12px;
@@ -477,4 +479,20 @@ input::-ms-reveal,
       border-radius: 10px;    
   }
 
-/*------------------------------ login ------------------------------*/
+
+  input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+transition: background-color 10000s ease-in-out 0s;
+
+}
+
+select:focus,input:focus {
+outline: none !important;
+box-shadow: none !important;
+/* border-color: transparent !important; */
+border: 1px solid green !important; 
+
+} 
+

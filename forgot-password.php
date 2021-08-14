@@ -46,11 +46,13 @@
                         }
                     ?>
                     <div class="form-group">
-                        <input class="form-control" type="email" name="email" placeholder="Enter email address" required value="<?php echo $email ?>">
+                        <input class="form-control" type="email" name="email" onchange="this.setAttribute('value', this.value);"  value="<?php echo $email ?>" required>
+                        <label>Email Address</label>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <button id="button-show" class="form-control button" type="submit" style="display:none;" disabled><i class="fas fa-spinner fa-spin"></i> </button>
                         <input id="button-hide" class="form-control button" type="submit" name="check-email" value="Continue" >
+                       
                     </div>
                 </form>
             </div>

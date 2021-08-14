@@ -33,9 +33,10 @@ if($email == false){
     <div class="container">
     <div class="row p-4 justify-content-center">
             <div class="form">
-                <form action="reset-otp" method="POST" autocomplete="off" onsubmit="hidebutton()">
+            <form id="resend" action="reset-otp" method="post">   </form> 
+                <form action="reset-otp" method="POST" onsubmit="hidebutton()">
                     <!-- <h2 class="text-center">Code Verification</h2> -->
-                    <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
+                    <div class="text-center mb-3"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
                     <?php 
                     if(isset($_SESSION['info-rotp'])){
                         ?>
@@ -60,20 +61,23 @@ if($email == false){
                     }
                     ?>
                     <div class="form-group">
-                        <input class="form-control" type="text" name="otp" placeholder="Enter code" maxlength="6" required>
+                        <input class="form-control" type="text" name="otp" maxlength="6" onchange="this.setAttribute('value', this.value);" value="" required>
+                        <label>Verification Code</label>
                     </div>
-                    <div class="form-group">
+                    <input class="form-control" type="hidden" name="email" value="<?php echo $email ?>" form="resend">
+                            <input type="submit" class="btn reset-code text-center py-1 text-left link forget-pass" name="resendd" value="Resend Code" form="resend">
+                    <div class="form-group mb-3">
                         <button id="button-show" class="form-control button" type="submit" style="display:none;" disabled><i class="fas fa-spinner fa-spin"></i> </button>
-                        <input id="button-hide" class="form-control button" type="submit" name="check-reset-otp" value="Submit">
+                        <input id="button-hide" class="form-control button" type="submit" name="check-reset-otp" value="Continue">
                     </div>
-                </form>
-                <form action="otp" method="post" enctype="multipart/form-data">   
+                 
                <!--  <input class="form-control"id="otp-check" type="hidden" name="otp-check" > -->
-               
-                <input class="form-control" type="hidden" name="email" value="<?php echo $email ?>">
-                            <input type="submit" class="btn reset-code text-center p-0 text-left" name="resendd" value="Resend Code">
+               </form>
+                
+   
+                
                        
-                    </form>
+                
             </div>
         </div>
     </div>
