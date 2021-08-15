@@ -148,8 +148,8 @@ require_once 'php/php-controller.php';
         <div class="container text-center">
             <h1 class="jumbotron-heading ">AraLink</h1>
             <p>AraLink is a website where you can compile every class video recording through embed links.</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#code_modal"> Enter Code
-            </button>
+            <input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#code_modal" value="Enter Code">
+            </input>
         </div>
     </div>
 

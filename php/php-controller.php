@@ -177,7 +177,7 @@ $errors = array();
                         header('location: otp');
                      }
                 }else{
-                     $errors['email'] = "Incorrect email or password!";
+                     $errors['email'] = "Incorrect  password!";
                 }
             }else{
                  $errors['email'] = "It's look like you're not yet a member! Click on the bottom link to signup.";
@@ -190,23 +190,23 @@ $errors = array();
 
     /* Forgot Password Check Email */
     if(isset($_POST['check-email'])){
-        $email = $_POST['email'];
-        if(preg_match("~@gmail\.com$~",$email)){
+        $femail = $_POST['email'];
+        if(preg_match("~@gmail\.com$~",$femail)){
             $query = $conn->prepare("SELECT * FROM classadmin WHERE email = :email");
-            $query->execute([':email' => $email]);
+            $query->execute([':email' => $femail]);
             if($query->rowCount() > 0){
                 $code = rand(999999, 111111);
                 $query=  $conn->prepare("UPDATE classadmin SET code = :code WHERE email = :email");
-                $result = $query->execute([':code' => $code, ':email' => $email]);       
+                $result = $query->execute([':code' => $code, ':email' => $femail]);       
                 if($result){
-                    $mail->addAddress($email);
+                    $mail->addAddress($femail);
                     $mail->Subject='Email Verification Code';
                     $mail->Body="Your verification code is <b>$code</b>";
 
                     if($mail->send()){
-                        $info = "We've sent a passwrod reset otp to your email - $email";
+                        $info = "We've sent a passwrod reset otp to your email - $femail";
                         $_SESSION['info-rotp'] = $info;
-                        $_SESSION['email'] = $email;
+                        $_SESSION['email'] = $femail;
                         header('location: reset-otp');
                         exit();
                     }else{
@@ -234,12 +234,12 @@ $errors = array();
                 $fetch =  $query->fetch(PDO::FETCH_ASSOC);
                 $code = 0;
 
-                $email = $fetch['email'];
-                $_SESSION['email'] = $email;
+                $femail = $fetch['email'];
+                $_SESSION['email'] = $femail;
                 $info = "Please create a new password that you don't use on any other site.";
                 $_SESSION['info-np'] = $info;
                 $query = $conn->prepare("UPDATE classadmin SET code = :code WHERE email = :email");
-                $result=$query->execute([':code' => $code, ':email' => $email]);
+                $result=$query->execute([':code' => $code, ':email' => $femail]);
                 if ($result) {
                     header('location: new-password');
                 } else {
@@ -266,10 +266,10 @@ $errors = array();
             } else{ 
                 if(preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,20}$/', $password)) {
             /* $code = 0; */
-            $email = $_SESSION['email'];
+            $femail = $_SESSION['email'];
             $encpass = password_hash($password, PASSWORD_BCRYPT);
             $query = $conn->prepare("UPDATE classadmin SET password = :password WHERE email = :email");
-            $result=$query->execute([':password' => $encpass, ':email' => $email]);
+            $result=$query->execute([':password' => $encpass, ':email' => $femail]);
       
                 if($result){
                     $success = "Your password changed. Now you can login with your new password.";
@@ -385,24 +385,24 @@ $errors = array();
     } 
     /* resenr for reset-otp */
     if(isset($_POST['resendd'])) {
-        $email = $_POST['email'];
+        $femail = $_POST['email'];
       
     /*     if ($_POST['otp-check'] != "" ) { */
           
          
         $code = rand(999999, 111111);
         $query=  $conn->prepare("UPDATE classadmin SET code = :code WHERE email = :email");
-        $result = $query->execute([':code' => $code, ':email' => $email]);       
+        $result = $query->execute([':code' => $code, ':email' => $femail]);       
         if($result){
-            $mail->addAddress($email);
+            $mail->addAddress($femail);
             $mail->Subject='Email Verification Code';
             $mail->Body="Your verification code is <b>$code</b>";
 
             if($mail->send()){
-                $info = "Code Resend to $email.";
+                $info = "Code Resend to $femail.";
                 
                 $_SESSION['info-rotp'] = $info;
-                $_SESSION['email'] = $email;
+                $_SESSION['email'] = $femail;
                 header('location: reset-otp');
                 exit();
             }else{

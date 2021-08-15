@@ -15,7 +15,7 @@
 .pace .pace-progress {
   background: #fcd25a;
   position: fixed;
-  z-index: 2000;
+  z-index: 2000!important;
   top: 0;
   right: 100%;
   width: 100%;

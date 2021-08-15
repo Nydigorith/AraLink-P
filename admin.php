@@ -62,7 +62,7 @@ if (!empty($fetch['images'])) {
     <!-- Icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
@@ -197,9 +197,10 @@ if (!empty($fetch['images'])) {
 
             content: "\f107";
             /* this is your text. You can also use UTF-8 character codes as I do here */
-            font-family: FontAwesome;
+            font-family: "Font Awesome 5 Free";
             /*   left:-5px; */
             position: absolute;
+            font-weight: 600;
             top: 21px;
         }
 
@@ -210,10 +211,10 @@ if (!empty($fetch['images'])) {
             border-style: none;
             box-shadow: 0px 0px;
             background: rgba(0, 0, 0, 0.0);
-
+            font-weight: 600;
             content: "\f106";
             /* this is your text. You can also use UTF-8 character codes as I do here */
-            font-family: FontAwesome;
+            font-family: "Font Awesome 5 Free";
             /*   left:-5px; */
             position: absolute;
             top: 21px;

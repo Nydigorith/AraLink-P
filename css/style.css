@@ -118,7 +118,7 @@ padding-left:25px;
   .nav-index{
       position: absolute;
       width: 100%;
-      z-index: 9999;
+      z-index: 1999;
   }
 
 .navbar-toggler {
@@ -496,3 +496,63 @@ border: 1px solid green !important;
 
 } 
 
+.input-group-append {
+position: relative;
+float:right;
+bottom:23px;
+right:.8px;
+
+
+
+
+}
+.input-group-text {
+
+/* padding: 10.06px 10.06px; */
+border:solid 0px white;
+background-color:transparent;
+color: #d4d9de;
+}
+
+.alert-danger {
+  animation-name: error-shake;
+  animation-duration: .5s;
+animation-delay: 0.25s;
+  animation-iteration-count: 1;
+}
+
+@keyframes error-shake {
+  0% {
+transform: translateX(0px);
+
+}
+37% {
+transform: translateX(4px);
+
+}
+55% {
+transform: translateX(-4px);
+
+}
+73% {
+transform: translateX(3px);
+
+}
+82% {
+transform: translateX(-3px);
+
+}
+91% {
+transform: translateX(1px);
+
+}
+96% {
+transform: translateX(-1px);
+
+}
+100% {
+transform: translateX(0px);
+
+}
+  
+}

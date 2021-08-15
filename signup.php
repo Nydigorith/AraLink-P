@@ -72,7 +72,7 @@
                         onchange="this.setAttribute('value', this.value);" value="" required>
                         <label>Password</label>
                         <div class="input-group-append">
-                            <span class="bi bi-eye-slash input-group-text" id="togglePassword"></span>
+                            <span class="far fa-eye-slash input-group-text" id="togglePassword"></span>
                         </div>
                         
                     </div>
@@ -83,7 +83,7 @@
                             onchange="this.setAttribute('value', this.value);" value="" required>
                         <label>Retype Password</label>
                         <div class="input-group-append">
-                            <span class="bi bi-eye-slash input-group-text" id="togglecPassword"></span>
+                            <span class="far fa-eye-slash input-group-text" id="togglecPassword"></span>
                         </div>
                         
                     </div>
@@ -114,7 +114,8 @@
             const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
             password.setAttribute('type', type);
 
-            this.classList.toggle('bi-eye');
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
         });
 
         const togglecPassword = document.querySelector('#togglecPassword');
@@ -125,7 +126,8 @@
             const type = cpassword.getAttribute('type') === 'password' ? 'text' : 'password';
             cpassword.setAttribute('type', type);
 
-            this.classList.toggle('bi-eye');
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
         });
 
         /* Remove Confirm Form Resubmission  */

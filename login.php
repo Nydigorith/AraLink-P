@@ -24,10 +24,7 @@
     <!-- Loading -->
     <link rel="stylesheet" href="css/pace-theme-minimal.css">
 
-    <style>
-
-
-    </style>
+   
 </head>
 
 <body>
@@ -74,7 +71,7 @@
                             onchange="this.setAttribute('value', this.value);" value="" required>
                         <label>Password</label>
                         <div class="input-group-append">
-                            <span class="bi bi-eye-slash input-group-text " id="togglePassword"></span>
+                            <span class="far fa-eye-slash input-group-text " id="togglePassword"></span>
 
                         </div>
 
@@ -110,7 +107,9 @@
             const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
             password.setAttribute('type', type);
             // toggle the eye / eye slash icon
-            this.classList.toggle('bi-eye');
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+           
         });
 
         /* Remove Confirm Form Resubmission  */

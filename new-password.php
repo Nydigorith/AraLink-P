@@ -1,13 +1,13 @@
 <?php require_once 'php/php-controller.php'; ?>
 <?php 
-$email = $_SESSION['email'];
-if($email == false){
+$femail = $_SESSION['email'];
+if($femail == false){
   header('Location: login');
 }
 
-if($email != false){
+if($femail != false){
     $query = $conn->prepare("SELECT * FROM classadmin WHERE email = :email");
-    $result=$query->execute([':email' => $email]);
+    $result=$query->execute([':email' => $femail]);
    if($result){
        $fetch = $query->fetch(PDO::FETCH_ASSOC);
         $fetch_status = $fetch['code'];
@@ -88,7 +88,7 @@ if($email != false){
                          <input class="form-control" type="password" name="password" id="password" onchange="this.setAttribute('value', this.value);" value="" required>
                          <label>Password</label>
                         <div class="input-group-append">
-                            <span class="bi bi-eye-slash input-group-text" id="togglePassword"></span>
+                            <span class="far fa-eye-slash input-group-text" id="togglePassword"></span>
                         </div>
                     </div>
                     <div class="label-notes">Combnation of Letters and number 8-20 cahracter</div>
@@ -98,7 +98,7 @@ if($email != false){
                         onchange="this.setAttribute('value', this.value);" value="" required>
                         <label>Retype Password</label>
                         <div class="input-group-append">
-                            <span class="bi bi-eye-slash input-group-text" id="togglecPassword"></span>
+                            <span class="far fa-eye-slash input-group-text" id="togglecPassword"></span>
                         </div>
                         
                     </div>
@@ -130,7 +130,8 @@ if($email != false){
             const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
             password.setAttribute('type', type);
 
-            this.classList.toggle('bi-eye');
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
         });
 
         const togglecPassword = document.querySelector('#togglecPassword');
@@ -141,7 +142,8 @@ if($email != false){
             const type = cpassword.getAttribute('type') === 'password' ? 'text' : 'password';
             cpassword.setAttribute('type', type);
 
-            this.classList.toggle('bi-eye');
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
         });
         /* Remove Confirm Form Resubmission  */
         if (window.history.replaceState) {

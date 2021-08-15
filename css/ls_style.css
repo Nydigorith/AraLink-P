@@ -156,3 +156,46 @@ color:green;
 /* .form-control:focus, .form-control:active {
 background: transparent;
 }  */
+
+.alert-danger {
+    animation-name: error-shake;
+    animation-duration: .5s;
+  animation-delay: 0.25s;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes error-shake {
+    0% {
+  transform: translateX(0px);
+  
+  }
+  37% {
+  transform: translateX(4px);
+  
+  }
+  55% {
+  transform: translateX(-4px);
+  
+  }
+  73% {
+  transform: translateX(3px);
+  
+  }
+  82% {
+  transform: translateX(-3px);
+  
+  }
+  91% {
+  transform: translateX(1px);
+  
+  }
+  96% {
+  transform: translateX(-1px);
+  
+  }
+  100% {
+  transform: translateX(0px);
+  
+  }
+    
+  }

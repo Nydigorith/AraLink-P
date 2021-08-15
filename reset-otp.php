@@ -1,7 +1,7 @@
 <?php require_once 'php/php-controller.php'; ?>
 <?php 
-$email = $_SESSION['email'];
-if($email == false){
+$femail = $_SESSION['email'];
+if($femail == false){
   header('Location: login.php');
 }
 ?>
@@ -64,7 +64,7 @@ if($email == false){
                         <input class="form-control" type="text" name="otp" maxlength="6" onchange="this.setAttribute('value', this.value);" value="" required>
                         <label>Verification Code</label>
                     </div>
-                    <input class="form-control" type="hidden" name="email" value="<?php echo $email ?>" form="resend">
+                    <input class="form-control" type="hidden" name="email" value="<?php echo $femail ?>" form="resend">
                             <input type="submit" class="btn reset-code text-center py-1 text-left link forget-pass" name="resendd" value="Resend Code" form="resend">
                     <div class="form-group mb-3">
                         <button id="button-show" class="form-control button" type="submit" style="display:none;" disabled><i class="fas fa-spinner fa-spin"></i> </button>
