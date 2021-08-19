@@ -29,7 +29,7 @@ require "db.php";
     ?>
 <style>
     .jumbotron {
-        background-image: url(img/2k.png);
+        background-image: url(img/bg2.png);
     }
 </style>
 <?php

@@ -36,7 +36,7 @@ if (!empty($fetch['images'])) {
 ?>
 <style>
     .jumbotron {
-        background-image: url(img/2k.png);
+        background-image: url(img/bg2.png);
     }
 </style>
 <?php
@@ -343,7 +343,7 @@ flex-direction: column;
                         
                         <input type="button" class="btn btn-secondary" id="copy-code" data-dismiss="modal" value="Copy"
                         onclick="copy_data(select_txt)">
-                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
+                        <input type="button" class="btn btn-danger" data-dismiss="modal" value="Close">
                     </div>
                 </div>
 

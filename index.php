@@ -55,7 +55,7 @@ require_once 'php/php-controller.php';
         position: relative;
         align-items: center;
         justify-content: center;
-        background-image: url(img/map2.jpg);
+        background-image: url(img/bg1.jpg);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
@@ -148,7 +148,7 @@ require_once 'php/php-controller.php';
         <div class="container text-center">
             <h1 class="jumbotron-heading ">AraLink</h1>
             <p>AraLink is a website where you can compile every class video recording through embed links.</p>
-            <input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#code_modal" value="Enter Code">
+            <input type="submit" class="btn btn-primary enter-animation" data-toggle="modal" data-target="#code_modal" value="Enter Code">
             </input>
         </div>
     </div>
@@ -192,7 +192,7 @@ require_once 'php/php-controller.php';
                         
                         <div class="modal-footerr text-right">
                             <input type="submit" class="btn btn-primary" name="submit" value="Continue">
-                            <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
+                            <input type="button" class="btn btn-danger" data-dismiss="modal" value="Close">
                         </div>
                     </form>
                 </div>

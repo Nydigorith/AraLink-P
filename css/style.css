@@ -38,7 +38,13 @@ input {
 }
 input[type="submit"]:focus {
   outline: none !important; 
-  border: none !important;
+  /* border: none !important; */
+  box-shadow: none !important;
+  
+}
+a:focus {
+  outline: none !important; 
+  /* border: none !important; */
   box-shadow: none !important;
   
 }
@@ -488,28 +494,27 @@ transition: background-color 10000s ease-in-out 0s;
 
 }
 
-select:focus,input:focus {
+select:focus,input:not([type="submit"]):focus {
 outline: none !important;
 box-shadow: none !important;
 /* border-color: transparent !important; */
 border: 1px solid green !important; 
 
 } 
-
-.input-group-append {
-position: relative;
-float:right;
-bottom:23px;
-right:.8px;
-
-
-
-
+ 
+button:focus {
+  outline: none !important;
+box-shadow: none !important;
+/* border: px solid green !important;  */
 }
+
+
+
+
 .input-group-text {
 
 /* padding: 10.06px 10.06px; */
-border:solid 0px white;
+/* border:solid 0px white; */
 background-color:transparent;
 color: #d4d9de;
 }
@@ -517,7 +522,7 @@ color: #d4d9de;
 .alert-danger {
   animation-name: error-shake;
   animation-duration: .5s;
-animation-delay: 0.25s;
+
   animation-iteration-count: 1;
 }
 
@@ -552,6 +557,51 @@ transform: translateX(-1px);
 }
 100% {
 transform: translateX(0px);
+
+}
+  
+}
+
+
+
+.enter-animation {
+  animation-name: jumping-animation;
+  animation-duration: .5s;
+  animation-iteration-count: infinite;
+  
+}
+
+@keyframes jumping-animation {
+  0% {
+transform: translateY(0px);
+
+}
+37% {
+transform: translateY(3px);
+
+}
+55% {
+transform: translateY(-3px);
+
+}
+73% {
+transform: translateY(2px);
+
+}
+82% {
+transform: translateY(-2px);
+
+}
+91% {
+transform: translateY(1px);
+
+}
+96% {
+transform: translateY(-1px);
+
+}
+100% {
+transform: translateY(0px);
 
 }
   
