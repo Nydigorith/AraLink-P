@@ -17,13 +17,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/ls_style.css">
+  
 
     <!-- Loading -->
     <link rel="stylesheet" href="css/pace-theme-minimal.css">
+    <style>
+        html,body{
+    background-color: rgb(15,165,100);
+}
+    </style>
 </head>
 
 <body>
+<div class="account">
     <div class="container">
         <div class="row p-4 justify-content-center">
             <div class="form">
@@ -55,15 +61,15 @@
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="text" name="name"
-                            onchange="this.setAttribute('value', this.value);" value="<?php echo $name ?>" required >
+                            onchange="this.setAttribute('value', this.value);" value="<?php echo $name ?>" autocomplete="new-password" required >
                         <label>Username</label>
                     </div>
+                    <div class="label-notes "> Only use gmail account</div>
                     <div class="form-group">
                         <input class="form-control" type="email" name="email"
                         onchange="this.setAttribute('value', this.value);"value="<?php echo $email ?>"  required >
                         <label>Email Address</label>
                     </div>
-                    <div class="label-notes "> Only use gmail account</div>
 
 
                     <div class="form-group ">
@@ -97,6 +103,7 @@
                 </form>
             </div>
         </div>
+    </div>
     </div>
     <!-- Loading -->
     <script src="js/pace.js"></script>

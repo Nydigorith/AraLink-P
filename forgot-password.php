@@ -19,12 +19,18 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/ls_style.css">
+
 
     <!-- Loading -->
     <link rel="stylesheet" href="css/pace-theme-minimal.css">
+    <style>
+        html,body{
+    background-color: rgb(15,165,100);
+}
+    </style>
 </head>
 <body>
+<div class="account">
     <div class="container">
         <div class="row p-4 justify-content-center">
             <div class="form">
@@ -57,6 +63,7 @@
                 </form>
             </div>
         </div>
+    </div>
     </div>
     <!-- Loading -->
     <script src="js/pace.js"></script>

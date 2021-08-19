@@ -43,7 +43,9 @@ require_once 'php/php-controller.php';
         width: 200px;
     } */
 
-
+    .particles {
+  margin-top: -10px;
+}
 
 
     .jumbotron {
