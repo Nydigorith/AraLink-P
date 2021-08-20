@@ -12,6 +12,9 @@ html body {
   -webkit-box-shadow: 0px 8px 10px -8px rgba(0, 0, 0, 0.3);
           box-shadow: 0px 8px 10px -8px rgba(0, 0, 0, 0.3);
   background-color: #0fa564;
+  top: 0;
+  position: fixed;
+  width: 100%;
   /* Navbar Toggler */
   /* Desktop */
   /* Mobile */
@@ -212,13 +215,13 @@ html body {
   border-radius: 990px;
   text-align: center;
   background-color: white;
+  /* &[value=ALL] {
+            background-color: $mainColor;
+
+        } */
 }
 
 .videos .filter-selection:hover {
-  background-color: #0fa564;
-}
-
-.videos .filter-selection[value=ALL] {
   background-color: #0fa564;
 }
 
@@ -226,6 +229,16 @@ html body {
   opacity: 0;
   margin: 0;
   padding: 0;
+}
+
+.videos .video-show {
+  padding: 0px 100px;
+}
+
+@media (max-width: 800px) {
+  .videos .video-show {
+    padding: 20px;
+  }
 }
 
 .videos .video-show .card {

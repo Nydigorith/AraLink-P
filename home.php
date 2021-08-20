@@ -65,7 +65,9 @@ if (!empty($fetch['images'])) {
     <!-- Loading -->
     <link rel="stylesheet" href="css/pace-theme-minimal.css">
 
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         html,
         body {
@@ -74,21 +76,21 @@ if (!empty($fetch['images'])) {
             margin: 0px;
             padding: 0px;
             display: flex;
-flex-direction: column;
+            flex-direction: column;
 
         }
 
 
         .copied {
             display: none;
-          text-align:center;
+            text-align: center;
             position: fixed;
             left: 50%;
             top: 90%;
             transform: translate(-50%, -50%);
             z-index: 999;
             padding: 10px 25px;
-            
+
             margin-right: 1vw;
             /* cursor: pointer; */
             border: #CFD9E0 solid 1px;
@@ -99,41 +101,86 @@ flex-direction: column;
             -moz-transition: all 0.5s;
             -o-transition: all 0.5s;
         }
-         @media (max-width: 440px) {
-        .copied {
-            padding: 10px 17px;
+
+        @media (max-width: 440px) {
+            .copied {
+                padding: 10px 17px;
+            }
         }
-    } 
 
         .copy-code {
             margin-top: -15px;
         }
+
         .videos .mb-4 {
             margin-top: 8px;
         }
 
         .video-selection {
-  /*   background-color:black;
-    width:300px;
-  border:5px solid red;
-  overflow-x: hidden; 
-  float:left; */
+   
+/*   width: 100%; */
+            background-color: white;
+            border-top: 1px gray solid;
+            border-bottom: 1px gray solid;
+           margin-top:-32.1px;
+         top:64px;
+           /* position:sticky; */
+
         }
+
         .filter {
-           /*  width:100%;
-            display:flex;
-            flex-direction: row;
-            font-size:40px;
-            overflow-x:scroll;
-            flex-wrap: nowrap;
-            white-space: nowrap; */
-            /* width:1000px;
-  float:left;
-  font-size:15px;
-  font-family:arial;
-  padding:10px;
-  cursor: pointer; */
+            width: 100%;
+            /*   display:flex;
+            justify-content:center; */
+            white-space: nowrap;
+            margin:auto;
+
         }
+        ..filter label {
+            margin:auto;
+        }
+
+        .owl-prev,
+        .owl-next {
+            /*  width: 15px;
+        height: 100px; */
+            position: absolute;
+            top: 22%;
+            
+           /*  display: block !important; */
+           /*  border: 0px solid black; */
+            background-color:red;
+        }
+
+        .owl-prev {
+            left: 13px;
+            
+        }
+
+        .owl-next {
+            right: 13px;
+        }
+
+        .owl-prev i {
+             transform: scale(2); 
+            color: #ccc;
+            background: linear-gradient(to left, rgba(0, 2, 0, 0), rgba(0, 2, 0,1));
+            padding:9px 9px;
+        }
+
+        .owl-next i {
+             transform: scale(2); 
+            color: white;
+            background: linear-gradient(90deg, rgba(0, 2, 0,0), rgba(0, 2, 0,1));
+            padding:9px 9px;
+        }
+
+        .owl-carousel .owl-stage {
+ margin:auto;
+}
+        .owl-carousel .owl-stage-outer {
+ padding:0px 60px;
+}
     </style>
 </head>
 
@@ -162,7 +209,7 @@ flex-direction: column;
     </nav>
 
     <!-- Jumbotron -->
-    <div class="background-image ">
+    <div class="background-image">
         <div class="jumbotron d-flex align-items-center text-center">
             <div class="container">
                 <h1 class="jumbotron-heading"><?php  echo $fetch['classname']?><a data-toggle="modal"
@@ -173,10 +220,10 @@ flex-direction: column;
 
     <!-- Videos -->
     <div class="videos">
-        <div class="container video-selection text-center">
+        <div class="video-selection sticky-top text-center">
             <div class="text-center">
-                <div class="filter  p-4">
-                    <form id="form1" method="POST">
+                <div class="filter">
+                    <form id="form1" method="POST" class=" owl-carousel m-0">
                         <label class="filter-selection" value='ALL'>
                             <input class="radio-filter" onchange="this.form.submit();" type="radio" name="subject"
                                 value="ALL">ALL</input>
@@ -209,7 +256,7 @@ flex-direction: column;
         </div>
 
 
-        <div class="container video-show">
+        <div class=" video-show pt-5">
             <div class="row px-2">
                 <?php
                     if(isset($_POST['subject'])) {
@@ -313,8 +360,8 @@ flex-direction: column;
     <!-- Footer -->
 
     <!-- Back To Top -->
-    <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
-            class="fas fa-chevron-up pt-2"></i></a>
+    <!-- <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
+            class="fas fa-chevron-up pt-2"></i></a> -->
 
     <!-- Copied Message -->
     <div class="copied btn btn-dark" id="copied">Copied to clipboard</div>
@@ -331,11 +378,11 @@ flex-direction: column;
 
                 <div class="modal-body  text-center">
                     <h3 id="select_txt" class="class-code"><?php echo $fetch['classcode']  ?></h3>
-                    
+
                     <div class="modal-footerr text-right">
-                        
+
                         <input type="button" class="btn btn-secondary" id="copy-code" data-dismiss="modal" value="Copy"
-                        onclick="copy_data(select_txt)">
+                            onclick="copy_data(select_txt)">
                         <input type="button" class="btn btn-danger" data-dismiss="modal" value="Close">
                     </div>
                 </div>
@@ -345,7 +392,7 @@ flex-direction: column;
     </div>
 
 
-    
+
 
     <!-- Loading -->
     <script src="js/pace.js"></script>
@@ -359,39 +406,48 @@ flex-direction: column;
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-$('.owl-carousel').owlCarousel({
-    margin:10,
-    loop:true,
-    autoWidth:true,
-    items:4
-})
-const slider = document.querySelector('.video-selection');
-let mouseDown = false;
-let startX, scrollLeft;
+        /* Remove Confirm Form Resubmission  */
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+        $('.owl-carousel').owlCarousel({
+            margin: 0,
 
-let startDragging = function (e) {
-  mouseDown = true;
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-};
-let stopDragging = function (event) {
-  mouseDown = false;
-};
+            loop: false,
+            autoWidth: true,
+            items: 1,
+            nav: true,
+            navText: ["<i class='fas fa-angle-left'></i>", "<i class='fas fa-angle-right'></i>"]
+        })
+        /* const slider = document.querySelector('.video-selection');
+        let mouseDown = false;
+        let startX, scrollLeft;
 
-slider.addEventListener('mousemove', (e) => {
-  e.preventDefault();
-  if(!mouseDown) { return; }
-  const x = e.pageX - slider.offsetLeft;
-  const scroll = x - startX;
-  slider.scrollLeft = scrollLeft - scroll;
-});
+        let startDragging = function (e) {
+          mouseDown = true;
+          startX = e.pageX - slider.offsetLeft;
+          scrollLeft = slider.scrollLeft;
+        };
+        let stopDragging = function (event) {
+          mouseDown = false;
+        };
 
-// Add the event listeners
-slider.addEventListener('mousedown', startDragging, false);
-slider.addEventListener('mouseup', stopDragging, false);
-slider.addEventListener('mouseleave', stopDragging, false);
+        slider.addEventListener('mousemove', (e) => {
+          e.preventDefault();
+          if(!mouseDown) { return; }
+          const x = e.pageX - slider.offsetLeft;
+          const scroll = x - startX;
+          slider.scrollLeft = scrollLeft - scroll;
+        });
+         */
+        // Add the event listeners
+        /* slider.addEventListener('mousedown', startDragging, false);
+        slider.addEventListener('mouseup', stopDragging, false);
+        slider.addEventListener('mouseleave', stopDragging, false); */
         /* Copy */
         $('#copy-code').click(function (e) {
             $('#copied').fadeIn(1000);
@@ -422,10 +478,6 @@ slider.addEventListener('mouseleave', stopDragging, false);
             return false;
         });
 
-        /* Remove Confirm Form Resubmission  */
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
 
         /* Store Scroll Position */
         document.addEventListener("DOMContentLoaded", function (event) {

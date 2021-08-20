@@ -148,7 +148,7 @@ require_once 'php/php-controller.php';
         <div class="container text-center">
             <h1 class="jumbotron-heading ">AraLink</h1>
             <p>AraLink is a website where you can compile every class video recording through embed links.</p>
-            <input type="submit" class="btn btn-primary enter-animation" data-toggle="modal" data-target="#code_modal" value="Enter Code">
+            <input id="remove-ani"type="submit" class="btn btn-primary enter-animation" data-toggle="modal" data-target="#code_modal" value="Enter Code">
             </input>
         </div>
     </div>
@@ -224,6 +224,11 @@ require_once 'php/php-controller.php';
                             
 
     <script>
+        document.getElementById("remove-ani").addEventListener("click", function() {
+            document.getElementById("remove-ani").classList.remove("enter-animation");
+        });
+        
+
         var error;
         if (error == "error") {
             $('#code_modal').modal("show");
