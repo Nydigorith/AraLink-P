@@ -203,7 +203,7 @@ html {
 /* Jumbotron !Index*/
 .background-image {
     .jumbotron {
-        margin-top: 64px;
+       /*  margin-top: 64px; */
         height: 350px;
         background-size: 100em auto;
         background-position: center center;
@@ -236,11 +236,6 @@ html {
                     padding-left: .2vw;
                 }
             }
-
-
-
-
-
         }
 
     }
@@ -318,6 +313,14 @@ html {
             .text-muted {
                 font-size: 15px;
             }
+        }
+
+        @media (max-width: 700px) {
+            .card{
+                max-width: 380px !important;
+                margin: auto;
+            }
+
         }
 
         @media (max-width: 700px) {
@@ -500,6 +503,31 @@ input {
 
 }
 
+/* Modal */
+.modal {
+   
+    .modal-dialog-min {
+        max-width: 300px !important;
+        margin:auto;
+      }
+      .modal-content {
+        border-top: 13px solid rgb(15,165,100);
+    
+      }
+      .modal-header {
+      padding:10px 0px;
+      border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          border-bottom-left-radius: 0px;
+          border-bottom-right-radius: 0px;
+      }
+      .modal-footerr {.btn {
+        width: 100px;
+      }}
+
+
+}
+
 @keyframes jumping-animation {
     0% {
         transform: translateY(0px);
@@ -507,12 +535,12 @@ input {
     }
 
     37% {
-        transform: translateY(3px);
+        transform: translateY(2px);
 
     }
 
     55% {
-        transform: translateY(-3px);
+        transform: translateY(-2px);
 
     }
 
@@ -525,17 +553,6 @@ input {
         transform: translateY(-2px);
 
     }
-
-    91% {
-        transform: translateY(1px);
-
-    }
-
-    96% {
-        transform: translateY(-1px);
-
-    }
-
     100% {
         transform: translateY(0px);
 

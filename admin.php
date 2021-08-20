@@ -136,19 +136,7 @@ if (!empty($fetch['images'])) {
             /* margin: auto; */
         }
 
-        @media (min-width: 581px) {
-            .name-modal .modal .modal-dialog {
-                max-width: 350px !important;
-            }
-        }
-
-        @media (max-width: 581px) and (min-width: 381px) {
-            .name-modal .modal {
-                padding-left: 12vw;
-                padding-right: 12vw;
-            }
-        }
-
+      
 
         @media (min-width: 768px) {
             .fa-image {
@@ -647,7 +635,7 @@ background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABTkAAANhCAY
     <div class="name-modal">
         <div class="modal fade" id="change_code_modal" tabindex="-1" role="dialog"
             aria-labelledby="change_code_modalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered px-3" role="document">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-min px-3" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
 
@@ -860,7 +848,7 @@ background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABTkAAANhCAY
                     var dataTable = $('#video_table').DataTable({
                         "paging": false,
                         "ordering": false,
-                        "processing": false,\
+                        "processing": false,
                         
                         "serverSide": true,
                         "responsive": true,

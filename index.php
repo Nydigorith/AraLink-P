@@ -69,6 +69,7 @@ require_once 'php/php-controller.php';
     .jumbotron .container {
         position: relative;
         z-index: 999;
+        margin-top:-40px;
        
     }
 
@@ -118,11 +119,8 @@ require_once 'php/php-controller.php';
    
     
 }
-@media (min-width: 580px) {
-    .modal .modal-dialog {
-  max-width: 350px !important;
-}
-}
+
+
     
 </style>
 
@@ -164,7 +162,7 @@ require_once 'php/php-controller.php';
     <!-- Code Modal -->
     <div class="modal fade " id="code_modal" tabindex="-1" role="dialog" aria-labelledby="code_modalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered px-3" role="document">
+        <div class="modal-dialog modal-dialog-min modal-dialog-centered px-3" role="document">
             <div class="modal-content">
             <div class="modal-header">
 

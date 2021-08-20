@@ -65,6 +65,7 @@ if (!empty($fetch['images'])) {
     <!-- Loading -->
     <link rel="stylesheet" href="css/pace-theme-minimal.css">
 
+
     <style>
         html,
         body {
@@ -107,39 +108,31 @@ flex-direction: column;
         .copy-code {
             margin-top: -15px;
         }
-
-
-
-        @media (min-width: 581px) {
-            .modal .modal-dialog {
-                max-width: 350px !important;
-            }
-        }
-
-
-
-       /*  .modal-dialog .modal-footerr  {
-                text-align:right!important;
-            }
- */
-        @media (max-width: 581px) and (min-width: 381px) {
-            .modal {
-                padding-left: 12vw;
-                padding-right: 12vw;
-            }
-           
-        }
-        /* @media (max-width: 450px) {
-            .modal-dialog .modal-footerr  {
-                text-align:center!important;
-            }
-        } */
-
-
-
-
         .videos .mb-4 {
             margin-top: 8px;
+        }
+
+        .video-selection {
+  /*   background-color:black;
+    width:300px;
+  border:5px solid red;
+  overflow-x: hidden; 
+  float:left; */
+        }
+        .filter {
+           /*  width:100%;
+            display:flex;
+            flex-direction: row;
+            font-size:40px;
+            overflow-x:scroll;
+            flex-wrap: nowrap;
+            white-space: nowrap; */
+            /* width:1000px;
+  float:left;
+  font-size:15px;
+  font-family:arial;
+  padding:10px;
+  cursor: pointer; */
         }
     </style>
 </head>
@@ -182,7 +175,7 @@ flex-direction: column;
     <div class="videos">
         <div class="container video-selection text-center">
             <div class="text-center">
-                <div class="filter p-4">
+                <div class="filter  p-4">
                     <form id="form1" method="POST">
                         <label class="filter-selection" value='ALL'>
                             <input class="radio-filter" onchange="this.form.submit();" type="radio" name="subject"
@@ -329,7 +322,7 @@ flex-direction: column;
     <!-- Copy Modal -->
     <div class="modal fade" id="copy_code_modal" tabindex="-1" role="dialog" aria-labelledby="copy_code_modalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered px-3" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-min px-3" role="document">
             <div class="modal-content">
 
                 <div class="modal-header">
@@ -366,7 +359,39 @@ flex-direction: column;
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
+    
     <script>
+$('.owl-carousel').owlCarousel({
+    margin:10,
+    loop:true,
+    autoWidth:true,
+    items:4
+})
+const slider = document.querySelector('.video-selection');
+let mouseDown = false;
+let startX, scrollLeft;
+
+let startDragging = function (e) {
+  mouseDown = true;
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+};
+let stopDragging = function (event) {
+  mouseDown = false;
+};
+
+slider.addEventListener('mousemove', (e) => {
+  e.preventDefault();
+  if(!mouseDown) { return; }
+  const x = e.pageX - slider.offsetLeft;
+  const scroll = x - startX;
+  slider.scrollLeft = scrollLeft - scroll;
+});
+
+// Add the event listeners
+slider.addEventListener('mousedown', startDragging, false);
+slider.addEventListener('mouseup', stopDragging, false);
+slider.addEventListener('mouseleave', stopDragging, false);
         /* Copy */
         $('#copy-code').click(function (e) {
             $('#copied').fadeIn(1000);
