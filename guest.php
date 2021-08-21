@@ -60,6 +60,10 @@ require "db.php";
 
     <!-- Loading -->
     <link rel="stylesheet" href="css/pace-theme-minimal.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <style>
     html,
@@ -90,6 +94,20 @@ flex-direction: column;
         background-color: rgb(254, 221, 2);
         border: 1px solid rgb(27, 27, 19);
     }
+
+    @media (min-width: 576px) {
+       .videos .shrink {
+            top: 111px;
+            /* transition:.5s; */
+        }
+    }
+
+    @media (max-width: 576px) {
+        .videos .shrink {
+            top: 158px;
+            /* transition:.5s; */
+        }
+    }
 </style>
 </head>
 
@@ -99,7 +117,7 @@ flex-direction: column;
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-light sticky-top nav-index">
         <a href="index" class="navbar-brand pl-3"><img src="img/nav-logo.png" width="190px" height="50px"></a>
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navigation_bar"
+        <button id="toggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse"  data-target="#navigation_bar"
             aria-controls="navigation_bar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -107,7 +125,7 @@ flex-direction: column;
         </button>
         <div class="collapse navbar-collapse " id="navigation_bar">
             <ul class="navbar-nav ml-auto flex-sm-row pr-2">
-                <div class="nav-item left col-sm-6 "> <a href="login" class="btn btn-light">Login</a></div>
+            <div class="nav-item left col-sm-6 "> <a href="login" class="btn btn-light">Login</a></div>
                 <div class="nav-item right col-sm-6"> <a href="signup" class="btn btn-light">Signup</a></div>
             </ul>
         </div>
@@ -127,25 +145,26 @@ flex-direction: column;
 
 <!-- Videos -->
 <div class="videos">
-        <div class="container video-selection text-center">
+        <div id="selection"class="video-selection sticky-top text-center">
             <div class="text-center">
-                <div class="filter pb-4">
-                    <form id="form1" method="POST">
-                        <label class="filter-selection" value='ALL'>
-                            <input class="radio-filter" onchange="this.form.submit();" type="radio" name="subject"
-                                value="ALL">ALL</input>
+                <div class="filter">
+                    <form id="form1" method="POST" class="owl-carousel radio-buttons m-0">
+                       
+                        <label class="filter-selection " value='ALL'>
+                            <input class="radio-filter subject"  type="radio" name="subject"
+                                value="ALL" >ALL</input> 
                         </label>
                         <?php
                            
                             $query = $conn->prepare("SELECT * FROM classsubject WHERE subjectcode = :codihe");
                             $result  =  $query->execute([':codihe' => $codihe]);
-                            echo "<style>.filter-selection[value='ALL']{background-color: yellow;}></style>"; 
+                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(15,165,100);}></style>"; 
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
                         ?>
-                        <label class="filter-selection" value='<?php echo $row['subjects'];?>'>
-                            <input class="radio-filter" onchange="this.form.submit();" type="radio" name="subject"
+                        <label class="filter-selection " value='<?php echo $row['subjects'];?>'>
+                            <input class="radio-filter subject"  type="radio" name="subject"
                                 value="<?php echo $row['subjects'];?>"
                                 for=<?php echo $row['subjects'];?>><?php echo $row['subjects'];?> </input>
                         </label>
@@ -156,22 +175,23 @@ flex-direction: column;
                                     } */
                             }
                                 ?>
-                        <input type="hidden" name="c" value="<?php echo $_GET['c']?>">
+                        <input type="hidden" name="c" value="<?php echo $_POST['c']?>">
+                       
                     </form>
                 </div>
             </div>
         </div>
 
 
-        <div class="container video-show">
+        <div class=" video-show pt-5">
             <div class="row px-2">
                 <?php
-                    if(isset($_POST['subject'])) {
-                        $subject = $_POST["subject"];
-                        if ($subject == "ALL") {
+                    if(isset($_SESSION['selected'])) {
+                        $selected = $_SESSION['selected'];
+                        if ($selected == "ALL") {
                             $query = $conn->prepare("SELECT * FROM classvideo WHERE linkcode = :codihe");
                             $result  =  $query->execute([':codihe' => $codihe]);
-                            echo "<style>.filter-selection[value='ALL']{background-color: yellow;}></style>"; 
+                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(15,165,100);}></style>"; 
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
@@ -196,8 +216,8 @@ flex-direction: column;
                             }
                         } else {
                             $query = $conn->prepare("SELECT * FROM classvideo WHERE subjects = :subject AND linkcode = :codihe");
-                            $result  =  $query->execute([':subject' => $subject, ':codihe' => $codihe]);
-                             echo "<style>.filter-selection[value='$subject']{background-color: yellow;}.filter-selection[value=ALL]{background-color: white;}</style>";   
+                            $result  =  $query->execute([':subject' => $selected, ':codihe' => $codihe]);
+                             echo "<style>.filter-selection[value='$selected']{background-color: rgb(15,165,100);}.filter-selection[value=ALL]{background-color: white;}</style>";   
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){                           
@@ -216,7 +236,7 @@ flex-direction: column;
                                      } 
                                 } else {
                                     ?>
-                <div class="error-text mx-auto">No video for <?php echo $subject;?> </div>
+                <div class="error-text mx-auto">No video for <?php echo $selected;?> </div>
                 <?php
                                 }
                             }
@@ -267,8 +287,8 @@ flex-direction: column;
     
 
     <!-- Back To Top -->
-    <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
-            class="fas fa-chevron-up pt-2"></i></a>
+   <!--  <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
+            class="fas fa-chevron-up pt-2"></i></a> -->
 
     <!-- Loading -->
     <script src="js/pace.js"></script>
@@ -281,11 +301,48 @@ flex-direction: column;
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   
 
 
 
     <script>
+        document.getElementById("toggler").addEventListener("click", function() {
+    document.getElementById("selection").classList.toggle("shrink");
+        });
+
+        $(document).ready(function () {
+        $('.radio-buttons input[type="radio"]').click(function(){
+    var subject= $(this).val();
+    $.ajax({
+        url: 'php/selection',
+        type: 'POST',
+        data: {
+            subject: subject
+        },
+        success: function(response) {
+            /* Reload div */
+            $(".video-show").load(" .video-show > *");
+        }               
+    });
+});
+});
+$('.owl-carousel').owlCarousel({
+            margin: 0,
+
+            loop: false,
+            autoWidth: true,
+            items: 1,
+            
+            nav: true,
+            navText: ["<i class='fas fa-angle-left'></i>", "<i class='fas fa-angle-right'></i>"]
+        });
+
+       /*  $('.owl-carousel').off('keydown.bs.carousel'); */
+       
+    
         /* Back to Top */
         $(window).scroll(function () {
             if ($(this).scrollTop() > 750) {

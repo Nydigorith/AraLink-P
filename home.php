@@ -92,7 +92,7 @@ if (!empty($fetch['images'])) {
             left: 50%;
             top: 90%;
             transform: translate(-50%, -50%);
-            z-index: 999;
+            z-index: 700;
             padding: 10px 25px;
 
             margin-right: 1vw;
@@ -116,88 +116,25 @@ if (!empty($fetch['images'])) {
             margin-top: -15px;
         }
 
-        .videos .mb-4 {
-            margin-top: 8px;
-        }
-
-        .video-selection {
-   
-/*   width: 100%; */
-            background-color: white;
-            border-top: 1px gray solid;
-            border-bottom: 1px gray solid;
-           margin-top:-32.1px;
-         top:64px;
-         transition:.3s;           /* position:sticky; */
-
-        }
+        
          
         @media (min-width: 576px) {
-.videos .shrink {
-    top:111px;
-    /* transition:.5s; */
-}
-}
-        @media (max-width: 576px) {
-.videos .shrink {
-    top:158px;
-    /* transition:.5s; */
-}
-}
-
-        .filter {
-            width: 100%;
-            /*   display:flex;
-            justify-content:center; */
-            white-space: nowrap;
-            margin:auto;
-
+       .videos .shrink {
+            top: 111px;
+            /* transition:.5s; */
         }
-        ..filter label {
-            margin:auto;
-        }
+    }
 
-        .owl-prev,
-        .owl-next {
-            /*  width: 15px;
-        height: 100px; */
-            position: absolute;
-            top: 22%;
-            
-           /*  display: block !important; */
-           /*  border: 0px solid black; */
-            background-color:red;
+    @media (max-width: 576px) {
+        .videos .shrink {
+            top: 158px;
+            /* transition:.5s; */
         }
+    }
 
-        .owl-prev {
-            left: 13px;
-            
-        }
+   
 
-        .owl-next {
-            right: 13px;
-        }
-
-        .owl-prev i {
-             transform: scale(2); 
-            color: #ccc;
-            background: linear-gradient(to left, rgba(0, 2, 0, 0), rgba(0, 2, 0,1));
-            padding:9px 9px;
-        }
-
-        .owl-next i {
-             transform: scale(2); 
-            color: white;
-            background: linear-gradient(90deg, rgba(0, 2, 0,0), rgba(0, 2, 0,1));
-            padding:9px 9px;
-        }
-
-        .owl-carousel .owl-stage {
- margin:auto;
-}
-        .owl-carousel .owl-stage-outer {
- padding:0px 60px;
-}
+       
     </style>
 </head>
 
@@ -240,11 +177,11 @@ if (!empty($fetch['images'])) {
         <div id="selection"class="video-selection sticky-top text-center">
             <div class="text-center">
                 <div class="filter">
-                    <form id="form1" method="GET" class="owl-carousel radio-buttons m-0">
+                    <form id="form1" method="POST" class="owl-carousel radio-buttons m-0">
                        
-                        <label class="filter-selection subject" value='ALL'>
+                        <label class="filter-selection" value='ALL'>
                             <input class="radio-filter subject"  type="radio" name="subject"
-                                value="ALL" onclick = "MyAlert()">ALL</input> 
+                                value="ALL">ALL</input> 
                         </label>
                         <?php
                            
@@ -255,9 +192,9 @@ if (!empty($fetch['images'])) {
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
                         ?>
-                        <label class="filter-selection subject" value='<?php echo $row['subjects'];?>'>
+                        <label class="filter-selection" value='<?php echo $row['subjects'];?>'>
                             <input class="radio-filter subject"  type="radio" name="subject"
-                                value="<?php echo $row['subjects'];?>" onclick = "MyAlert()"
+                                value="<?php echo $row['subjects'];?>"
                                 for=<?php echo $row['subjects'];?>><?php echo $row['subjects'];?> </input>
                         </label>
                         <?php
@@ -267,7 +204,7 @@ if (!empty($fetch['images'])) {
                                     } */
                             }
                                 ?>
-                        <input type="hidden" name="c" value="<?php echo $_GET['c']?>">
+                       <!--  <input type="hidden" name="c" value="<?php echo $_POST['c']?>"> -->
                        
                     </form>
                 </div>
@@ -444,7 +381,7 @@ document.getElementById("toggler").addEventListener("click", function() {
     var subject= $(this).val();
     $.ajax({
         url: 'php/selection',
-        type: 'GET',
+        type: 'POST',
         data: {
             subject: subject
         },
@@ -467,34 +404,13 @@ document.getElementById("toggler").addEventListener("click", function() {
             loop: false,
             autoWidth: true,
             items: 1,
+            
             nav: true,
             navText: ["<i class='fas fa-angle-left'></i>", "<i class='fas fa-angle-right'></i>"]
-        })
-        /* const slider = document.querySelector('.video-selection');
-        let mouseDown = false;
-        let startX, scrollLeft;
-
-        let startDragging = function (e) {
-          mouseDown = true;
-          startX = e.pageX - slider.offsetLeft;
-          scrollLeft = slider.scrollLeft;
-        };
-        let stopDragging = function (event) {
-          mouseDown = false;
-        };
-
-        slider.addEventListener('mousemove', (e) => {
-          e.preventDefault();
-          if(!mouseDown) { return; }
-          const x = e.pageX - slider.offsetLeft;
-          const scroll = x - startX;
-          slider.scrollLeft = scrollLeft - scroll;
         });
-         */
-        // Add the event listeners
-        /* slider.addEventListener('mousedown', startDragging, false);
-        slider.addEventListener('mouseup', stopDragging, false);
-        slider.addEventListener('mouseleave', stopDragging, false); */
+
+        /* $('.owl-carousel').off('keydown.bs.carousel'); */
+       
         /* Copy */
         $('#copy-code').click(function (e) {
             $('#copied').fadeIn(1000);

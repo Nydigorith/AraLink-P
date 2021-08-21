@@ -198,21 +198,77 @@ html body {
 
 /* Selection */
 .videos {
-  /* Selection */
   /* Card */
 }
 
+.videos .mb-4 {
+  margin-top: 8px;
+}
+
 .videos .video-selection {
-  /*   width: 100%; */
   background-color: white;
   border-top: 1px gray solid;
   border-bottom: 1px gray solid;
   margin-top: -32.1px;
   top: 64px;
-  /* position:sticky; */
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 
-.videos .filter-selection {
+.videos .video-selection .filter {
+  width: 100%;
+  white-space: nowrap;
+  margin: auto;
+  /* label {
+                margin: auto;
+            } */
+}
+
+.videos .video-selection .filter .owl-prev,
+.videos .video-selection .filter .owl-next {
+  position: absolute;
+  top: 22%;
+}
+
+.videos .video-selection .filter .owl-prev {
+  left: 13px;
+}
+
+.videos .video-selection .filter .owl-next {
+  right: 13px;
+}
+
+.videos .video-selection .filter .owl-prev i {
+  -webkit-transform: scale(2);
+          transform: scale(2);
+  color: #ccc;
+  background: -webkit-gradient(linear, right top, left top, from(rgba(0, 2, 0, 0)), to(#000200));
+  background: linear-gradient(to left, rgba(0, 2, 0, 0), #000200);
+  padding: 9px 9px;
+}
+
+.videos .video-selection .filter .owl-next i {
+  -webkit-transform: scale(2);
+          transform: scale(2);
+  color: white;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 2, 0, 0)), to(#000200));
+  background: linear-gradient(90deg, rgba(0, 2, 0, 0), #000200);
+  padding: 9px 9px;
+}
+
+.videos .video-selection .filter .owl-carousel .owl-stage {
+  margin: auto;
+}
+
+.videos .video-selection .filter .owl-carousel .owl-stage-outer {
+  padding: 0px 60px;
+}
+
+.videos .video-selection .filter .owl-nav .disabled {
+  display: none;
+}
+
+.videos .video-selection .filter .filter-selection {
   -webkit-transition: all .2s ease-in;
   transition: all .2s ease-in;
   margin-top: 8px;
@@ -224,18 +280,14 @@ html body {
   border: 1px solid #999999;
   border-radius: 990px;
   text-align: center;
-  background-color: white;
-  /* &[value=ALL] {
-            background-color: $mainColor;
-
-        } */
+  /* background-color: $nButtonColor; */
 }
 
-.videos .filter-selection:hover {
+.videos .video-selection .filter .filter-selection:hover {
   background-color: #0fa564;
 }
 
-.videos .filter-selection .radio-filter {
+.videos .video-selection .filter .filter-selection .radio-filter {
   opacity: 0;
   margin: 0;
   padding: 0;
