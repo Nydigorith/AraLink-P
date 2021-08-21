@@ -206,7 +206,7 @@ $errors = array();
                     if($mail->send()){
                         $info = "We've sent a passwrod reset otp to your email - $femail";
                         $_SESSION['info-rotp'] = $info;
-                        $_SESSION['email'] = $femail;
+                        $_SESSION['femail'] = $femail;
                         header('location: reset-otp');
                         exit();
                     }else{
@@ -235,7 +235,7 @@ $errors = array();
                 $code = 0;
 
                 $femail = $fetch['email'];
-                $_SESSION['email'] = $femail;
+                $_SESSION['femail'] = $femail;
                 $info = "Please create a new password that you don't use on any other site.";
                 $_SESSION['info-np'] = $info;
                 $query = $conn->prepare("UPDATE classadmin SET code = :code WHERE email = :email");
@@ -266,7 +266,7 @@ $errors = array();
             } else{ 
                 if(preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,20}$/', $password)) {
             /* $code = 0; */
-            $femail = $_SESSION['email'];
+            $femail = $_SESSION['femail'];
             $encpass = password_hash($password, PASSWORD_BCRYPT);
             $query = $conn->prepare("UPDATE classadmin SET password = :password WHERE email = :email");
             $result=$query->execute([':password' => $encpass, ':email' => $femail]);
@@ -402,7 +402,7 @@ $errors = array();
                 $info = "Code Resend to $femail.";
                 
                 $_SESSION['info-rotp'] = $info;
-                $_SESSION['email'] = $femail;
+                $_SESSION['femail'] = $femail;
                 header('location: reset-otp');
                 exit();
             }else{

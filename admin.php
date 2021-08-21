@@ -466,10 +466,10 @@ background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABTkAAANhCAY
         <div class="jumbotron d-flex align-items-center text-center">
             <div class="container">
                 <h1 class="jumbotron-heading"><?php  echo $fetch['classname']?><a data-toggle="modal"
-                        data-target="#change_code_modal"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                data-backdrop="static" data-keyboard="false" data-target="#change_code_modal"><i class="fas fa-edit" aria-hidden="true"></i></a>
                 </h1>
             </div>
-            <div class="jumbotron-upload text-right"><a data-toggle="modal" data-target="#upload_image_modal">
+            <div class="jumbotron-upload text-right"><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#upload_image_modal">
                     <i class="fas fa-image" aria-hidden="true"></i></a>
             </div>
         </div>
@@ -497,7 +497,7 @@ background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABTkAAANhCAY
             </table>
 
             <div>
-                <button type="button" id="video_add_button" data-toggle="modal" data-target="#video_modal"
+                <button type="button" id="video_add_button" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#video_modal"
                     class="btn btn-secondary">Add Video</button>
             </div>
         </div>
@@ -559,7 +559,7 @@ background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABTkAAANhCAY
                             </div>
                             <div class="form-group">
                                 <label>Link </label>
-                                <!--  <div class="label-notes">include everything in beetween of " "</div> -->
+                                <div class="label-notes">Include everything between " "</div>
                                 <input type="url" name="links" id="links" class="form-control"
                                     placeholder="https://drive.google.com/file/d/link/preview" required />
 
@@ -596,7 +596,7 @@ background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABTkAAANhCAY
             </table>
 
             <div>
-                <button type="button" id="subject_add_button" data-toggle="modal" data-target="#subject_modal"
+                <button type="button" id="subject_add_button" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#subject_modal"
                     class="btn btn-secondary ">Add Subject</button>
             </div>
         </div>
@@ -612,6 +612,7 @@ background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABTkAAANhCAY
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Subject</label>
+                                <div class="label-notes">Use subject abbrevriatioons</div>
                                 <input type="text" name="subjects" id="subjects" class="form-control" />
 
                                 <input type="hidden" name="subjectcode" id="subjectcode" value="<?php  echo $varivari?>"

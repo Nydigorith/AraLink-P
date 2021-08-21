@@ -1,6 +1,6 @@
 <?php require_once 'php/php-controller.php'; ?>
 <?php 
-$femail = $_SESSION['email'];
+$femail = $_SESSION['femail'];
 if($femail == false){
   header('Location: login');
 }

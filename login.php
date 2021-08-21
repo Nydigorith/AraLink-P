@@ -1,5 +1,5 @@
 <?php require_once 'php/php-controller.php';
-
+unset($_SESSION['femail']);
 ?>
 <!DOCTYPE html>
 <html lang="en">

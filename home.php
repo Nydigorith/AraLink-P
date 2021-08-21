@@ -1,8 +1,12 @@
 <?php 
 require_once 'php/php-controller.php';
 require "db.php";
+
 $email = $_SESSION['email'];
 $password = $_SESSION['password'];
+
+
+
 
 if($email != false && $password != false){
     $query = $conn->prepare("SELECT * FROM classadmin WHERE email = :email");
@@ -124,9 +128,22 @@ if (!empty($fetch['images'])) {
             border-bottom: 1px gray solid;
            margin-top:-32.1px;
          top:64px;
-           /* position:sticky; */
+         transition:.3s;           /* position:sticky; */
 
         }
+         
+        @media (min-width: 576px) {
+.videos .shrink {
+    top:111px;
+    /* transition:.5s; */
+}
+}
+        @media (max-width: 576px) {
+.videos .shrink {
+    top:158px;
+    /* transition:.5s; */
+}
+}
 
         .filter {
             width: 100%;
@@ -194,7 +211,7 @@ if (!empty($fetch['images'])) {
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-light sticky-top nav-index">
         <a href="index" class="navbar-brand pl-3"><img src="img/nav-logo.png" width="190px" height="50px"></a>
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navigation_bar"
+        <button id="toggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse"  data-target="#navigation_bar"
             aria-controls="navigation_bar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -212,7 +229,7 @@ if (!empty($fetch['images'])) {
     <div class="background-image">
         <div class="jumbotron d-flex align-items-center text-center">
             <div class="container">
-                <h1 class="jumbotron-heading"><?php  echo $fetch['classname']?><a data-toggle="modal"
+                <h1 class="jumbotron-heading"><?php  echo $fetch['classname']?><a data-toggle="modal" data-backdrop="static" data-keyboard="false"
                         data-target="#copy_code_modal"><i class="fas fa-share" aria-hidden="true"></i></a></h1>
             </div>
         </div>
@@ -220,13 +237,14 @@ if (!empty($fetch['images'])) {
 
     <!-- Videos -->
     <div class="videos">
-        <div class="video-selection sticky-top text-center">
+        <div id="selection"class="video-selection sticky-top text-center">
             <div class="text-center">
                 <div class="filter">
-                    <form id="form1" method="POST" class=" owl-carousel m-0">
-                        <label class="filter-selection" value='ALL'>
-                            <input class="radio-filter" onchange="this.form.submit();" type="radio" name="subject"
-                                value="ALL">ALL</input>
+                    <form id="form1" method="GET" class="owl-carousel radio-buttons m-0">
+                       
+                        <label class="filter-selection subject" value='ALL'>
+                            <input class="radio-filter subject"  type="radio" name="subject"
+                                value="ALL" onclick = "MyAlert()">ALL</input> 
                         </label>
                         <?php
                            
@@ -237,9 +255,9 @@ if (!empty($fetch['images'])) {
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
                         ?>
-                        <label class="filter-selection" value='<?php echo $row['subjects'];?>'>
-                            <input class="radio-filter" onchange="this.form.submit();" type="radio" name="subject"
-                                value="<?php echo $row['subjects'];?>"
+                        <label class="filter-selection subject" value='<?php echo $row['subjects'];?>'>
+                            <input class="radio-filter subject"  type="radio" name="subject"
+                                value="<?php echo $row['subjects'];?>" onclick = "MyAlert()"
                                 for=<?php echo $row['subjects'];?>><?php echo $row['subjects'];?> </input>
                         </label>
                         <?php
@@ -250,6 +268,7 @@ if (!empty($fetch['images'])) {
                             }
                                 ?>
                         <input type="hidden" name="c" value="<?php echo $_GET['c']?>">
+                       
                     </form>
                 </div>
             </div>
@@ -259,9 +278,9 @@ if (!empty($fetch['images'])) {
         <div class=" video-show pt-5">
             <div class="row px-2">
                 <?php
-                    if(isset($_POST['subject'])) {
-                        $subject = $_POST["subject"];
-                        if ($subject == "ALL") {
+                    if(isset($_SESSION['selected'])) {
+                        $selected = $_SESSION['selected'];
+                        if ($selected == "ALL") {
                             $query = $conn->prepare("SELECT * FROM classvideo WHERE linkcode = :codihe");
                             $result  =  $query->execute([':codihe' => $fetch_classcode]);
                             echo "<style>.filter-selection[value='ALL']{background-color: rgb(15,165,100);}></style>"; 
@@ -289,8 +308,8 @@ if (!empty($fetch['images'])) {
                             }
                         } else {
                             $query = $conn->prepare("SELECT * FROM classvideo WHERE subjects = :subject AND linkcode = :codihe");
-                            $result  =  $query->execute([':subject' => $subject, ':codihe' => $fetch_classcode]);
-                             echo "<style>.filter-selection[value='$subject']{background-color: rgb(15,165,100);}.filter-selection[value=ALL]{background-color: white;}</style>";   
+                            $result  =  $query->execute([':subject' => $selected, ':codihe' => $fetch_classcode]);
+                             echo "<style>.filter-selection[value='$selected']{background-color: rgb(15,165,100);}.filter-selection[value=ALL]{background-color: white;}</style>";   
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){                           
@@ -309,7 +328,7 @@ if (!empty($fetch['images'])) {
                                      } 
                                 } else {
                                     ?>
-                <div class="error-text mx-auto">No video for <?php echo $subject;?> </div>
+                <div class="error-text mx-auto">No video for <?php echo $selected;?> </div>
                 <?php
                                 }
                             }
@@ -362,7 +381,8 @@ if (!empty($fetch['images'])) {
     <!-- Back To Top -->
     <!-- <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
             class="fas fa-chevron-up pt-2"></i></a> -->
-
+         
+<div id="response"></div>
     <!-- Copied Message -->
     <div class="copied btn btn-dark" id="copied">Copied to clipboard</div>
 
@@ -394,6 +414,7 @@ if (!empty($fetch['images'])) {
 
 
 
+
     <!-- Loading -->
     <script src="js/pace.js"></script>
 
@@ -410,6 +431,32 @@ if (!empty($fetch['images'])) {
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+
+
+
+
+document.getElementById("toggler").addEventListener("click", function() {
+    document.getElementById("selection").classList.toggle("shrink");
+        });
+
+        $(document).ready(function () {
+        $('.radio-buttons input[type="radio"]').click(function(){
+    var subject= $(this).val();
+    $.ajax({
+        url: 'php/selection',
+        type: 'GET',
+        data: {
+            subject: subject
+        },
+        success: function(response) {
+            /* Reload div */
+            $(".video-show").load(" .video-show > *");
+        }               
+    });
+});
+});
+
+
         /* Remove Confirm Form Resubmission  */
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
