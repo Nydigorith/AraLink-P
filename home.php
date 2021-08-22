@@ -120,14 +120,14 @@ if (!empty($fetch['images'])) {
          
         @media (min-width: 576px) {
        .videos .shrink {
-            top: 111px;
+            top: 126px;
             /* transition:.5s; */
         }
     }
 
     @media (max-width: 576px) {
         .videos .shrink {
-            top: 158px;
+            top: 176px;
             /* transition:.5s; */
         }
     }
@@ -156,8 +156,8 @@ if (!empty($fetch['images'])) {
         </button>
         <div class="collapse navbar-collapse " id="navigation_bar">
             <ul class="navbar-nav ml-auto flex-sm-row pr-2">
-                <div class="nav-item left col-sm-6 "> <a href="admin" class="btn btn-light">Admin</a></div>
-                <div class="nav-item right col-sm-6"> <a href="logout" class="btn btn-light">Logout</a></div>
+                <div class="nav-item left col-sm-6 "> <a href="admin" class="btn btn-light">Admin <i class="fas fa-user-edit"></i></a></div>
+                <div class="nav-item right col-sm-6"> <a href="logout" class="btn btn-light">Logout <i class="fas fa-sign-out-alt"></i></a></div>
             </ul>
         </div>
     </nav>
@@ -227,7 +227,7 @@ if (!empty($fetch['images'])) {
                         ?>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="card mb-4 box-shadow ">
-                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"></iframe>
+                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true" loading="lazy"></iframe>
                         <div class="card-body">
                             <div class="card-subtitle text-muted"> <?php echo $row['subjects'];?></div>
                             <div class="card-title"> <?php echo $row['titles'];?></div>
@@ -253,7 +253,7 @@ if (!empty($fetch['images'])) {
                     ?>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="card mb-4 box-shadow">
-                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"></iframe>
+                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true" loading="lazy"></iframe>
                         <div class="card-body">
                             <div class="card-subtitle text-muted"> <?php echo $row['subjects'];?></div>
                             <div class="card-title"> <?php echo $row['titles'];?></div>
@@ -280,7 +280,7 @@ if (!empty($fetch['images'])) {
                                     ?>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="card mb-4 box-shadow">
-                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"></iframe>
+                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true" loading="lazy"></iframe>
                         <div class="card-body">
                             <div class="card-subtitle text-muted"> <?php echo $row['subjects'];?></div>
                             <div class="card-title"> <?php echo $row['titles'];?></div>

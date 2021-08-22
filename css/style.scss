@@ -2,6 +2,8 @@
 
 $nButtonColor: white;
 $mainColor:rgb(15, 165, 100);
+$nShadow: 0px 0px 10px 2px rgba(0, 0, 0, .2);
+$mainShadow: 0px 0px 10px 2px rgba(0, 0, 0, .1);
 $jumbotronColor:rgb(15, 165, 100);
 $inputOutline: green;
 
@@ -14,7 +16,7 @@ html {
     body {
         font-size: 16px;
         font-family: 'Poppins', sans-serif;
-        background-color: #fafafa;
+        background-color: #f3f4f8;
         -webkit-overflow-scrolling: touch;
     }
 }
@@ -23,7 +25,7 @@ html {
 /* Navbar */
 .navbar {
     padding: 12px 0px;
-    box-shadow: 0px 8px 10px -8px rgba(0, 0, 0, .3);
+    box-shadow: $nShadow;
     background-color: rgb(15, 165, 100);
     top: 0;
     position: fixed;
@@ -65,7 +67,8 @@ html {
         background: none;
         border: none;
         margin-right: 10px;
-        margin: 2px 0px;
+        margin-top: 1px;
+        margin-bottom: 1px;
 
         &:active,
         &:focus {
@@ -138,7 +141,8 @@ html {
         .nav-item {
             .btn {
                 width: 250px;
-                margin-top: 6px;
+                margin-top: 15px;
+                margin-bottom: 10px;
 
             }
         }
@@ -164,14 +168,15 @@ html {
             padding-left: 8px;
 
             .left {
-                margin-top: 6px;
-
+                
+                margin-top: 15px;
+                
 
             }
 
             .right {
-                margin-top: 6px;
-
+                margin-top: 10px;
+                margin-bottom: 10px;
 
             }
 
@@ -206,7 +211,7 @@ html {
 /* Jumbotron !Index*/
 .background-image {
     .jumbotron {
-        margin-top: 64px;
+        margin-top: 61px;
         height: 350px;
         background-size: 100em auto;
         border-radius: 0px;
@@ -261,9 +266,9 @@ html {
         border-top: 1px gray solid;
         border-bottom: 1px gray solid;
         margin-top: -32.1px;
-        top: 64px;
+        top: 63px;
         transition: .4s;
-
+        box-shadow: $mainShadow;
         .filter {
             width: 100%;
             white-space: nowrap;
@@ -276,28 +281,30 @@ html {
             .owl-prev,
             .owl-next {
                 position: absolute;
-                top: 22%;
+                top: 13px;
             }
             .owl-prev {
-                left: 13px;
+                left: 10.5px;
 
             }
             .owl-next {
-                right: 13px;
+                right: 10.5px;
             }
 
             .owl-prev i {
                 transform: scale(2);
+                font-size: 11px;
                 color: #ccc;
                 background: linear-gradient(to left, rgba(0, 2, 0, 0), rgba(0, 2, 0, 1));
-                padding: 9px 9px;
+                padding: 8px 8px;
             }
 
             .owl-next i {
                 transform: scale(2);
+                font-size: 11px;
                 color: white;
-                background: linear-gradient(90deg, rgba(0, 2, 0, 0), rgba(0, 2, 0, 1));
-                padding: 9px 9px;
+                background: linear-gradient(90deg, rgba(0, 2, 0, 0),red);
+                padding: 8px 8px;
             }
 
             .owl-carousel .owl-stage {
@@ -317,9 +324,9 @@ html {
                 -webkit-transition: all .2s ease-in;
                 transition: all .2s ease-in;
                 margin-top: 8px;
-                padding: 10px;
-                padding-left: 25px;
-                padding-right: 36px;
+                padding: 5px;
+                padding-left: 14px;
+                padding-right: 25px;
                 margin-right: 1vw;
                 cursor: pointer;
                 border: 1px solid #999999;
@@ -360,7 +367,7 @@ html {
             border: 1px solid #d8d8d8;
 
             &:hover {
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+                box-shadow: $mainShadow;
             }
 
             .card-img-top {
@@ -781,6 +788,7 @@ input {
     padding-bottom: 10px;
 }
 
+ 
 /* .login-link {
     margin-top:5px;
     } */

@@ -19,6 +19,9 @@ unset($_SESSION['selected']);
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -136,8 +139,8 @@ unset($_SESSION['selected']);
         </button>
         <div class="collapse navbar-collapse " id="navigation_bar">
             <ul class="navbar-nav ml-auto flex-sm-row pr-2">
-                <div class="nav-item left col-sm-6 "> <a href="login" class="btn btn-light">Login</a></div>
-                <div class="nav-item right col-sm-6"> <a href="signup" class="btn btn-light">Signup</a></div>
+                <div class="nav-item left col-sm-6 "> <a href="login" class="btn btn-light">Login <i class="fas fa-sign-in-alt"></i></a></div>
+                <div class="nav-item right col-sm-6"> <a href="signup" class="btn btn-light">Signup <i class="fas fa-user-plus"></i></a></div>
             </ul>
         </div>
     </nav>
