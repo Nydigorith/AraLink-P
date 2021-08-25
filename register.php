@@ -17,97 +17,120 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
-  
+
 
     <!-- Loading -->
     <link rel="stylesheet" href="css/pace-theme-minimal.css">
     <style>
-        html,body{
-    background-color: rgb(15,165,100);
-}
+        html,
+        body {
+            background-color: rgb(31, 155, 95);
+            color: rgb(46, 50, 51);
+        }
+        .popover {
+            font-size:12px;
+            text-align:center;
+            
+        }
     </style>
 </head>
 
 <body>
-<div class="account">
-    <div class="container">
-        <div class="row p-4 justify-content-center">
-            <div class="form">
-                <form action="signup" method="POST" onsubmit="hidebutton()">
-                    <div class="text-center mb-3"><a href="index"><img src="img/src-logo.png" width="190px"
-                                height="50px"></a></div>
-                    <!--  <h2 class="text-center">Signup Form</h2> -->
-                    <p class="text-center">Fill out the form to sign up.</p>
-                    <?php
+    <div class="account">
+        <div class="container">
+            <div class="row p-4 justify-content-center">
+                <div class="form">
+                    <form action="signup" method="POST" onsubmit="hidebutton()">
+                        <div class="text-center mb-3"><a href="index"><img src="img/src-logo.png" width="190px"
+                                    height="50px"></a></div>
+                        <!--  <h2 class="text-center">Signup Form</h2> -->
+                        <p class="text-center">Fill out the form to sign up.</p>
+                        <?php
                     if(count($errors) == 1){
                         ?>
-                    <div class="alert alert-danger text-center">
-                        <?php
+                        <div class="alert alert-danger text-center">
+                            <?php
                             foreach($errors as $showerror){
                                 echo $showerror;
                             }
                             ?>
-                    </div>
-                    <?php
+                        </div>
+                        <?php
                     }
                     ?>
+
+
+
+                        <div class="form-group">
+                            <input class="form-control" type="classname" name="classname"
+                                onchange="this.setAttribute('value', this.value);" value="<?php echo $classname?>"
+                                required>
+                            <label>Class Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="name"
+                                onchange="this.setAttribute('value', this.value);" value="<?php echo $name ?>"
+                                autocomplete="new-password" required>
+                            <label>Username</label>
+                        </div>
                     
-
-
-                    <div class="form-group">
-                        <input class="form-control" type="classname" name="classname"
-                            onchange="this.setAttribute('value', this.value);" value="<?php echo $classname?>" required>
-                        <label>Class</label>
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="name"
-                            onchange="this.setAttribute('value', this.value);" value="<?php echo $name ?>" autocomplete="new-password" required >
-                        <label>Username</label>
-                    </div>
-                    <div class="label-notes "> Only use gmail account</div>
-                    <div class="form-group">
-                        <input class="form-control" type="email" name="email"
-                        onchange="this.setAttribute('value', this.value);"value="<?php echo $email ?>"  required >
-                        <label>Email Address</label>
-                    </div>
-
-
-                    <div class="form-group ">
-                        
-                        <input class="form-control" type="password" name="password" id="password"
-                        onchange="this.setAttribute('value', this.value);" value="" required>
-                        <label>Password</label>
-                        <div class="input-group-append">
-                            <span class="far fa-eye-slash input-group-text" id="togglePassword"></span>
+                        <div class="form-group">
+                            <input class="form-control" type="email" name="email" id="email"
+                                onchange="this.setAttribute('value', this.value);" value="<?php echo $email ?>"
+                                data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Only use gmail account"  required>
+                            <label>Email Address</label>
                         </div>
-                        
-                    </div>
-                     <div class="label-notes">Combnation of Letters and number 8-20 cahracter</div>
 
-                    <div class="form-group  ">
-                        <input class="form-control" type="password" name="cpassword" id="cpassword"
-                            onchange="this.setAttribute('value', this.value);" value="" required>
-                        <label>Retype Password</label>
-                        <div class="input-group-append">
-                            <span class="far fa-eye-slash input-group-text" id="togglecPassword"></span>
+
+                        <div class="form-group ">
+
+                            <input class="form-control" type="password" name="password" id="password"
+                                onchange="this.setAttribute('value', this.value);" value=""
+                                data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Combnation of Letters and number 8-20 cahracter"required>
+                            <label>Password</label>
+                            <div class="input-group-append">
+                                <span class="far fa-eye-slash input-group-text" id="togglePassword"></span>
+                            </div>
+
                         </div>
-                        
-                    </div>
+                       
 
-                    <div class="form-group">
-                        <button id="button-show" class="form-control button" type="submit" style="display:none;"
-                            disabled><i class="fas fa-spinner fa-spin"></i> </button>
-                        <input id="button-hide" class="form-control button" type="submit" name="signup" value="Signup">
-                    </div>
-                    <div class="link login-link text-center">Have an Account? <a href="login">Login here</a></div>
-                </form>
+                        <div class="form-group  ">
+                            <input class="form-control" type="password" name="cpassword" id="cpassword"
+                                onchange="this.setAttribute('value', this.value);" value="" required>
+                            <label>Retype Password</label>
+                            <div class="input-group-append">
+                                <span class="far fa-eye-slash input-group-text" id="togglecPassword"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <button id="button-show" class="form-control button" type="submit" style="display:none;"
+                                disabled><i class="fas fa-spinner fa-spin"></i> </button>
+                            <input id="button-hide" class="form-control button" type="submit" name="signup"
+                                value="Signup">
+                        </div>
+                        <div class="link login-link text-center">Have an Account? <a href="login">Login</a></div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    </div>
     <!-- Loading -->
     <script src="js/pace.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 
     <script>
+        $('#email').popover();
+        $('#password').popover();
+
         function hidebutton() {
             document.getElementById("button-hide").style.display = "none";
             document.getElementById("button-show").style.display = "block";

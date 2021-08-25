@@ -97,9 +97,9 @@ if (!empty($fetch['images'])) {
 
             margin-right: 1vw;
             /* cursor: pointer; */
-            border: #CFD9E0 solid 1px;
+            border: rgb(46, 50, 51) solid 1px;
             border-radius: 50px;
-            /* background-color: green; */
+            background-color: rgb(46, 50, 51);
 
             -webkit-transition: all 0.5s;
             -moz-transition: all 0.5s;
@@ -116,25 +116,35 @@ if (!empty($fetch['images'])) {
             margin-top: -15px;
         }
 
-        
-         
-        @media (min-width: 576px) {
-       .videos .shrink {
-            top: 126px;
-            /* transition:.5s; */
-        }
-    }
 
-    @media (max-width: 576px) {
+
+        @media (min-width: 0px) {
+            .videos .shrink {
+                top: 126px;
+                /* transition:.5s; */
+            }
+        }
+
+        /*  @media (max-width: 576px) {
         .videos .shrink {
             top: 176px;
-            /* transition:.5s; */
+           
         }
+    } */
+    .videos {
+        margin-bottom:19px;
     }
-
+    @media (max-width: 699px) {
+            .videos{
+                margin-bottom:11px;
+               
+            }
+        }
+   .modal-body {
+       color:rgb(46, 50, 51);
+   }
    
-
-       
+        
     </style>
 </head>
 
@@ -148,16 +158,19 @@ if (!empty($fetch['images'])) {
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-light sticky-top nav-index">
         <a href="index" class="navbar-brand pl-3"><img src="img/nav-logo.png" width="190px" height="50px"></a>
-        <button id="toggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse"  data-target="#navigation_bar"
-            aria-controls="navigation_bar" aria-expanded="false" aria-label="Toggle navigation">
+        <button id="toggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+            data-target="#navigation_bar" aria-controls="navigation_bar" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
         <div class="collapse navbar-collapse " id="navigation_bar">
             <ul class="navbar-nav ml-auto flex-sm-row pr-2">
-                <div class="nav-item left col-sm-6 "> <a href="admin" class="btn btn-light">Admin <i class="fas fa-user-edit"></i></a></div>
-                <div class="nav-item right col-sm-6"> <a href="logout" class="btn btn-light">Logout <i class="fas fa-sign-out-alt"></i></a></div>
+                <div class="nav-item left"> <a href="admin" class="btn btn-light"><i
+                            class="fas fa-user-edit"></i>Admin</a></div>
+                <div class="nav-item right"> <a href="logout" class="btn btn-light"><i
+                            class="fas fa-sign-out-alt"></i>Logout</a></div>
             </ul>
         </div>
     </nav>
@@ -166,34 +179,34 @@ if (!empty($fetch['images'])) {
     <div class="background-image">
         <div class="jumbotron d-flex align-items-center text-center">
             <div class="container">
-                <h1 class="jumbotron-heading"><?php  echo $fetch['classname']?><a data-toggle="modal" data-backdrop="static" data-keyboard="false"
-                        data-target="#copy_code_modal"><i class="fas fa-share" aria-hidden="true"></i></a></h1>
+                <h1 class="jumbotron-heading"><?php  echo $fetch['classname']?><a data-toggle="modal"
+                        data-backdrop="static" data-keyboard="false" data-target="#copy_code_modal"><i
+                            class="fas fa-share" aria-hidden="true"></i></a></h1>
             </div>
         </div>
     </div>
 
     <!-- Videos -->
     <div class="videos">
-        <div id="selection"class="video-selection sticky-top text-center">
+        <div id="selection" class="video-selection sticky-top text-center">
             <div class="text-center">
                 <div class="filter">
                     <form id="form1" method="POST" class="owl-carousel radio-buttons m-0">
-                       
+
                         <label class="filter-selection" value='ALL'>
-                            <input class="radio-filter subject"  type="radio" name="subject"
-                                value="ALL">ALL</input> 
+                            <input class="radio-filter subject" type="radio" name="subject" value="ALL">ALL</input>
                         </label>
                         <?php
                            
                             $query = $conn->prepare("SELECT * FROM classsubject WHERE subjectcode = :codihe");
                             $result  =  $query->execute([':codihe' => $fetch_classcode]);
-                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(15,165,100);}></style>"; 
+                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(31, 155, 95); color:white!important; font-weight: 450;}></style>"; 
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
                         ?>
                         <label class="filter-selection" value='<?php echo $row['subjects'];?>'>
-                            <input class="radio-filter subject"  type="radio" name="subject"
+                            <input class="radio-filter subject" type="radio" name="subject"
                                 value="<?php echo $row['subjects'];?>"
                                 for=<?php echo $row['subjects'];?>><?php echo $row['subjects'];?> </input>
                         </label>
@@ -204,8 +217,8 @@ if (!empty($fetch['images'])) {
                                     } */
                             }
                                 ?>
-                       <!--  <input type="hidden" name="c" value="<?php echo $_POST['c']?>"> -->
-                       
+                        <!--  <input type="hidden" name="c" value="<?php echo $_POST['c']?>"> -->
+
                     </form>
                 </div>
             </div>
@@ -220,17 +233,19 @@ if (!empty($fetch['images'])) {
                         if ($selected == "ALL") {
                             $query = $conn->prepare("SELECT * FROM classvideo WHERE linkcode = :codihe");
                             $result  =  $query->execute([':codihe' => $fetch_classcode]);
-                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(15,165,100);}></style>"; 
+                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(31, 155, 95);color:white!important; font-weight: 450;}></style>"; 
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
                         ?>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="card mb-4 box-shadow ">
-                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true" loading="lazy"></iframe>
+                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"
+                            loading="lazy"></iframe>
                         <div class="card-body">
                             <div class="card-subtitle text-muted"> <?php echo $row['subjects'];?></div>
                             <div class="card-title"> <?php echo $row['titles'];?></div>
+
                             <div class="card-subtitle text-muted"> <?php echo $row['dates'];?> </div>
                         </div>
                     </div>
@@ -239,21 +254,22 @@ if (!empty($fetch['images'])) {
                                     }  
                                 } else {
                                     ?>
-                <div class="error-text mx-auto">No video were found </div>
+                <div class="error-text m-auto">No video were found </div>
                 <?php
                                 } 
                             }
                         } else {
                             $query = $conn->prepare("SELECT * FROM classvideo WHERE subjects = :subject AND linkcode = :codihe");
                             $result  =  $query->execute([':subject' => $selected, ':codihe' => $fetch_classcode]);
-                             echo "<style>.filter-selection[value='$selected']{background-color: rgb(15,165,100);}.filter-selection[value=ALL]{background-color: white;}</style>";   
+                             echo "<style>.filter-selection[value='$selected']{background-color: rgb(31, 155, 95);color:white!important;font-weight: 450;}.filter-selection[value=ALL]{background-color: white; color:#6c757d!important; font-weight: normal;}</style>";   
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){                           
                     ?>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="card mb-4 box-shadow">
-                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true" loading="lazy"></iframe>
+                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"
+                            loading="lazy"></iframe>
                         <div class="card-body">
                             <div class="card-subtitle text-muted"> <?php echo $row['subjects'];?></div>
                             <div class="card-title"> <?php echo $row['titles'];?></div>
@@ -265,7 +281,7 @@ if (!empty($fetch['images'])) {
                                      } 
                                 } else {
                                     ?>
-                <div class="error-text mx-auto">No video for <?php echo $selected;?> </div>
+                <div class="error-text m-auto">No video for <?php echo $selected;?> </div>
                 <?php
                                 }
                             }
@@ -280,7 +296,8 @@ if (!empty($fetch['images'])) {
                                     ?>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="card mb-4 box-shadow">
-                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true" loading="lazy"></iframe>
+                        <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"
+                            loading="lazy"></iframe>
                         <div class="card-body">
                             <div class="card-subtitle text-muted"> <?php echo $row['subjects'];?></div>
                             <div class="card-title"> <?php echo $row['titles'];?></div>
@@ -292,7 +309,7 @@ if (!empty($fetch['images'])) {
                                 }  
                             }else {
                                 ?>
-                <div class="error-text mx-auto">No video were found </div>
+                <div class="error-text m-auto">No video were found </div>
                 <?php
                         }
                     }
@@ -310,7 +327,7 @@ if (!empty($fetch['images'])) {
     <!-- Footer -->
     <footer class="page-footer">
         <div class="footer-text text-center py-2">
-            <a href="https://github.com/Nydigorith/AraLink" target="_blank"> Download Source Code</a>
+            <a href="https://github.com/Nydigorith/AraLink" target="_blank">Repository</a>
         </div>
     </footer>
     <!-- Footer -->
@@ -318,8 +335,8 @@ if (!empty($fetch['images'])) {
     <!-- Back To Top -->
     <!-- <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
             class="fas fa-chevron-up pt-2"></i></a> -->
-         
-<div id="response"></div>
+
+    <div id="response"></div>
     <!-- Copied Message -->
     <div class="copied btn btn-dark" id="copied">Copied to clipboard</div>
 
@@ -336,14 +353,13 @@ if (!empty($fetch['images'])) {
                 <div class="modal-body  text-center">
                     <h3 id="select_txt" class="class-code"><?php echo $fetch['classcode']  ?></h3>
 
-                    <div class="modal-footerr text-right">
+                    <div class="modal-footerr text-right pt-2">
 
-                        <input type="button" class="btn btn-secondary" id="copy-code" data-dismiss="modal" value="Copy"
+                        <input type="button" class="btn btn-primaryy" id="copy-code" data-dismiss="modal" value="Copy"
                             onclick="copy_data(select_txt)">
-                        <input type="button" class="btn btn-danger" data-dismiss="modal" value="Close">
+                        <input type="button" class="btn btn-dangerr" data-dismiss="modal" value="Close">
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -368,49 +384,42 @@ if (!empty($fetch['images'])) {
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-
-
-
-
-document.getElementById("toggler").addEventListener("click", function() {
-    document.getElementById("selection").classList.toggle("shrink");
+        document.getElementById("toggler").addEventListener("click", function () {
+            document.getElementById("selection").classList.toggle("shrink");
         });
 
         $(document).ready(function () {
-        $('.radio-buttons input[type="radio"]').click(function(){
-    var subject= $(this).val();
-    $.ajax({
-        url: 'php/selection',
-        type: 'POST',
-        data: {
-            subject: subject
-        },
-        success: function(response) {
-            /* Reload div */
-            $(".video-show").load(" .video-show > *");
-        }               
-    });
-});
-});
+            $('.radio-buttons input[type="radio"]').click(function () {
+                var subject = $(this).val();
+                $.ajax({
+                    url: 'php/selection',
+                    type: 'POST',
+                    data: {
+                        subject: subject
+                    },
+                    success: function (response) {
+                        /* Reload div */
+                        $(".video-show").load(" .video-show > *");
+                    }
+                });
+            });
+        });
 
 
-        /* Remove Confirm Form Resubmission  */
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
+        
         $('.owl-carousel').owlCarousel({
             margin: 0,
 
             loop: false,
             autoWidth: true,
             items: 1,
-            
+
             nav: true,
             navText: ["<i class='fas fa-angle-left'></i>", "<i class='fas fa-angle-right'></i>"]
         });
 
         /* $('.owl-carousel').off('keydown.bs.carousel'); */
-       
+
         /* Copy */
         $('#copy-code').click(function (e) {
             $('#copied').fadeIn(1000);
@@ -425,21 +434,11 @@ document.getElementById("toggler").addEventListener("click", function() {
             document.execCommand("copy");
             window.getSelection().removeAllRanges();
         }
-
-        /* Back to Top */
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 750) {
-                $('#back-to-top').fadeIn();
-            } else {
-                $('#back-to-top').fadeOut();
-            }
-        });
-        $('#back-to-top').click(function () {
-            $('body,html').animate({
-                scrollTop: 0
-            }, 400);
-            return false;
-        });
+        /* Remove Confirm Form Resubmission  */
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+     
 
 
         /* Store Scroll Position */

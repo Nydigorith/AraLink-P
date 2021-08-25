@@ -47,7 +47,7 @@ unset($_SESSION['selected']);
     } */
 
     .particles {
-  margin-top: -10px;
+  /* margin-top: -px; */
 }
 
 
@@ -75,10 +75,26 @@ unset($_SESSION['selected']);
         margin-top:-40px;
        
     }
+    .description {
+        font-size:18px;
+        width:450px;
+    margin:auto;
+    }
 
-    /* .jumbotron-heading {
-        margin-top: 15%;
-    } */
+@media (max-width:530px) {
+    .description {
+        font-size:18px;
+        width:100%;
+    margin:auto;
+    }
+
+    
+}
+    .jumbotron-heading {
+        padding:0;
+        margin:0;
+      
+    }
    /*  @media (max-width:768px) {
         .jumbotron-heading {
         margin-top: 30%;
@@ -89,16 +105,29 @@ unset($_SESSION['selected']);
     .jumbotron .container .btn {
         width: 200px;
         background: none;
-        transition: 0.3s;
+        transition: 0.2s;
         border: 2px solid white;
         color: white;
+        margin-top:13px;
+        font-weight:500;
     }
 
     .jumbotron .container .btn:hover {
-        background-color: rgb(85, 168, 116);
-        border: 2px solid rgb(85, 168, 116);
-        color: rgb(27, 27, 19);
+        background-color: white;
+        color:rgb(31, 155, 95);
+        border: 2px solid white;
+        font-weight:500;
+
+       
     }
+    ::-webkit-input-placeholder {
+   text-align: center;
+ 
+}
+input {
+    text-align: center; 
+ 
+}
 
     /* Particles */
     #particles-js {
@@ -139,8 +168,8 @@ unset($_SESSION['selected']);
         </button>
         <div class="collapse navbar-collapse " id="navigation_bar">
             <ul class="navbar-nav ml-auto flex-sm-row pr-2">
-                <div class="nav-item left col-sm-6 "> <a href="login" class="btn btn-light">Login <i class="fas fa-sign-in-alt"></i></a></div>
-                <div class="nav-item right col-sm-6"> <a href="signup" class="btn btn-light">Signup <i class="fas fa-user-plus"></i></a></div>
+                <div class="nav-item left  "> <a href="login" class="btn btn-light"> <i class="fas fa-sign-in-alt"></i>Login</a></div>
+                <div class="nav-item right "> <a href="register" class="btn btn-light"> <i class="fas fa-user-plus"></i>Register</a></div>
             </ul>
         </div>
     </nav>
@@ -150,8 +179,8 @@ unset($_SESSION['selected']);
     <div class="jumbotron d-flex align-items-center particles" id="particles-js">
         <div class="container text-center">
             <h1 class="jumbotron-heading ">AraLink</h1>
-            <p>AraLink is a website where you can compile every class video recording through embed links.</p>
-            <input id="remove-ani"type="submit" class="btn btn-primary enter-animation" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#code_modal" value="Enter Code">
+            <div class="description">is a website where you can compile every class video recording through embed links.</div>
+            <input id="remove-ani"type="submit" class="btn btn-primaryy enter-animation" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#code_modal" value="Enter Class Code">
             </input>
         </div>
     </div>
@@ -169,7 +198,7 @@ unset($_SESSION['selected']);
             <div class="modal-content">
             <div class="modal-header">
 
-<h5 class="modal-title mx-auto">Modal Title</h5>
+<h5 class="modal-title mx-auto">Enter Class Code</h5>
 </div>
                 <div class="modal-body">
                     <form method="POST" action="index">
@@ -189,13 +218,13 @@ unset($_SESSION['selected']);
                             }
                             ?>
                         <div class="form-group">
-                            <input class="form-control" type="text" name="c" id="c" placeholder="Class Code"
+                            <input class="form-control" type="text" name="c" id="c" placeholder="••••••••"
                                 onkeypress="return event.charCode != 32" maxlength="8" required>
                         </div>
                         
                         <div class="modal-footerr text-right">
-                            <input type="submit" class="btn btn-primary" name="submit" value="Continue">
-                            <input type="button" class="btn btn-danger" data-dismiss="modal" id="close" value="Close">
+                            <input type="submit" class="btn btn-primaryy" name="submit" value="Continue">
+                            <input type="button" class="btn btn-dangerr" data-dismiss="modal" id="close" value="Close">
                         </div>
                     </form>
                 </div>

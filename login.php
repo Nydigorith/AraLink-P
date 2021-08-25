@@ -26,7 +26,8 @@ unset($_SESSION['femail']);
 
     <style>
         html,body{
-    background-color: rgb(15,165,100);
+    background-color: rgb(31, 155, 95);
+    color: rgb(46, 50, 51);
 }
     </style>
 </head>
@@ -88,7 +89,7 @@ unset($_SESSION['femail']);
                             disabled><i class="fas fa-spinner fa-spin"></i> </button>
                         <input id="button-hide" class="form-control button" type="submit" name="login" value="Login">
                     </div>
-                    <div class="link login-link text-center ">Dont have an account? <a href="signup">Signup</a></div>
+                    <div class="link login-link text-center ">Dont have an account? <a href="register">Register</a></div>
                 </form>
             </div>
         </div>

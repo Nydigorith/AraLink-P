@@ -1,5 +1,6 @@
 <?php 
 require "db.php"; 
+session_start();
  $codihe = $_GET['c'];
  if ($codihe == '') {
     header('Location: error');
@@ -77,37 +78,23 @@ flex-direction: column;
     }
  
 
-    /* Back To Top */
-    .back-to-top {
-        position: fixed;
-        bottom: 25px;
-        right: 25px;
-        display: none;
-        color: rgb(27, 27, 19);
-        background-color: rgb(254, 221, 2);
-        border: 1px solid rgb(254, 221, 2);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    }
-
-    .back-to-top:hover {
-        color: rgb(27, 27, 19)9;
-        background-color: rgb(254, 221, 2);
-        border: 1px solid rgb(27, 27, 19);
-    }
-
-    @media (min-width: 576px) {
-       .videos .shrink {
-            top: 111px;
-            /* transition:.5s; */
+    
+    @media (min-width: 0px) {
+            .videos .shrink {
+                top: 126px;
+                /* transition:.5s; */
+            }
         }
+        .videos {
+        margin-bottom:19px;
     }
-
-    @media (max-width: 576px) {
-        .videos .shrink {
-            top: 158px;
-            /* transition:.5s; */
+    @media (max-width: 699px) {
+            .videos{
+                margin-bottom:11px;
+               
+            }
         }
-    }
+   
 </style>
 </head>
 
@@ -125,8 +112,8 @@ flex-direction: column;
         </button>
         <div class="collapse navbar-collapse " id="navigation_bar">
             <ul class="navbar-nav ml-auto flex-sm-row pr-2">
-            <div class="nav-item left col-sm-6 "> <a href="login" class="btn btn-light">Login</a></div>
-                <div class="nav-item right col-sm-6"> <a href="signup" class="btn btn-light">Signup</a></div>
+            <div class="nav-item left  "> <a href="login" class="btn btn-light"> <i class="fas fa-sign-in-alt"></i>Login</a></div>
+            <div class="nav-item right "> <a href="register" class="btn btn-light"> <i class="fas fa-user-plus"></i>Register</a></div>
             </ul>
         </div>
     </nav>
@@ -158,7 +145,7 @@ flex-direction: column;
                            
                             $query = $conn->prepare("SELECT * FROM classsubject WHERE subjectcode = :codihe");
                             $result  =  $query->execute([':codihe' => $codihe]);
-                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(15,165,100);}></style>"; 
+                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(31, 155, 95); color:white!important; font-weight: 450;}></style>"; 
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
@@ -191,7 +178,7 @@ flex-direction: column;
                         if ($selected == "ALL") {
                             $query = $conn->prepare("SELECT * FROM classvideo WHERE linkcode = :codihe");
                             $result  =  $query->execute([':codihe' => $codihe]);
-                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(15,165,100);}></style>"; 
+                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(31, 155, 95);color:white!important; font-weight: 450;}></style>"; 
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
@@ -210,14 +197,14 @@ flex-direction: column;
                                     }  
                                 } else {
                                     ?>
-                <div class="error-text mx-auto">No video were found </div>
+                <div class="error-text m-auto">No video were found </div>
                 <?php
                                 } 
                             }
                         } else {
                             $query = $conn->prepare("SELECT * FROM classvideo WHERE subjects = :subject AND linkcode = :codihe");
                             $result  =  $query->execute([':subject' => $selected, ':codihe' => $codihe]);
-                             echo "<style>.filter-selection[value='$selected']{background-color: rgb(15,165,100);}.filter-selection[value=ALL]{background-color: white;}</style>";   
+                            echo "<style>.filter-selection[value='$selected']{background-color: rgb(31, 155, 95);color:white!important;font-weight: 450;}.filter-selection[value=ALL]{background-color: white; color:#6c757d!important; font-weight: normal;}</style>";   
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){                           
@@ -236,7 +223,7 @@ flex-direction: column;
                                      } 
                                 } else {
                                     ?>
-                <div class="error-text mx-auto">No video for <?php echo $selected;?> </div>
+                <div class="error-text m-auto">No video for <?php echo $selected;?> </div>
                 <?php
                                 }
                             }
@@ -263,7 +250,7 @@ flex-direction: column;
                                 }  
                             }else {
                                 ?>
-                <div class="error-text mx-auto">No video were found </div>
+                <div class="error-text m-auto">No video were found </div>
                 <?php
                         }
                     }
@@ -278,7 +265,8 @@ flex-direction: column;
     
 
    <!-- Footer -->
-   <footer class="page-footer">
+     <!-- Footer -->
+     <footer class="page-footer">
         <div class="footer-text text-center py-2">
             <a href="https://github.com/Nydigorith/AraLink" target="_blank">Download Source Code</a>
 
@@ -309,26 +297,29 @@ flex-direction: column;
 
 
     <script>
-        document.getElementById("toggler").addEventListener("click", function() {
-    document.getElementById("selection").classList.toggle("shrink");
+
+document.getElementById("toggler").addEventListener("click", function () {
+            document.getElementById("selection").classList.toggle("shrink");
         });
 
         $(document).ready(function () {
-        $('.radio-buttons input[type="radio"]').click(function(){
-    var subject= $(this).val();
-    $.ajax({
-        url: 'php/selection',
-        type: 'POST',
-        data: {
-            subject: subject
-        },
-        success: function(response) {
-            /* Reload div */
-            $(".video-show").load(" .video-show > *");
-        }               
-    });
-});
-});
+            $('.radio-buttons input[type="radio"]').click(function () {
+                var subject = $(this).val();
+                $.ajax({
+                    url: 'php/selection',
+                    type: 'POST',
+                    data: {
+                        subject: subject
+                    },
+                    success: function (response) {
+                        /* Reload div */
+                 
+                        $(".video-show").load(" .video-show > *");
+                    }
+                });
+            });
+        });
+
 $('.owl-carousel').owlCarousel({
             margin: 0,
 
@@ -343,20 +334,6 @@ $('.owl-carousel').owlCarousel({
        /*  $('.owl-carousel').off('keydown.bs.carousel'); */
        
     
-        /* Back to Top */
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 750) {
-                $('#back-to-top').fadeIn();
-            } else {
-                $('#back-to-top').fadeOut();
-            }
-        });
-        $('#back-to-top').click(function () {
-            $('body,html').animate({
-                scrollTop: 0
-            }, 400);
-            return false;
-        });
 
         /* Remove Confirm Form Resubmission  */
         if (window.history.replaceState) {

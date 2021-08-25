@@ -118,7 +118,7 @@
         <div class="collapse navbar-collapse " id="navigation_bar">
             <ul class="navbar-nav ml-auto flex-sm-row pr-2">
                 <div class="nav-item left col-sm-6 "> <a href="login" class="btn btn-light">Login</a></div>
-                <div class="nav-item right col-sm-6"> <a href="signup" class="btn btn-light">Signup</a></div>
+                <div class="nav-item right "> <a href="register" class="btn btn-light"> <i class="fas fa-user-plus"></i>Register</a></div>
             </ul>
         </div>
     </nav>

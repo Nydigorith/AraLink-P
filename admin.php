@@ -98,37 +98,6 @@ if (!empty($fetch['images'])) {
 
 
 
-      /*   .copied {
-            display: none;
-            position: fixed;
-            left: 50%;
-            top: 90%;
-            transform: translate(-50%, -50%);
-            z-index: 999;
-            padding: 10px;
-            padding-left: 25px;
-            padding-right: 36px;
-            margin-right: 1vw;
-            cursor: pointer;
-            border: #CFD9E0 solid 1px;
-            border-radius: 50px;
-            background-color: green;
-
-            -webkit-transition: all 0.5s;
-            -moz-transition: all 0.5s;
-            -o-transition: all 0.5s;
-        }
- */
-
-        /* Button */
-        /* .video_menu {
-            display: block;
-        }
-
-        .subject_menu {
-            display: none;
-        } */
-
 
 
 
@@ -137,6 +106,7 @@ if (!empty($fetch['images'])) {
                 padding-top: 305px;
                 margin-right: -15px;
                 font-size: 17px;
+                color: rgb(46, 50, 51);
             }
         }
 
@@ -144,7 +114,8 @@ if (!empty($fetch['images'])) {
             .fa-image {
                 padding-top: 185px;
                 margin-right: 0px;
-                font-size: 14px;
+                font-size: 15px;
+                color: rgb(46, 50, 51);
             }
         }
 
@@ -154,7 +125,8 @@ if (!empty($fetch['images'])) {
             .fa-image {
                 padding-top: 185px;
                 margin-right: -15px;
-                font-size: 14px;
+                font-size: 15px;
+                color: rgb(46, 50, 51);
             }
         }
 
@@ -201,37 +173,22 @@ if (!empty($fetch['images'])) {
             top: 21px;
         }
 
+        /*    #table_div_id.dataTables_filter {
+  float: right;
+  text-align: right;
+}
+.dataTables_wrapper .myfilter .dataTables_filter {
+    float:left
+}
+.dataTables_wrapper .mylength .dataTables_length {
+    float:right
+} */
 
-        @media (min-width:768px) {
-            .dataTables_filter {
-/* position:absolute; */
-margin-top:-40px !important;
-float:right!important;
-/* display:flex; */
-        
-
-
-            }
-
-        }
-
-        @media (max-width:768px) {
-            .dataTables_filter {
-                margin-top:-40px !important;
-                float:right!important;
+        .dataTables_filter {
+            display: none;
 
 
-            }
-        }
-
-        .dataTables_filter input {
-            /* display:relative;
-             */
-            box-shadow: none !important;
-            width:250px!important;
-            height: 39px !important;
-            margin-top:2px;
-            margin-right:5px;
+            /* margin-right:5px; */
         }
 
         ::-ms-clear {
@@ -243,14 +200,15 @@ float:right!important;
         }
 
         table {
-            margin:0px;
-            padding:0px;
+            margin: 0px;
+            padding: 0px;
             /* padding:1px; */
-          /*   border-left: 1px solid black;
+            /*   border-left: 1px solid black;
             border-top: 1px solid black;
             border-right: 1px solid black; */
-             /* border: 1px solid black;  */
-            
+            /* border: 1px solid black;  */
+            font-size: 15px;
+
         }
 
 
@@ -259,18 +217,20 @@ float:right!important;
             border: 1px solid black !important;
         }
 
-        table#video_table.dataTable tbody tr:hover, table#subject_table.dataTable tbody tr:hover {
+        table#video_table.dataTable tbody tr:hover,
+        table#subject_table.dataTable tbody tr:hover {
             background-color: green;
         }
 
         table {
-            background-color: white!important;
+            background-color: white !important;
         }
 
-        table#video_table.dataTable tbody tr, table#subject_table.dataTable tbody tr {
+        table#video_table.dataTable tbody tr,
+        table#subject_table.dataTable tbody tr {
             background-color: white;
         }
-  
+
 
         .btn-icon {
             padding: 10px;
@@ -424,7 +384,7 @@ float:right!important;
 
 
 
-        
+
         .menu-buttons .btn {
             width: 100px;
         }
@@ -448,106 +408,202 @@ float:right!important;
             background-size: .65em auto, 100%;
 
         }
-      
+
         table td:nth-child(1) {
-max-width: 120px;
-white-space: nowrap;
-text-overflow: ellipsis;
-word-break: break-all;
-overflow: hidden;
-}
+            max-width: 120px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            overflow: hidden;
+        }
+
         table td:nth-child(4) {
-max-width: 120px;
-white-space: nowrap;
-text-overflow: ellipsis;
-word-break: break-all;
-overflow: hidden;
-}
+            max-width: 120px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            overflow: hidden;
+        }
 
-.table-container {
-    display:flex;
-}
+        .table-container {
+            display: flex;
+            margin-bottom: 40px;
+            margin-top: 22px;
+        }
 
- .video_menu {
-            width:70%;
+        .video_menu {
+            width: 70%;
             padding-left: 50px;
             padding-right: 15px;
         }
 
         .subject_menu {
-            width:30%;
+            width: 30%;
             padding-left: 15px;
             padding-right: 50px;
-          
-        } 
+
+        }
 
         @media (max-width: 1000px) {
             .table-container {
-    display:flex;
-    flex-direction:column;
-}
-.video_menu {
-            width:100%;
-            margin-bottom:5px;
-            padding:0px 30px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .video_menu {
+                width: 100%;
+                margin-bottom: 5px;
+                padding: 0px 30px;
+            }
+
+            .subject_menu {
+                width: 100%;
+                margin-top: 30px;
+                padding: 0px 30px;
+                /*  border-top:1px solid black; */
+                /*  margin-top:50px; */
+            }
         }
 
-        .subject_menu {
-            width:100%;
-            margin-top:30px;
-            padding:0px 30px;
-           /*  border-top:1px solid black; */
-           /*  margin-top:50px; */
-        } 
-        }
         .dataTables_scrollHeadInner {
-width: 100% !important;
-}
-.dataTables_scrollHeadInner table {
-width: 100% !important;
-}
+            width: 100% !important;
+        }
+
+        .dataTables_scrollHeadInner table {
+            width: 100% !important;
+        }
+
         .dataTables_scrollBody::-webkit-scrollbar-track {
-/*     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
-    background-color: #F5F5F5;
-   /*  border-radius: 10px; */
-   
- 
-  /*  margin-top:-46px; */
-}
-
-.dataTables_scrollBody::-webkit-scrollbar {
-    width: 6px;
-    background-color: #F5F5F5;
-    
-}
-
-.dataTables_scrollBody::-webkit-scrollbar-thumb {
-    background-color: #777;
-  /*   border-radius: 10px; */
-}
-
- 
+            /*     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+            background-color: #F5F5F5;
+            /*  border-radius: 10px; */
 
 
-th:first-child {
-   
-  border-left: 1px solid #dddddd;
+            /*  margin-top:-46px; */
+        }
+
+        .dataTables_scrollBody::-webkit-scrollbar {
+            width: 6px;
+            background-color: #F5F5F5;
+
+        }
+
+        .dataTables_scrollBody::-webkit-scrollbar-thumb {
+            background-color: #777;
+            /*   border-radius: 10px; */
+        }
+
+
+th {
+  /*   background-color: rgb(36, 150, 62);
+    color:white; */
 }
-th:last-child {
-   
-  border-right: 1px solid #dddddd;
-}
-td:first-child {
-   
-  border-left: 1px solid black;
-}
-td:last-child {
-   
-   border-right: 1px solid #dddddd;
- }
-.page-footer {
-    margin-top:25px;
-}
+
+        th:first-child {
+
+            border-left: 1px solid #dddddd;
+        }
+
+        th:last-child {
+
+            border-right: 1px solid #dddddd;
+        }
+
+        td:first-child {
+
+            border-left: 1px solid black;
+        }
+
+        td:last-child {
+
+            border-right: 1px solid #dddddd;
+        }
+
+
+        #video_add_button {
+
+            margin-right: 10px;
+            width: 150px;
+
+        }
+
+        #subject_add_button {
+            margin-right: 10px;
+            width: 150px;
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+        }
+
+        #subject_add_button {
+            margin-right: 10px;
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+            width: 150px;
+        }
+
+        @media (max-width: 500px) {
+            #video_add_button {
+
+
+                width: 200px;
+
+            }
+
+            #subject_add_button {
+
+                width: 200px;
+            }
+        }
+
+        @media (min-width: 1000px) {
+           
+            #subject_add_button {
+
+                width: 195px;
+            }
+        }
+
+        .searchbarh {
+            visibility: hidden
+        }
+
+
+        .content {}
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            /*     border-left:1px gray solid;
+            border-right:1px gray solid;
+            border-top:1px gray solid; */
+            /*  background-color:white;
+            padding-top:6px;
+            padding-bottom:10px;
+            margin-bottom:-10px; */
+        }
+
+        /* .table-text {
+            padding-top:6px;
+            padding-bottom:8px;
+        font-weight: 800;
+        padding-left:25px;
+        
+       }
+       .searchbar {
+        margin: 0 25px;
+       }
+       .searchbutton {
+           margin-right:25px;
+       } */
+
+        .modal-footerr-image {
+            margin: 15px;
+        }
+        button .fa-plus {
+            padding-right:1px;
+            font-size:13px;
+            /* margin-top: -20px; */
+        }
     </style>
 
 
@@ -566,8 +622,10 @@ td:last-child {
             <ul class="navbar-nav ml-auto flex-sm-row pr-2">
 
 
-                <div class="nav-item left col-sm-6 "> <a href="home" class="btn btn-light">home <i class="fas fa-house-user"></i></a></div>
-                <div class="nav-item right col-sm-6"> <a href="logout" class="btn btn-light">Logout <i class="fas fa-sign-out-alt"></i></a></div>
+                <div class="nav-item left "> <a href="home" class="btn btn-light"> <i
+                            class="fas fa-house-user"></i>Home</a></div>
+                <div class="nav-item right "> <a href="logout" class="btn btn-light"> <i
+                            class="fas fa-sign-out-alt"></i>Logout</a></div>
             </ul>
         </div>
     </nav>
@@ -595,195 +653,207 @@ td:last-child {
         <button type="button" class="btn btn-secondary" id="subject_button">Subject</button>
     </div> -->
 
-    <div class="table-container pt-1">
-    <div class="video_menu" id="video_menu">
-        
-        <div class="content">
-        <button type="button" id="video_add_button" data-toggle="modal" data-backdrop="static"
-                    data-keyboard="false" data-target="#video_modal" class="btn btn-secondary">Add Video</button>
-            <table id="video_table" class="table dt-responsive nowrap  hover" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th >Lesson</th>
-                        <th >Subject</th>
-                        <th >Date</th>
-                        <th class="dipnone" >Link</th>
-                        <th>Code</th>
-                        <th ></th>
-                        <th class="table-delete" ></th>
-                    </tr>
-                </thead>
-            </table>
+    <div class="table-container">
+        <div class="video_menu" id="video_menu">
 
-            <div>
-           
+            <div class="content">
+
+                <div class="content-row">
+
+                    <button type="button" id="video_add_button" data-toggle="modal" data-backdrop="static"
+                        data-keyboard="false" data-target="#video_modal" class="btn btn-secondary searchbutton"><i
+                            class="fas fa-plus"></i> Video</button>
+                    <input type="seach" class="form-control searchbar" id="inputSearch" placeholder="Search for Title">
+                </div>
+
+
+                <table id="video_table" class="table dt-responsive nowrap  hover" style="width:100%">
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Lesson</th>
+                            <th>Subject</th>
+                            <th>Date</th>
+                            <th class="dipnone">Link</th>
+                            <th>Code</th>
+                            <th></th>
+                            <th class="table-delete"></th>
+                        </tr>
+                    </thead>
+                </table>
+
+                <div>
+
+                </div>
             </div>
-        </div>
 
 
-        <div id="video_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="video_modalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered px-3">
-                <div class="modal-content">
-                    <form method="post" id="video_form" enctype="multipart/form-data">
-                        <div class="modal-header">
-                            <!--  <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-                            <h4 class="modal-title mx-auto">Add Video</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label>Title</label>
-
-                                <input type="text" name="titles" id="titles" class="form-control" placeholder="Title"
-                                    required />
-
+            <div id="video_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="video_modalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered px-3" role="document">
+                    <div class="modal-content">
+                        <form method="post" id="video_form" enctype="multipart/form-data">
+                            <div class="modal-header">
+                                <!--  <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                                <h4 class="modal-title mx-auto">Add Video</h4>
                             </div>
-                            <!-- Subject -->
-                            <div class="form-group">
-                                <label>Subject</label>
-                                <select class="form-control subjects-select" id="subjects-select" required>
-                                    <option selected disabled value="" style="display:none; color:#81898f;">Select a
-                                        Subject</option>
-                                    <?php
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label>Title</label>
+
+                                    <input type="text" name="titles" id="titles" class="form-control"
+                                        placeholder="Title" required />
+
+                                </div>
+                                <!-- Subject -->
+                                <div class="form-group">
+                                    <label>Subject</label>
+                                    <select class="form-control subjects-select" id="subjects-select" required>
+                                        <option selected disabled value="" style="display:none; color:#81898f;">Select a
+                                            Subject</option>
+                                        <?php
                                     $query = $conn->prepare("SELECT * FROM classsubject WHERE subjectcode = :subjectcode");
                                     $result  =  $query->execute([':subjectcode' => $fetch_classcode]);
                                     if($result){
                                         if($query->rowCount() > 0){
                                             while($row = $query->fetch(PDO::FETCH_BOTH)){
                                 ?>
-                                    <option><?php echo $row['subjects'];?></option>
-                                    <?php
+                                        <option><?php echo $row['subjects'];?></option>
+                                        <?php
                                             }
                                         } else{
                                             echo "Add a Subject.";
                                         }
                                     }
                                      ?>
-                                </select>
-                                <input type="hidden" name="subjects" id="subjects" class="form-control"
-                                    placeholder="Subject" />
-
-                            </div>
-                            <div class="form-group">
-                                <label>Date</label>
-                                <div class='input-group date' id='date-picker'>
-                                    <input type="text" id="dates" name="dates" class="form-control"
-                                        placeholder="Month Date, Year" required>
-                                    <span class="input-group-append input-group-addon">
-                                        <span class="fa fa-calendar input-group-text" style="padding-top:9px;"></span>
-                                    </span>
+                                    </select>
+                                    <input type="hidden" name="subjects" id="subjects" class="form-control"
+                                        placeholder="Subject" />
 
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Link </label>
-                                <div class="label-notes">Include everything between " "</div>
-                                <input type="url" name="links" id="links" class="form-control"
-                                    placeholder="https://drive.google.com/file/d/link/preview" required />
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <div class='input-group date' id='date-picker'>
+                                        <input type="text" id="dates" name="dates" class="form-control"
+                                            placeholder="Month Date, Year" required>
+                                        <span class="input-group-append input-group-addon">
+                                            <span class="fa fa-calendar input-group-text"
+                                                style="padding-top:9px;"></span>
+                                        </span>
 
-                            </div>
-                            <input type="hidden" name="linkcode" id="linkcode" value="<?php  echo $varivari?>"
-                                class="form-control" />
-                            <div class="modal-footerr text-right">
-                                <input type="hidden" name="video_id" id="video_id" />
-                                <input type="hidden" name="video_operation" id="video_operation" />
-                                <input type="submit" name="video_action" id="video_action" class="btn btn-primary"
-                                    value="Add" />
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Link </label>
+                                
+                                    <input type="url" name="links" id="links" class="form-control"
+                                        placeholder="https://drive.google.com/file/d/link/preview" required />
 
-    <div class="subject_menu " id="subject_menu">
-        <div class="content">
-        <button type="button" id="subject_add_button" data-toggle="modal" data-backdrop="static"
-                    data-keyboard="false" data-target="#subject_modal" class="btn btn-secondary mb-2 ">Add Subject</button>
-            <table id="subject_table" class="table dt-responsive nowrap hover" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Subject</th>
-                        <th>Code</th>
-                        <th></th>
-                        <th width="0%"></th>
-                    </tr>
-                </thead>
-            </table>
-
-            <div>
-          
-            </div>
-        </div>
-
-        <div id="subject_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="subject_modalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered px-3">
-                <div class="modal-content">
-                    <form method="post" id="subject_form" enctype="multipart/form-data">
-                        <div class="modal-header">
-                            <h4 class="modal-title mx-auto">Add Subject</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label>Subject</label>
-                                <div class="label-notes">Use subject abbrevriatioons</div>
-                                <input type="text" name="subjects" id="subjects" class="form-control" />
-
-                                <input type="hidden" name="subjectcode" id="subjectcode" value="<?php  echo $varivari?>"
+                                </div>
+                                <input type="hidden" name="linkcode" id="linkcode" value="<?php  echo $varivari?>"
                                     class="form-control" />
+                                <div class="modal-footerr text-right">
+                                    <input type="hidden" name="video_id" id="video_id" />
+                                    <input type="hidden" name="video_operation" id="video_operation" />
+                                    <input type="submit" name="video_action" id="video_action" class="btn btn-primary"
+                                        value="Add" />
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
                             </div>
-                            <div class="modal-footerr text-right">
-                                <input type="hidden" name="subject_id" id="subject_id" />
-                                <input type="hidden" name="subject_operation" id="subject_operation" />
-                                <input type="submit" name="subject_action" id="subject_action" class="btn btn-primary"
-                                    value="Add" />
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="subject_menu " id="subject_menu">
+            <div class="content">
+                <div class="content-row">
+
+                    <button type="button" id="subject_add_button" data-toggle="modal" data-backdrop="static"
+                        data-keyboard="false" data-target="#subject_modal" class="btn btn-secondary my-0  ">
+                        <i class="fas fa-plus"></i> Subject</button>
+                    <input type="seach" class="form-control searchbarh" id="inputSearch" placeholder="Search for Title">
+                </div>
+
+                <table id="subject_table" class="table dt-responsive nowrap hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Subject</th>
+                            <th>Code</th>
+                            <th></th>
+                            <th width="0%"></th>
+                        </tr>
+                    </thead>
+                </table>
+
+                <div>
+
+                </div>
+            </div>
+
+            <div id="subject_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="subject_modalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered px-3">
+                    <div class="modal-content">
+                        <form method="post" id="subject_form" enctype="multipart/form-data">
+                            <div class="modal-header">
+                                <h4 class="modal-title mx-auto">Add Subject</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label>Subject</label>
+
+                                    <input type="text" name="subjects" id="subjects" class="form-control" />
+
+                                    <input type="hidden" name="subjectcode" id="subjectcode"
+                                        value="<?php  echo $varivari?>" class="form-control" />
+                                </div>
+                                <div class="modal-footerr text-right">
+                                    <input type="hidden" name="subject_id" id="subject_id" />
+                                    <input type="hidden" name="subject_operation" id="subject_operation" />
+                                    <input type="submit" name="subject_action" id="subject_action"
+                                        class="btn btn-primary" value="Add" />
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Change Code Modal -->
+  
+
     <div class="name-modal">
         <div class="modal fade" id="change_code_modal" tabindex="-1" role="dialog"
             aria-labelledby="change_code_modalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-min px-3" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
 
+                    <div class="modal-header">
                         <h5 class="modal-title mx-auto">Change Name</h5>
                     </div>
-                    <form action="admin.php" method="get">
-                        <div class="modal-body">
 
-                            <div class="form-group pt-3">
+                    <div class="modal-body  text-center">
+                        <form action="admin.php" method="get">
+                            <div class="form-group ">
                                 <input type="hidden" value="<?php  echo $fetch['id']  ?>" name="id">
                                 <input type="hidden" value="<?php  echo $varivari?>" name="varivari">
                                 <input class="form-control" type="text" name="change-name" required
                                     value="<?php  echo $fetch['classname']  ?>">
                             </div>
-                            <!--  <div class="form-group">
+                        </form>
 
-                            </div>
- -->
-
-
-                            <div class="modal-footerr text-right">
-                                <input type="submit" class="btn btn-primary" name="check-name" value="Change">
+                        <div class="modal-footerr text-right">
+<input type="submit" class="btn btn-primary" name="check-name" value="Change">
                                 <input type="button" class="btn btn-danger" data-dismiss="modal" value="Close">
-                            </div>
                         </div>
-                    </form>
-
+                    </div>
                 </div>
             </div>
         </div>
@@ -829,8 +899,7 @@ td:last-child {
                         <?php
                 } unset($_SESSION["info-image"])
                 ?>
-                        <div class="label-notes">Please use a png image less than 100kb (Image will automatically fit)
-                        </div>
+                        <!--  <div class="label-notes-in">Please use a png image less than 100kb (Image will automatically fit) -->
                         <form id="deleteForm" action="admin" method="post" enctype="multipart/form-data">
                         </form>
                         <form action="admin" method="post" enctype="multipart/form-data">
@@ -856,12 +925,13 @@ td:last-child {
 
 
 
-                            <div class="modal-footerrr modal-footerr text-right ">
+                    </div>
+                    <div class="modal-footerr modal-footerr-image text-right ">
 
 
-                                <input type="submit" form="deleteForm" class="btn btn-primary" name="remove-image"
-                                    value="Remove" onclick="return confirm('Are you sure?');">
-                                <input type="button" class="btn btn-danger" data-dismiss="modal" value="Close">
+                        <input type="submit" form="deleteForm" class="btn btn-primary" name="remove-image"
+                            value="Remove" onclick="return confirm('Are you sure?');">
+                        <input type="button" class="btn btn-danger" data-dismiss="modal" value="Close">
 
                         </form>
 
@@ -875,6 +945,8 @@ td:last-child {
     <footer class="page-footer">
         <div class="footer-text text-center py-2">
             <a href="https://github.com/Nydigorith/AraLink" target="_blank">Repository</a>
+        </div>
+    </footer>
 
             <!-- Back To Top -->
             <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
@@ -919,8 +991,8 @@ td:last-child {
                     $('#upload_image_modal').modal("show");
                 }
 
-               /*  $("#video_menu").show();
-                        $("#subject_menu").hide(); */
+                /*  $("#video_menu").show();
+                         $("#subject_menu").hide(); */
 
                 $("#subjects-select").change(function () {
                     $("#subjects").val($(this).val());
@@ -933,13 +1005,13 @@ td:last-child {
                 $(document).ready(function () {
 
                     $("#video_button").on('click', function () {
-                       /*  sessionStorage.setItem("btnActive", "video_menu");
-                        window.location.reload(); */
+                        /*  sessionStorage.setItem("btnActive", "video_menu");
+                         window.location.reload(); */
 
 
 
-                      /*   $("#video_menu").show();
-                        $("#subject_menu").hide(); */
+                        /*   $("#video_menu").show();
+                          $("#subject_menu").hide(); */
                     });
 
 
@@ -949,27 +1021,27 @@ td:last-child {
 
 
 
-                      /*   $("#video_menu").hide();
-                        $("#subject_menu").show(); */
+                        /*   $("#video_menu").hide();
+                          $("#subject_menu").show(); */
                     });
 
-                   /*  let sessionState = sessionStorage.getItem("btnActive");
+                    /*  let sessionState = sessionStorage.getItem("btnActive");
 
-                    if (sessionState !== null) {
-                        if (sessionState == "video_menu") {
-                            $("#video_menu").show();
-                            $("#subject_menu").hide();
+                     if (sessionState !== null) {
+                         if (sessionState == "video_menu") {
+                             $("#video_menu").show();
+                             $("#subject_menu").hide();
 
-                        } else {
-                            $("#video_menu").hide();
-                            $("#subject_menu").show();
+                         } else {
+                             $("#video_menu").hide();
+                             $("#subject_menu").show();
 
-                        }
-                    } else {
-                        $("#video_menu").show();
-                        $("#subject_menu").hide();
+                         }
+                     } else {
+                         $("#video_menu").show();
+                         $("#subject_menu").hide();
 
-                    } */
+                     } */
                     $('#video_add_button').click(function () {
                         $('#video_form')[0].reset();
                         $('.modal-title').text("Add Video");
@@ -977,12 +1049,13 @@ td:last-child {
                         $('#video_operation').val("Add");
                     });
                     var dataTable = $('#video_table').DataTable({
+
                         "paging": false,
                         "ordering": false,
                         "processing": false,
-                        "scrollY":"370px",
-                        "scrollX":"1000px",
-        "scrollCollapse": true,
+                        "scrollY": "368px",
+                        "scrollX": "1000px",
+                        "scrollCollapse": true,
                         "serverSide": true,
                         "responsive": true,
                         "columns": [{
@@ -1065,7 +1138,7 @@ td:last-child {
                             {
                                 "targets": [0, 2, 3, 4, 5, 6],
                                 "className": "dt-body-center",
-                        
+
                                 /* "width": "%" */
 
                             },
@@ -1076,10 +1149,13 @@ td:last-child {
                                 /* "width": "%" */
 
                             },
-                         
+
 
                         ]
 
+                    });
+                    $('#inputSearch').keyup(function () {
+                        dataTable.search($(this).val()).draw();
                     });
 
                     $(document).on('submit', '#video_form', function (event) {
@@ -1168,9 +1244,9 @@ td:last-child {
                         "serverSide": true,
                         "responsive": true,
                         "searching": false,
-                        "scrollY":"400px",
-                        "scrollX":"1000px",
-        "scrollCollapse": true,
+                        "scrollY": "368px",
+                        "scrollX": "1000px",
+                        "scrollCollapse": true,
                         "order": [],
                         "info": false,
                         "ajax": {
@@ -1202,7 +1278,7 @@ td:last-child {
 
 
                             },
-                           
+
                             {
                                 "targets": [1],
                                 "className": "text-left pl-3",
