@@ -40,7 +40,7 @@
         <div class="container">
             <div class="row p-4 justify-content-center">
                 <div class="form">
-                    <form action="signup" method="POST" onsubmit="hidebutton()">
+                    <form action="register" method="POST" onsubmit="hidebutton()">
                         <div class="text-center mb-3"><a href="index"><img src="img/src-logo.png" width="190px"
                                     height="50px"></a></div>
                         <!--  <h2 class="text-center">Signup Form</h2> -->
@@ -77,7 +77,7 @@
                         <div class="form-group">
                             <input class="form-control" type="email" name="email" id="email"
                                 onchange="this.setAttribute('value', this.value);" value="<?php echo $email ?>"
-                                data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Only use gmail account"  required>
+                                data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Only use gmail account"  required>
                             <label>Email Address</label>
                         </div>
 
@@ -86,7 +86,7 @@
 
                             <input class="form-control" type="password" name="password" id="password"
                                 onchange="this.setAttribute('value', this.value);" value=""
-                                data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Combnation of Letters and number 8-20 cahracter"required>
+                                data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Combnation of Letters and number 8-20 cahracter"required>
                             <label>Password</label>
                             <div class="input-group-append">
                                 <span class="far fa-eye-slash input-group-text" id="togglePassword"></span>

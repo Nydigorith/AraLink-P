@@ -604,6 +604,10 @@ th {
             font-size:13px;
             /* margin-top: -20px; */
         }
+        .alert {
+            margin-bottom:29px;
+           
+        }
     </style>
 
 
@@ -883,7 +887,7 @@ th {
                         <?php
                 if(count($errors) > 0){
                 ?>
-                        <div class="alert alert-danger text-center">
+                        <div class="alert alert-danger text-center ">
                             <style type="text/css">
                                 .alert-success {
                                     display: none;
@@ -916,10 +920,10 @@ th {
                             </div>
 
                             <div class="in-image">
-                                <input type="button" class=" browse btn btn-secondary mx-1" value="Browse"
-                                    onclick="document.getElementById('image').click();" />
+                                <input type="button" class=" browse btn btn-secondary mx-1" id="browse"value="Browse"
+                                    onclick="document.getElementById('image').click();" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Only use gmail account" />
                                 <button type="submit" class="btn btn-primary btn-icon mr-2" name="upload-image" id="btn"
-                                    value="Upload"> <i class="fas fa-upload"></i> </button>
+                                    value="Upload"   > <i class="fas fa-upload"></i> </button>
 
                             </div>
 
@@ -1003,7 +1007,7 @@ th {
 
 
                 $(document).ready(function () {
-
+                    $('#browse').popover();
                     $("#video_button").on('click', function () {
                         /*  sessionStorage.setItem("btnActive", "video_menu");
                          window.location.reload(); */
