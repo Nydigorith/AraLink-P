@@ -505,6 +505,11 @@ margin-bottom:0!important;
             z-index:99;
 
         }
+        .dataTables_scrollBody {
+            border-top: 0px solid   var(--tableBorder)!important;
+            border-bottom: 1px solid   var(--tableBorder)!important;
+
+        }
 
         .dataTables_scrollBody::-webkit-scrollbar-thumb {
             background-color: rgb(136, 143, 149);
@@ -517,9 +522,16 @@ td {
     border-top: 1px solid   var(--tableBorder);
     border-bottom: 1px solid   var(--tableBorder);
 }
-th {
+
+th{
     border-top: 1px solid   var(--tableBorder)!important;
+    border-bottom: 0px solid   var(--tableBorder)!important;
     background-color:rgb(244, 244, 244);
+}
+th, td {
+  
+    border-bottom: 0px solid   var(--tableBorder)!important;
+   
 }
 
         th:first-child {
@@ -633,6 +645,25 @@ th {
             margin-bottom:29px;
            
         }
+        .form-group {
+        margin:10px 0;           
+        }
+        label {
+            padding:0;
+            margin:2;
+        }
+       
+       #subject_modal .modal-body {
+            margin-bottom:0px!important;
+            padding-top:0px!important;
+            padding-bottom:0px!important;
+        }
+       #video_modal .modal-body {
+            margin-bottom:0px!important;
+            padding-top:0px!important;
+            padding-bottom:0px!important;
+        }
+      
     </style>
 
 
@@ -696,7 +727,7 @@ th {
                 </div>
 
 
-                <table id="video_table" class="table dt-responsive nowrap  hover" style="width:100%">
+                <table id="video_table" class="table dt-responsive nowrap row-border hover" style="width:100%">
                     <thead>
 
                         <tr>
@@ -732,7 +763,7 @@ th {
                                     <label>Title</label>
 
                                     <input type="text" name="titles" id="titles" class="form-control"
-                                        placeholder="Title" required />
+                                        placeholder="Title" autocomplete="off" required />
 
                                 </div>
                                 <!-- Subject -->
@@ -765,7 +796,7 @@ th {
                                     <label>Date</label>
                                     <div class='input-group date' id='date-picker'>
                                         <input type="text" id="dates" name="dates" class="form-control"
-                                            placeholder="Month Date, Year" required>
+                                            placeholder="Month Date, Year" autocomplete="off" required>
                                         <span class="input-group-append input-group-addon">
                                             <span class="fa fa-calendar input-group-text"
                                                 style="padding-top:9px;"></span>
@@ -773,11 +804,11 @@ th {
 
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group pb-1">
                                     <label>Link </label>
                                 
                                     <input type="url" name="links" id="links" class="form-control"
-                                        placeholder="https://drive.google.com/file/d/link/preview" required />
+                                        placeholder="https://drive.google.com/file/d/link/preview" autocomplete="off" required />
 
                                 </div>
                                 <input type="hidden" name="linkcode" id="linkcode" value="<?php  echo $varivari?>"
@@ -806,7 +837,7 @@ th {
                     <input type="seach" class="form-control searchbarh" id="inputSearch" placeholder="Search for Lesson">
                 </div>
 
-                <table id="subject_table" class="table dt-responsive nowrap hover" style="width:100%">
+                <table id="subject_table" class="table dt-responsive nowrap row-border hover" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -832,10 +863,10 @@ th {
                                 <h4 class="modal-title mx-auto">Add Subject</h4>
                             </div>
                             <div class="modal-body">
-                                <div class="form-group">
+                                <div class="form-group pb-1">
                                     <label>Subject</label>
 
-                                    <input type="text" name="subjects" id="subjects" class="form-control" />
+                                    <input type="text" name="subjects" id="subjects" class="form-control" autocomplete="off" />
 
                                     <input type="hidden" name="subjectcode" id="subjectcode"
                                         value="<?php  echo $varivari?>" class="form-control" />
@@ -870,7 +901,7 @@ th {
 
                     <div class="modal-body  text-center">
                         <form action="admin.php" method="get">
-                            <div class="form-group ">
+                            <div class="form-group p-0 m-0">
                                 <input type="hidden" value="<?php  echo $fetch['id']  ?>" name="id">
                                 <input type="hidden" value="<?php  echo $varivari?>" name="varivari">
                                 <input class="form-control" type="text" name="change-name" required
@@ -898,7 +929,7 @@ th {
 
                         <h5 class="modal-title mx-auto">Select Image File</h5>
                     </div>
-                    <div class="modal-body  ">
+                    <div class="modal-body ">
 
                         <?php 
                 if(isset($_SESSION['info-image'])){
@@ -955,7 +986,7 @@ th {
 
 
                     </div>
-                    <div class="modal-footerr modal-footerr-image text-right ">
+                    <div class="modal-footerr  modal-footerr-image text-right ">
 
 
                         <input type="submit" form="deleteForm" class="btn btn-primaryy" name="remove-image"
@@ -972,7 +1003,7 @@ th {
     </div>
 
     <footer class="page-footer">
-        <div class="footer-text text-center py-1">
+        <div class="footer-text text-center py-2">
             <a href="https://github.com/Nydigorith/AraLink" target="_blank">Repository</a>
         </div>
     </footer>
@@ -1082,7 +1113,7 @@ th {
                         "paging": false,
                         "ordering": false,
                         "processing": false,
-                        "scrollY": "378px",
+                        "scrollY": "366px",
                         "scrollX": "1000px",
                         "scrollCollapse": true,
                         "serverSide": true,

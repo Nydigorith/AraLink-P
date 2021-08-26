@@ -1,3 +1,9 @@
+<?php 
+
+$errors = array();
+require_once 'php/php-controller.php';
+unset($_SESSION['selected']);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,12 +12,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="description" content="">
 
     <title>AraLink</title>
     <link rel="icon" href="img/logo.png">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
@@ -33,12 +42,10 @@
         overflow: hidden;
     }
 
-
-
-
+  
 
     .jumbotron {
-     
+      
         color: white;
         height: 102%;
         padding-top: 10px;
@@ -57,51 +64,74 @@
     .jumbotron .container {
         position: relative;
         z-index: 999;
+        margin-top:-40px;
        
     }
+    .description {
+        font-size:18px;
+        width:550px;
+    margin:30px auto auto auto;
+    }
 
-   
+@media (max-width:580px) {
+    .description {
+        font-size:18px;
+        width:100%;
+    margin:auto;
+    }
+
+    
+}
+    .jumbotron-heading {
+     margin-top:60px;
+        font-size:150px;
+        font-weight:700;
+        margin-bottom:-35px!important;
+      
+    }
+    .jumbotron-subheading {
+        
+        font-size:37px;
+        font-weight:600;
+    }
+  
     .jumbotron .container .btn {
         width: 200px;
         background: none;
-        transition: 0.3s;
-        border: 2px solid white;
+        transition: 0.2s;
+        border: 2px solid white!important;
         color: white;
+        margin-top:13px;
+        font-weight:500;
+     
     }
 
     .jumbotron .container .btn:hover {
-        background-color: rgb(85, 168, 116);
-        border: 2px solid rgb(85, 168, 116);
-        color: rgb(27, 27, 19);
-    }
+        background-color: white;
+        color:rgb(31, 155, 95);
+        border: 2px solid white;
+        font-weight:500;
+        
 
-    /* Particles */
-    #particles-js {
-        position: relative;
-        z-index: 2;
-        background-color: #4398FF;
+       
     }
+    ::-webkit-input-placeholder {
+   text-align: center;
+ 
+}
+input {
+    text-align: center; 
+ 
+}
+.btn-primaryy {
+    margin-top:10px!important;
+}
 
-    canvas.particles-js-canvas-el {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        width: 100%;
-        height: 100%;
-    }
+ 
   
     
   
-    .modal-title  {
-   
-    
-}
-@media (min-width: 580px) {
-    .modal .modal-dialog {
-  max-width: 350px !important;
-}
-}
+
     
 </style>
 
@@ -117,7 +147,7 @@
         </button>
         <div class="collapse navbar-collapse " id="navigation_bar">
             <ul class="navbar-nav ml-auto flex-sm-row pr-2">
-                <div class="nav-item left col-sm-6 "> <a href="login" class="btn btn-light">Login</a></div>
+                <div class="nav-item left  "> <a href="login" class="btn btn-light"> <i class="fas fa-sign-in-alt"></i>Login</a></div>
                 <div class="nav-item right "> <a href="register" class="btn btn-light"> <i class="fas fa-user-plus"></i>Register</a></div>
             </ul>
         </div>
@@ -125,22 +155,27 @@
 
 
 
-    <div class="jumbotron d-flex align-items-center">
+    <div class="jumbotron d-flex align-items-center particles">
         <div class="container text-center">
-            
-            <h1 class="error404 m-0 p-0">404</h1>
-  <h3 class="m-0 p-0">Page Not Found</a></h3> 
-  <h5  class="m-0 p-0">We're sorry, the page you requested could not be found. Please <br> go back to the homepage or contact us at aralink.xyz@gmail.com</h5> 
-  
+            <h1 class="jumbotron-heading ">404</h1>
+            <h1 class="jumbotron-subheading ">Page Not Found</h1>
+            <div class="description">We're sorry, the page you requested could not be found. Please  go back to the homepage.</div>
+          <a class="btn btn-primaryy" href="index">Go Back</a>
+       
         </div>
     </div>
 
-  
+
 
     
 
     <!-- Loading -->
     <script src="js/pace.js"></script>
+    <!-- Particle -->
+    <script src="js/particles.js"></script>
+    <script src="js/app.js"></script>
+
+
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

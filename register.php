@@ -64,7 +64,7 @@
                         <div class="form-group">
                             <input class="form-control" type="classname" name="classname"
                                 onchange="this.setAttribute('value', this.value);" value="<?php echo $classname?>"
-                                required>
+                                autocomplete="new-password" required>
                             <label>Class Name</label>
                         </div>
                         <div class="form-group">

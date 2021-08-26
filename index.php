@@ -12,7 +12,7 @@ unset($_SESSION['selected']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="testing">
 
     <title>AraLink</title>
     <link rel="icon" href="img/logo.png">
@@ -106,7 +106,7 @@ unset($_SESSION['selected']);
         width: 200px;
         background: none;
         transition: 0.2s;
-        border: 2px solid white;
+        border: 2px solid white!important;
         color: white;
         margin-top:13px;
         font-weight:500;
@@ -150,6 +150,10 @@ input {
     .modal-title  {
    
     
+}
+form {
+    margin:0!important;
+    padding:0!important;
 }
 
 
