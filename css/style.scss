@@ -483,7 +483,7 @@ footer {
 
 /* --------------------------- etc  --------------------------- */
 ::selection {
-    color: #fff;
+    color: $nButtonColor;
     background: $mainColor;
 }
 
@@ -491,16 +491,17 @@ footer {
     border-radius: 5px;
 }
 
-input {
+input, button {
     border-radius: 10px;
-
-}
-
-button {
-    &:focus {
+    @include removeShadowOutline ();
+    &:focus, &:active {
         @include removeShadowOutline ();
 
     }
+}
+input:not([type="submit"]) {
+    border: solid 1px $inputMain!important;
+
 }
 
 select {
@@ -727,7 +728,7 @@ background-color: rgba(0, 0, 0, .4);
 
 
                 input {
-                    border: solid 1px $inputMain;
+                   
                     &:not([type="submit"]) {
                         margin-bottom: -10px;
                         /* padding:0px; */
@@ -741,20 +742,20 @@ background-color: rgba(0, 0, 0, .4);
                         bottom: 41px;
                         font-size: 12px;
                           color: $inputOutline;
-                          padding-bottom:1px;
+                          padding-bottom:1.5px;
                     }
 
                     &:focus~label {
                         color: $inputOutline;
                         bottom: 41px;
                         font-size: 12px;
-                        padding-bottom:1px;
+                        padding-bottom:1.5px;
                     }
 
                     &:valid~label {
                         bottom: 41px;
                         font-size: 14px;
-                        padding-bottom:1px;
+                        padding-bottom:1.5px;
                     }
 
                     /* &:valid~.label-notes,

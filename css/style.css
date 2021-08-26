@@ -432,11 +432,11 @@ footer .footer-text a:hover {
 
 /* --------------------------- etc  --------------------------- */
 ::-moz-selection {
-  color: #fff;
+  color: white;
   background: #1f9b5f;
 }
 ::selection {
-  color: #fff;
+  color: white;
   background: #1f9b5f;
 }
 
@@ -444,14 +444,21 @@ footer .footer-text a:hover {
   border-radius: 5px;
 }
 
-input {
+input, button {
   border-radius: 10px;
-}
-
-button:focus {
   outline: none !important;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
+}
+
+input:focus, input:active, button:focus, button:active {
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+input:not([type="submit"]) {
+  border: solid 1px #c4c4c4 !important;
 }
 
 select:focus {
@@ -715,7 +722,6 @@ input:not([type="submit"]):focus {
 }
 
 .account .container .form .form-group input {
-  border: solid 1px #c4c4c4;
   /* &:valid~.label-notes,
                 &:focus~.label-notes
                 {
@@ -736,20 +742,20 @@ input:not([type="submit"]):focus {
   bottom: 41px;
   font-size: 12px;
   color: #1f9b5f;
-  padding-bottom: 1px;
+  padding-bottom: 1.5px;
 }
 
 .account .container .form .form-group input:focus ~ label {
   color: #1f9b5f;
   bottom: 41px;
   font-size: 12px;
-  padding-bottom: 1px;
+  padding-bottom: 1.5px;
 }
 
 .account .container .form .form-group input:valid ~ label {
   bottom: 41px;
   font-size: 14px;
-  padding-bottom: 1px;
+  padding-bottom: 1.5px;
 }
 
 .account .container .form .form-group > label {

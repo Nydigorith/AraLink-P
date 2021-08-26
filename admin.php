@@ -84,6 +84,11 @@ if (!empty($fetch['images'])) {
 
 
     <style>
+        :root {
+  --tableBorder: rgb(196, 196, 196);
+
+
+}
         html,
         body {
             width: 100%;
@@ -92,6 +97,8 @@ if (!empty($fetch['images'])) {
             padding: 0px;
             display: flex;
             flex-direction: column;
+          
+    color: rgb(46, 50, 51);
 
 
         }
@@ -213,13 +220,13 @@ if (!empty($fetch['images'])) {
 
 
 
-        div.dataTables_filter input {
+      /*   div.dataTables_filter input {
             border: 1px solid black !important;
-        }
+        } */
 
         table#video_table.dataTable tbody tr:hover,
         table#subject_table.dataTable tbody tr:hover {
-            background-color: green;
+            background-color: rgb(244, 244, 244);
         }
 
         table {
@@ -296,7 +303,8 @@ if (!empty($fetch['images'])) {
             position: relative;
             margin: auto;
             margin-top: -12px;
-            border: 2px gray solid;
+            border: 1px rgb(214, 220, 224) solid;
+        
 
         }
 
@@ -427,20 +435,26 @@ if (!empty($fetch['images'])) {
 
         .table-container {
             display: flex;
-            margin-bottom: 40px;
-            margin-top: 22px;
+        /*     margin-bottom: 40px;
+            margin-top: 22px; */
+margin-top:-16px!important;
+margin-bottom:0!important;
+            margin:22px 15px 40px 15px;
+            background-color:white;
+            padding:15px 0;
+            border-radius:10px;
         }
 
         .video_menu {
             width: 70%;
-            padding-left: 50px;
-            padding-right: 15px;
+            padding-left: 15px;
+            padding-right: 5px;
         }
 
         .subject_menu {
             width: 30%;
-            padding-left: 15px;
-            padding-right: 50px;
+            padding-left: 5px;
+            padding-right: 15px;
 
         }
 
@@ -453,13 +467,13 @@ if (!empty($fetch['images'])) {
             .video_menu {
                 width: 100%;
                 margin-bottom: 5px;
-                padding: 0px 30px;
+                padding: 0px 15px;
             }
 
             .subject_menu {
                 width: 100%;
                 margin-top: 30px;
-                padding: 0px 30px;
+                padding: 0px 15px;
                 /*  border-top:1px solid black; */
                 /*  margin-top:50px; */
             }
@@ -467,56 +481,65 @@ if (!empty($fetch['images'])) {
 
         .dataTables_scrollHeadInner {
             width: 100% !important;
+            z-index:99;
         }
 
         .dataTables_scrollHeadInner table {
             width: 100% !important;
+            z-index:99;
         }
 
         .dataTables_scrollBody::-webkit-scrollbar-track {
             /*     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
-            background-color: #F5F5F5;
+            background-color: rgb(244, 244, 244);
             /*  border-radius: 10px; */
-
+            z-index:99;
 
             /*  margin-top:-46px; */
         }
 
         .dataTables_scrollBody::-webkit-scrollbar {
-            width: 6px;
-            background-color: #F5F5F5;
+            width: 7px;
+       
+            background-color: rgb(244, 244, 244);
+            z-index:99;
 
         }
 
         .dataTables_scrollBody::-webkit-scrollbar-thumb {
-            background-color: #777;
+            background-color: rgb(136, 143, 149);
             /*   border-radius: 10px; */
         }
 
 
+
+td {
+    border-top: 1px solid   var(--tableBorder);
+    border-bottom: 1px solid   var(--tableBorder);
+}
 th {
-  /*   background-color: rgb(36, 150, 62);
-    color:white; */
+    border-top: 1px solid   var(--tableBorder)!important;
+    background-color:rgb(244, 244, 244);
 }
 
         th:first-child {
-
-            border-left: 1px solid #dddddd;
+            
+            border-left: 1px solid   var(--tableBorder);
         }
 
         th:last-child {
 
-            border-right: 1px solid #dddddd;
+            border-right: 1px solid   var(--tableBorder);
         }
 
         td:first-child {
 
-            border-left: 1px solid black;
+            border-left: 1px solid   var(--tableBorder);
         }
 
         td:last-child {
 
-            border-right: 1px solid #dddddd;
+            border-right: 1px solid   var(--tableBorder);
         }
 
 
@@ -524,6 +547,7 @@ th {
 
             margin-right: 10px;
             width: 150px;
+            font-weight:500;
 
         }
 
@@ -532,6 +556,7 @@ th {
             width: 150px;
             margin-bottom: 5px;
             padding-bottom: 5px;
+            font-weight:500;
         }
 
         #subject_add_button {
@@ -665,7 +690,7 @@ th {
                 <div class="content-row">
 
                     <button type="button" id="video_add_button" data-toggle="modal" data-backdrop="static"
-                        data-keyboard="false" data-target="#video_modal" class="btn btn-secondary searchbutton"><i
+                        data-keyboard="false" data-target="#video_modal" class="btn btn-primaryy searchbutton"><i
                             class="fas fa-plus"></i> Video</button>
                     <input type="seach" class="form-control searchbar" id="inputSearch" placeholder="Search for Title">
                 </div>
@@ -676,13 +701,13 @@ th {
 
                         <tr>
                             <th>ID</th>
-                            <th>Lesson</th>
-                            <th>Subject</th>
+                            <th width="40%">Lesson</th>
+                            <th width="10%">Subject</th>
                             <th>Date</th>
                             <th class="dipnone">Link</th>
                             <th>Code</th>
-                            <th></th>
-                            <th class="table-delete"></th>
+                            <th width="0"></th>
+                            <th class="table-delete" width="0"></th>
                         </tr>
                     </thead>
                 </table>
@@ -760,9 +785,9 @@ th {
                                 <div class="modal-footerr text-right">
                                     <input type="hidden" name="video_id" id="video_id" />
                                     <input type="hidden" name="video_operation" id="video_operation" />
-                                    <input type="submit" name="video_action" id="video_action" class="btn btn-primary"
+                                    <input type="submit" name="video_action" id="video_action" class="btn btn-primaryy"
                                         value="Add" />
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-dangerr" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </form>
@@ -776,9 +801,9 @@ th {
                 <div class="content-row">
 
                     <button type="button" id="subject_add_button" data-toggle="modal" data-backdrop="static"
-                        data-keyboard="false" data-target="#subject_modal" class="btn btn-secondary my-0  ">
+                        data-keyboard="false" data-target="#subject_modal" class="btn btn-primaryy my-0  ">
                         <i class="fas fa-plus"></i> Subject</button>
-                    <input type="seach" class="form-control searchbarh" id="inputSearch" placeholder="Search for Title">
+                    <input type="seach" class="form-control searchbarh" id="inputSearch" placeholder="Search for Lesson">
                 </div>
 
                 <table id="subject_table" class="table dt-responsive nowrap hover" style="width:100%">
@@ -819,8 +844,8 @@ th {
                                     <input type="hidden" name="subject_id" id="subject_id" />
                                     <input type="hidden" name="subject_operation" id="subject_operation" />
                                     <input type="submit" name="subject_action" id="subject_action"
-                                        class="btn btn-primary" value="Add" />
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        class="btn btn-primaryy" value="Add" />
+                                    <button type="button" class="btn btn-dangerr" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </form>
@@ -854,8 +879,8 @@ th {
                         </form>
 
                         <div class="modal-footerr text-right">
-<input type="submit" class="btn btn-primary" name="check-name" value="Change">
-                                <input type="button" class="btn btn-danger" data-dismiss="modal" value="Close">
+<input type="submit" class="btn btn-primaryy" name="check-name" value="Change">
+                                <input type="button" class="btn btn-dangerr" data-dismiss="modal" value="Close">
                         </div>
                     </div>
                 </div>
@@ -920,9 +945,9 @@ th {
                             </div>
 
                             <div class="in-image">
-                                <input type="button" class=" browse btn btn-secondary mx-1" id="browse"value="Browse"
+                                <input type="button" class=" browse btn btn-primaryy mx-1" id="browse"value="Browse"
                                     onclick="document.getElementById('image').click();" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Only use gmail account" />
-                                <button type="submit" class="btn btn-primary btn-icon mr-2" name="upload-image" id="btn"
+                                <button type="submit" class="btn btn-primaryy btn-icon mr-2" name="upload-image" id="btn"
                                     value="Upload"   > <i class="fas fa-upload"></i> </button>
 
                             </div>
@@ -933,9 +958,9 @@ th {
                     <div class="modal-footerr modal-footerr-image text-right ">
 
 
-                        <input type="submit" form="deleteForm" class="btn btn-primary" name="remove-image"
+                        <input type="submit" form="deleteForm" class="btn btn-primaryy" name="remove-image"
                             value="Remove" onclick="return confirm('Are you sure?');">
-                        <input type="button" class="btn btn-danger" data-dismiss="modal" value="Close">
+                        <input type="button" class="btn btn-dangerr" data-dismiss="modal" value="Close">
 
                         </form>
 
@@ -947,14 +972,14 @@ th {
     </div>
 
     <footer class="page-footer">
-        <div class="footer-text text-center py-2">
+        <div class="footer-text text-center py-1">
             <a href="https://github.com/Nydigorith/AraLink" target="_blank">Repository</a>
         </div>
     </footer>
 
             <!-- Back To Top -->
-            <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
-                    class="fas fa-chevron-up pt-2"></i></a>
+        <!--     <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
+                    class="fas fa-chevron-up pt-2"></i></a> -->
 
             <!-- Loading -->
             <script src="js/pace.js"></script>
@@ -1057,7 +1082,7 @@ th {
                         "paging": false,
                         "ordering": false,
                         "processing": false,
-                        "scrollY": "368px",
+                        "scrollY": "378px",
                         "scrollX": "1000px",
                         "scrollCollapse": true,
                         "serverSide": true,
@@ -1214,7 +1239,7 @@ th {
 
                     $(document).on('click', '.delete', function () {
                         var video_id = $(this).attr("id");
-                        if (confirm("Are you sure you want to delete this user?")) {
+                        if (confirm("Are you sure you want to delete?")) {
                             $.ajax({
                                 url: "input-controller.php",
                                 method: "POST",
@@ -1248,7 +1273,7 @@ th {
                         "serverSide": true,
                         "responsive": true,
                         "searching": false,
-                        "scrollY": "368px",
+                        "scrollY": "378px",
                         "scrollX": "1000px",
                         "scrollCollapse": true,
                         "order": [],
@@ -1315,7 +1340,7 @@ th {
 
                     $(document).on('click', '.deletee', function () {
                         var subject_id = $(this).attr("id");
-                        if (confirm("Are you sure you want to delete this user?")) {
+                        if (confirm("Are you sure you want to delete?")) {
                             $.ajax({
                                 url: "input-controller.php",
                                 method: "POST",
