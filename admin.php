@@ -698,20 +698,21 @@ if (!empty($fetch['images'])) {
                     <div class="modal-header">
                         <h5 class="modal-title mx-auto">Change Name</h5>
                     </div>
-                    <div class="modal-body  text-center">
-                        <form action="admin.php" method="get">
+                    <form action="admin.php" method="get" class="m-0 p-0">
+                        <div class="modal-body text-center">
                             <div class="form-group p-0 m-0">
                                 <input type="hidden" value="<?php  echo $fetch['id']  ?>" name="id">
                                 <input type="hidden" value="<?php  echo $varivari?>" name="varivari">
                                 <input class="form-control" type="text" name="change-name" required
                                     value="<?php  echo $fetch['classname']  ?>">
                             </div>
-                        </form>
-                        <div class="modal-footerr text-right">
-                            <input type="submit" class="btn btn-primaryy" name="check-name" value="Change">
-                            <input type="button" class="btn btn-dangerr" data-dismiss="modal" value="Close">
+                            <div class="modal-footerr text-right pt-3">
+                                <input type="submit" class="btn btn-primaryy" name="check-name" value="Change">
+                                <input type="button" class="btn btn-dangerr" data-dismiss="modal" value="Close">
+                            </div>
                         </div>
-                    </div>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -768,21 +769,22 @@ if (!empty($fetch['images'])) {
                             <div class="in-image">
                                 <input type="button" class=" browse btn btn-primaryy mx-1" id="browse" value="Browse"
                                     onclick="document.getElementById('image').click();" data-toggle="popover"
-                                    data-trigger="hover" data-placement="top" data-content="Only use gmail account" />
+                                    data-trigger="hover" data-placement="top"
+                                    data-content="Select a PNG image file type" />
                                 <button type="submit" class="btn btn-primaryy btn-icon mr-2" name="upload-image"
                                     id="btn" value="Upload"> <i class="fas fa-upload"></i> </button>
                             </div>
-                        </div>
-                        <div class="modal-footerr  modal-footerr-image text-right ">
-                            <input type="submit" form="deleteForm" class="btn btn-primaryy" name="remove-image"
-                                value="Remove" onclick="return confirm('Are you sure?');">
-                            <input type="button" class="btn btn-dangerr" data-dismiss="modal" value="Close">
-                            </form>
-                        </div>
+                    </div>
+                    <div class="modal-footerr  modal-footerr-image text-right ">
+                        <input type="submit" form="deleteForm" class="btn btn-primaryy" name="remove-image"
+                            value="Remove" onclick="return confirm('Are you sure?');">
+                        <input type="button" class="btn btn-dangerr" data-dismiss="modal" value="Close">
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <footer class="page-footer">
@@ -818,7 +820,7 @@ if (!empty($fetch['images'])) {
     <script>
         $(document).ready(function () {
             $('#browse').popover();
-     
+
             /* Pass Selector Value */
             $("#subjects-select").change(function () {
                 $("#subjects").val($(this).val());
@@ -1106,7 +1108,7 @@ if (!empty($fetch['images'])) {
         window.addEventListener("beforeunload", function (e) {
             sessionStorage.setItem('scrollpos', window.scrollY);
         });
-
     </script>
 </body>
+
 </html>
