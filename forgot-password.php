@@ -1,4 +1,6 @@
-<?php require_once 'php/php-controller.php'; ?>
+<?php 
+require 'php/php-controller.php'; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,66 +13,71 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-
     <!-- Icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    
 
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
 
-
     <!-- Loading -->
     <link rel="stylesheet" href="css/pace-theme-minimal.css">
     <style>
-        html,body{
-    background-color: rgb(15,165,100);
-}
+        html,
+        body {
+            background-color: rgb(15, 165, 100);
+        }
     </style>
 </head>
+
 <body>
-<div class="account">
-    <div class="container">
-        <div class="row p-4 justify-content-center">
-            <div class="form">
-                <form action="forgot-password" method="POST" autocomplete="" onsubmit="hidebutton()">
-                <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px" height="50px"></a></div>
-                    <!-- <h2 class="text-center">Forgot Password</h2> -->
-                    <p class="text-center">Enter your email address to reset your passwork</p>
-                    <?php
+    <div class="account">
+        <div class="container">
+            <div class="row p-4 justify-content-center">
+                <div class="form">
+                    <form action="forgot-password" method="POST" autocomplete="" onsubmit="hidebutton()">
+                        <div class="text-center"><a href="index"><img src="img/src-logo.png" width="190px"
+                                    height="50px"></a></div>
+                        <!-- <h2 class="text-center">Forgot Password</h2> -->
+                        <p class="text-center">Enter your email address to reset your passwork</p>
+                        <?php
                         if(count($errors) > 0){
                             ?>
-                            <div class="alert alert-danger text-center">
-                                <?php 
+                        <div class="alert alert-danger text-center">
+                            <?php 
                                     foreach($errors as $error){
                                         echo $error;
                                     }
                                 ?>
-                            </div>
-                            <?php
+                        </div>
+                        <?php
                         }
                     ?>
-                    <div class="form-group">
-                        <input class="form-control" type="email" name="email" onchange="this.setAttribute('value', this.value);"  value="<?php echo $email ?>" required>
-                        <label>Email Address</label>
-                    </div>
-                    <div class="form-group mb-3">
-                        <button id="button-show" class="form-control button" type="submit" style="display:none;" disabled><i class="fas fa-spinner fa-spin"></i> </button>
-                        <input id="button-hide" class="form-control button" type="submit" name="check-email" value="Continue" >
-                       
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <input class="form-control" type="email" name="email"
+                                onchange="this.setAttribute('value', this.value);" value="<?php echo $email ?>"
+                                required>
+                            <label>Email Address</label>
+                        </div>
+                        <div class="form-group mb-3">
+                            <button id="button-show" class="form-control button" type="submit" style="display:none;"
+                                disabled><i class="fas fa-spinner fa-spin"></i> </button>
+                            <input id="button-hide" class="form-control button" type="submit" name="check-email"
+                                value="Continue">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    </div>
+
     <!-- Loading -->
     <script src="js/pace.js"></script>
+
     <script>
-        function hidebutton (){
-            document.getElementById("button-hide").style.display="none";
-            document.getElementById("button-show").style.display="block";
+        function hidebutton() {
+            document.getElementById("button-hide").style.display = "none";
+            document.getElementById("button-show").style.display = "block";
         }
 
         /* Remove Confirm Form Resubmission  */

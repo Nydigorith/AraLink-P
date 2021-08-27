@@ -1,17 +1,14 @@
 <?php 
-require_once 'php/php-controller.php';
 require "db.php";
+require 'php/php-controller.php';
 
 $email = $_SESSION['email'];
 $password = $_SESSION['password'];
 
-
-
-
 if($email != false && $password != false){
     $query = $conn->prepare("SELECT * FROM classadmin WHERE email = :email");
     $result=$query->execute([':email' => $email]);
-   if($result){
+    if($result){
        $fetch = $query->fetch(PDO::FETCH_ASSOC);
         $fetch_status = $fetch['status'];
         $fetch_code = $fetch['code'];
@@ -27,9 +24,9 @@ if($email != false && $password != false){
     header('Location: login');
 }
 
-$background = 'data:image/png;base64,'.base64_encode($fetch['images']);
+$background = 'data:image/png;base64,'.base64_encode($fetch['images']);  
 if (!empty($fetch['images'])) {
-?>
+    ?>
 <style>
     .jumbotron {
         background-image: url(<?php echo $background; ?>);
@@ -37,7 +34,7 @@ if (!empty($fetch['images'])) {
 </style>
 <?php
 } else {
-?>
+    ?>
 <style>
     .jumbotron {
         background-image: url(img/bg2.png);
@@ -46,7 +43,6 @@ if (!empty($fetch['images'])) {
 <?php
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,9 +65,11 @@ if (!empty($fetch['images'])) {
     <!-- Loading -->
     <link rel="stylesheet" href="css/pace-theme-minimal.css">
 
+    <!-- Carousel -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
         integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <style>
         html,
         body {
@@ -81,9 +79,7 @@ if (!empty($fetch['images'])) {
             padding: 0px;
             display: flex;
             flex-direction: column;
-
         }
-
 
         .copied {
             display: none;
@@ -94,13 +90,10 @@ if (!empty($fetch['images'])) {
             transform: translate(-50%, -50%);
             z-index: 700;
             padding: 10px 25px;
-
             margin-right: 1vw;
-            /* cursor: pointer; */
             border: rgb(46, 50, 51) solid 1px;
             border-radius: 50px;
             background-color: rgb(46, 50, 51);
-
             -webkit-transition: all 0.5s;
             -moz-transition: all 0.5s;
             -o-transition: all 0.5s;
@@ -116,45 +109,29 @@ if (!empty($fetch['images'])) {
             margin-top: -15px;
         }
 
-
-
         @media (min-width: 0px) {
             .videos .shrink {
                 top: 126px;
-                /* transition:.5s; */
             }
         }
 
-        /*  @media (max-width: 576px) {
-        .videos .shrink {
-            top: 176px;
-           
+        .videos {
+            margin-bottom:19px;
         }
-    } */
-    .videos {
-        margin-bottom:19px;
-    }
-    @media (max-width: 699px) {
+
+        @media (max-width: 699px) {
             .videos{
                 margin-bottom:11px;
-               
             }
         }
-   .modal-body {
-       color:rgb(46, 50, 51);
-   }
-   
-        
+
+        .modal-body {
+            color:rgb(46, 50, 51);
+        } 
     </style>
 </head>
 
 <body>
-
-
-
-
-
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-light sticky-top nav-index">
         <a href="index" class="navbar-brand pl-3"><img src="img/nav-logo.png" width="190px" height="50px"></a>
@@ -192,12 +169,10 @@ if (!empty($fetch['images'])) {
             <div class="text-center">
                 <div class="filter">
                     <form id="form1" method="POST" class="owl-carousel radio-buttons m-0">
-
                         <label class="filter-selection" value='ALL'>
                             <input class="radio-filter subject" type="radio" name="subject" value="ALL">ALL</input>
                         </label>
-                        <?php
-                           
+                        <?php 
                             $query = $conn->prepare("SELECT * FROM classsubject WHERE subjectcode = :codihe");
                             $result  =  $query->execute([':codihe' => $fetch_classcode]);
                             echo "<style>.filter-selection[value='ALL']{background-color: rgb(31, 155, 95); color:white!important; font-weight: 450;}></style>"; 
@@ -212,18 +187,13 @@ if (!empty($fetch['images'])) {
                         </label>
                         <?php
                                     }
-                                } /* else {
-                                        echo "Mr.Beast6000";
-                                    } */
+                                }
                             }
                                 ?>
-                        <!--  <input type="hidden" name="c" value="<?php echo $_POST['c']?>"> -->
-
                     </form>
                 </div>
             </div>
         </div>
-
 
         <div class=" video-show pt-5">
             <div class="row px-2">
@@ -319,24 +289,13 @@ if (!empty($fetch['images'])) {
         </div>
     </div>
 
-
-
-    <!--   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
-
     <!-- Footer -->
     <footer class="page-footer">
         <div class="footer-text text-center py-2">
             <a href="https://github.com/Nydigorith/AraLink" target="_blank">Repository</a>
         </div>
     </footer>
-    <!-- Footer -->
 
-    <!-- Back To Top -->
-    <!-- <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i
-            class="fas fa-chevron-up pt-2"></i></a> -->
-
-    <div id="response"></div>
     <!-- Copied Message -->
     <div class="copied btn btn-dark" id="copied">Copied to clipboard</div>
 
@@ -345,16 +304,12 @@ if (!empty($fetch['images'])) {
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-min px-3" role="document">
             <div class="modal-content">
-
                 <div class="modal-header">
                     <h5 class="modal-title mx-auto">Class Code</h5>
                 </div>
-
                 <div class="modal-body  text-center">
                     <h3 id="select_txt" class="class-code"><?php echo $fetch['classcode']  ?></h3>
-
                     <div class="modal-footerr text-right pt-2">
-
                         <input type="button" class="btn btn-primaryy" id="copy-code" data-dismiss="modal" value="Copy"
                             onclick="copy_data(select_txt)">
                         <input type="button" class="btn btn-dangerr" data-dismiss="modal" value="Close">
@@ -363,10 +318,6 @@ if (!empty($fetch['images'])) {
             </div>
         </div>
     </div>
-
-
-
-
 
     <!-- Loading -->
     <script src="js/pace.js"></script>
@@ -380,14 +331,12 @@ if (!empty($fetch['images'])) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
+    <!-- Carousel -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
     <script>
-        document.getElementById("toggler").addEventListener("click", function () {
-            document.getElementById("selection").classList.toggle("shrink");
-        });
-
         $(document).ready(function () {
             $('.radio-buttons input[type="radio"]').click(function () {
                 var subject = $(this).val();
@@ -403,43 +352,40 @@ if (!empty($fetch['images'])) {
                     }
                 });
             });
+
+            $('.owl-carousel').owlCarousel({
+                margin: 0,
+                loop: false,
+                autoWidth: true,
+                items: 1,
+                nav: true,
+                navText: ["<i class='fas fa-angle-left'></i>", "<i class='fas fa-angle-right'></i>"]
+            });
+
+            /* Copy */
+            $('#copy-code').click(function (e) {
+                $('#copied').fadeIn(1000);
+                $('#copied').delay(2000).fadeOut(1000);
+            });
+
+            function copy_data(containerid) {
+                var range = document.createRange();
+                range.selectNode(containerid);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand("copy");
+                window.getSelection().removeAllRanges();
+            }
         });
 
-
-        
-        $('.owl-carousel').owlCarousel({
-            margin: 0,
-
-            loop: false,
-            autoWidth: true,
-            items: 1,
-
-            nav: true,
-            navText: ["<i class='fas fa-angle-left'></i>", "<i class='fas fa-angle-right'></i>"]
+        document.getElementById("toggler").addEventListener("click", function () {
+            document.getElementById("selection").classList.toggle("shrink");
         });
 
-        /* $('.owl-carousel').off('keydown.bs.carousel'); */
-
-        /* Copy */
-        $('#copy-code').click(function (e) {
-            $('#copied').fadeIn(1000);
-            $('#copied').delay(2000).fadeOut(1000);
-        });
-
-        function copy_data(containerid) {
-            var range = document.createRange();
-            range.selectNode(containerid);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            document.execCommand("copy");
-            window.getSelection().removeAllRanges();
-        }
         /* Remove Confirm Form Resubmission  */
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
         }
-     
-
 
         /* Store Scroll Position */
         document.addEventListener("DOMContentLoaded", function (event) {
@@ -454,7 +400,5 @@ if (!empty($fetch['images'])) {
             sessionStorage.setItem('scrollpos', window.scrollY);
         });
     </script>
-
 </body>
-
 </html>

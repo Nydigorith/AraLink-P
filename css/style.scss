@@ -4,11 +4,10 @@ $nButtonColor: white;
 $mainColor:rgb(31, 155, 95);
 $nShadow: 0px 0px 10px -4px rgba(0, 0, 0, .1);
 $mainShadow: 0px 0px 10px -3px rgba(0, 0, 0, .2);
-$jumbotronColor:rgba(31, 155, 95,.6);
+$jumbotronColor:rgba(31, 155, 95, .6);
 $inputOutline: rgb(31, 155, 95);
 $outline: rgb(214, 220, 224);
 $inputMain: rgb(196, 196, 196);
-
 
 @mixin removeShadowOutline {
     outline: none !important;
@@ -23,7 +22,6 @@ html {
         -webkit-overflow-scrolling: touch;
     }
 }
-
 
 /* Navbar */
 .navbar {
@@ -44,8 +42,6 @@ html {
     .nav-item {
         .btn {
             width: 150px;
-          /*   margin: 0 13px; */
-
             background: none;
             transition: 0.2s;
             border: 2px solid $nButtonColor;
@@ -59,13 +55,15 @@ html {
                 color: $mainColor;
                 font-weight: 500;
             }
+
             i {
-                margin:auto 5px auto 0;
+                margin: auto 5px auto 0;
             }
 
-            .fa-house-user, .fa-user-edit, .fa-user-plus {
-               
-                font-size:13.7px;
+            .fa-house-user,
+            .fa-user-edit,
+            .fa-user-plus {
+                font-size: 13.7px;
             }
         }
     }
@@ -104,7 +102,6 @@ html {
 
             &:nth-of-type(2) {
                 opacity: 0;
-
             }
 
             &:nth-of-type(3) {
@@ -112,7 +109,6 @@ html {
                 transform-origin: 10% 90%;
             }
         }
-
     }
 
     .navbar-toggler.collapsed {
@@ -132,64 +128,45 @@ html {
         }
     }
 
-
     /* Desktop */
     @media (min-width:768px) {
         .navbar-nav {
-           /*  margin-right: 10px; */
-           margin: 0 16px;
-.nav-item {
-    margin: 0 7px;
-}
-           
-        }
+            margin: 0 16px;
 
+            .nav-item {
+                margin: 0 7px;
+            }
+        }
     }
 
-
     @media (max-width:768px) {
-
         .navbar-nav {
-        padding:0!important;
+            padding: 0 !important;
             display: flex;
             flex-direction: row;
             width: 100%;
-/* text-align: center; */
+
             .nav-item {
-       /*        justify-content: center; */
-               /*  padding: 0 15px !important; */
                 width: 100%;
-                /* margin-left: 1px; */
 
                 .btn {
-
                     width: 91%;
                     margin-top: 15px;
                     margin-bottom: 10px;
-
                 }
             }
 
-
             .left {
-                /* margin-right: -22px; */
                 text-align: right;
-                margin-right:1%;
+                margin-right: 1%;
             }
 
             .right {
-               /*  margin-left: -22px; */
-               text-align: left;
-               margin-left:1%;
+                text-align: left;
+                margin-left: 1%;
             }
         }
     }
-
-    /* Mobile */
-    @media (max-width:576px) {
-    }
-
-  
 
     @media (max-width:769px) and (min-width: 768px) {
         .navbar-nav {
@@ -197,7 +174,6 @@ html {
             margin-right: 13px !important;
 
             .nav-item {
-
                 .btn {
                     width: 150px !important;
                     margin: 0px 0px !important;
@@ -205,38 +181,30 @@ html {
             }
 
             .left {
-                /* margin-left: 15px!important; */
                 margin-right: 11px !important;
-
             }
-
         }
     }
 }
 
-/* Jumbotron !Index*/
+/* Jumbotron */
 .background-image {
-    background-image: $jumbotronColor!important;
-/*     z-index:99; */
+    background-image: $jumbotronColor !important;
+
     .jumbotron {
         margin-top: 61px;
         height: 350px;
         background-size: 100em auto;
         border-radius: 0px;
         box-shadow: inset 0 0 0 1000px $jumbotronColor;
-
         background-position: center center;
         background-repeat: no-repeat;
-
-
 
         .jumbotron-heading {
             font-size: 50px;
             color: rgb(46, 50, 51);
-           
-
-        
         }
+
         .fa-edit,
         .fa-share {
             font-size: 15px;
@@ -252,17 +220,15 @@ html {
 
             .jumbotron-heading {
                 font-size: 40px;
-
-                
             }
-            .fa-edit,
-                .fa-share {
-                    font-size: 10px;
-                    padding-left: .2vw;
-                    color: rgb(46, 50, 51);
-                }
-        }
 
+            .fa-edit,
+            .fa-share {
+                font-size: 10px;
+                padding-left: .2vw;
+                color: rgb(46, 50, 51);
+            }
+        }
     }
 }
 
@@ -272,12 +238,8 @@ html {
         margin-top: 8px;
     }
 
-
-
     .video-selection {
-
         background-color: $nButtonColor;
-      
         border-top: 1px $outline solid;
         border-bottom: 1px $outline solid;
         margin-top: -32.1px;
@@ -290,10 +252,6 @@ html {
             $nButtonColor-space: nowrap;
             margin: auto;
 
-            /* label {
-                margin: auto;
-            } */
-
             .owl-prev,
             .owl-next {
                 position: absolute;
@@ -302,7 +260,6 @@ html {
 
             .owl-prev {
                 left: 10.5px;
-
             }
 
             .owl-next {
@@ -352,13 +309,11 @@ html {
                 color: #6c757d;
                 border-radius: 990px;
                 text-align: center;
-                /* background-color: $nButtonColor; */
 
                 &:hover {
                     background-color: $mainColor;
-                    color:$nButtonColor;
+                    color: $nButtonColor;
                 }
-
 
                 .radio-filter {
                     opacity: 0;
@@ -367,9 +322,7 @@ html {
                 }
             }
         }
-
     }
-
 
     /* Card */
     .video-show {
@@ -377,7 +330,6 @@ html {
 
         @media (max-width: 800px) {
             padding: 0 20px;
-
         }
 
         .card {
@@ -404,13 +356,13 @@ html {
             .card-title {
                 font-size: 18px;
                 font-weight: 450;
-                color:$mainColor;
+                color: $mainColor;
             }
 
             .card-title,
             .card-subtitle {
                 margin: 0;
-                padding:0;
+                padding: 0;
             }
 
             .text-muted {
@@ -423,20 +375,17 @@ html {
                 max-width: 380px !important;
                 margin: auto;
             }
-
         }
 
         @media (max-width: 700px) {
             .card-img-top {
                 height: 180px;
             }
-
         }
-
     }
 }
 
-
+/* Footer */
 footer {
     margin-top: auto;
     padding-top: 16px;
@@ -455,31 +404,8 @@ footer {
                 color: $nButtonColor;
             }
         }
-
     }
 }
-
-/* Back to Top */
-.back-to-top {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    display: none;
-    color: rgb(27, 27, 19);
-    width: 55px;
-    height: 55px;
-    background-color: $mainColor;
-    border: 1px solid $mainColor;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    border-radius: 5px;
-
-    &:hover {
-        color: rgb(27, 27, 19)9;
-        background-color: $nButtonColor;
-        border: 1px solid rgb(27, 27, 19);
-    }
-}
-
 
 /* --------------------------- etc  --------------------------- */
 ::selection {
@@ -491,17 +417,19 @@ footer {
     border-radius: 5px;
 }
 
-input, button {
+input,
+button {
     border-radius: 10px;
     @include removeShadowOutline ();
-    &:focus, &:active {
-        @include removeShadowOutline ();
 
+    &:focus,
+    &:active {
+        @include removeShadowOutline ();
     }
 }
-input:not([type="submit"]) {
-    border: solid 1px $inputMain!important;
 
+input:not([type="submit"]) {
+    border: solid 1px $inputMain !important;
 }
 
 select {
@@ -527,107 +455,83 @@ input {
     }
 
     &[type=submit] {
-       border: 0px solid white!important;
-
-
+        border: 0px solid white !important;
     }
 
     &:not([type="submit"]):focus {
         @include removeShadowOutline ();
         border: 1px solid $inputOutline !important;
-
     }
-
 }
 
 .input-top {
     position: relative;
     bottom: 12px;
-
 }
 
 /* Keyframes */
-
 .alert-danger {
     animation-name: error-shake;
     animation-duration: .5s;
-
     animation-iteration-count: 1;
 }
 
 @keyframes error-shake {
     0% {
         transform: translateX(0px);
-
     }
 
     37% {
         transform: translateX(4px);
-
     }
 
     55% {
         transform: translateX(-4px);
-
     }
 
     73% {
         transform: translateX(3px);
-
     }
 
     82% {
         transform: translateX(-3px);
-
     }
 
     91% {
         transform: translateX(1px);
-
     }
 
     96% {
         transform: translateX(-1px);
-
     }
 
     100% {
         transform: translateX(0px);
-
     }
-
 }
-
-
 
 .enter-animation {
     animation-name: jumping-animation;
     animation-duration: .5s;
     animation-iteration-count: infinite;
-
 }
 
 /* Modal */
 .modal {
-background-color: rgba(0, 0, 0, .4);
+    background-color: rgba(0, 0, 0, .4);
+
     .modal-dialog-min {
         max-width: 300px !important;
         margin: auto;
     }
 
     .modal-content {
-        /* border-top: 8px solid $mainColor;
- */
- padding: 0%;
- margin: 0%;
+        padding: 0%;
+        margin: 0%;
     }
 
     .modal-header {
         padding: 8px 0px;
-    /*     border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px; */
         background-color: $mainColor;
         color: $nButtonColor;
     }
@@ -637,44 +541,33 @@ background-color: rgba(0, 0, 0, .4);
             width: 100px;
         }
     }
-
-
 }
 
 @keyframes jumping-animation {
     0% {
         transform: translateY(0px);
-
     }
 
     37% {
         transform: translateY(2px);
-
     }
 
     55% {
         transform: translateY(-2px);
-
     }
 
     73% {
         transform: translateY(2px);
-
     }
 
     82% {
         transform: translateY(-2px);
-
     }
 
     100% {
         transform: translateY(0px);
-
     }
-
 }
-
-
 
 /* Forms */
 .account {
@@ -694,18 +587,19 @@ background-color: rgba(0, 0, 0, .4);
                 margin: 0;
 
                 label {
-                    margin:0px;
-                    padding:0px;
-                  }
+                    margin: 0px;
+                    padding: 0px;
+                }
 
+                .far {
+                    color: $inputMain !important;
+                    transition: .2s;
 
-.far {
-    color:$inputMain!important;
-    transition: .2s;
-    &:hover {
-    
-    color: rgb(31, 155, 95)!important;
-}}
+                    &:hover {
+                        color: rgb(31, 155, 95) !important;
+                    }
+                }
+
                 .input-group {
                     label {
                         margin: 0;
@@ -717,27 +611,17 @@ background-color: rgba(0, 0, 0, .4);
                     float: right;
                     bottom: 23px;
                     right: .8px;
-
-
-
-
                 }
 
                 .input-group-text {
-
-                    /* padding: 10.06px 10.06px; */
                     border: solid 0px $nButtonColor;
                     background-color: transparent;
                     color: $inputMain;
                 }
 
-
                 input {
-                
-                    
                     &:not([type="submit"]) {
                         margin-bottom: -10px;
-                       
                     }
 
                     &:not([value=""]):not(:focus):invalid+.label-notes {
@@ -747,29 +631,19 @@ background-color: rgba(0, 0, 0, .4);
                     &:not([value=""]):not(:focus):invalid~label {
                         bottom: 41px;
                         font-size: 12px;
-                          color: $inputOutline;
-                        
+                        color: $inputOutline;
                     }
 
                     &:focus~label {
                         color: $inputOutline;
                         bottom: 41px;
                         font-size: 12px;
-                   
-                   
                     }
 
                     &:valid~label {
                         bottom: 41px;
                         font-size: 12px;
-                  
                     }
-
-                    /* &:valid~.label-notes,
-                &:focus~.label-notes
-                {
-                    display: none;
-                } */
                 }
 
                 &>label {
@@ -783,7 +657,6 @@ background-color: rgba(0, 0, 0, .4);
                     pointer-events: none;
                     color: $inputMain;
                 }
-
             }
 
             .forget-pass {
@@ -792,7 +665,6 @@ background-color: rgba(0, 0, 0, .4);
 
             .button {
                 background: $mainColor;
-                ;
                 color: #fff;
                 font-size: 17px;
                 font-weight: 500;
@@ -809,21 +681,16 @@ background-color: rgba(0, 0, 0, .4);
 
                 a {
                     color: $mainColor;
-                    ;
                 }
             }
 
-
             .reset-code {
                 margin-top: -15px;
-                /* font-size:15px; */
             }
 
             .alert {
                 word-wrap: break-word;
             }
-
-
         }
     }
 }
@@ -833,69 +700,57 @@ background-color: rgba(0, 0, 0, .4);
     margin-top: -10px;
     padding-bottom: 10px;
 }
-.label-notes-in  {
-    font-size: 11px!important;
+
+.label-notes-in {
+    font-size: 11px !important;
     margin-top: 10px;
     padding-bottom: -10px;
 }
 
 .error-text {
-
     padding: 45px 0 50px 0;
-
 }
 
 @media (max-width:768px) {
-    
     .error-text {
-
         padding: 65px 0 0px 0;
-    
     }
 }
 
 .btn-primaryy {
-    background-color:$mainColor;
+    background-color: $mainColor;
     border: solid 1px $mainColor;
     color: white;
-  
+
     &:hover {
-        background-color:$mainColor;
-    border: solid 1px $mainColor;
-    color: white;
+        background-color: $mainColor;
+        border: solid 1px $mainColor;
+        color: white;
     }
-   
-}
-.btn-dangerr {
-    background-color:rgb(220, 53, 69);
-    border: solid 1px rgb(220, 53, 69);
-    color: white;
-    &:hover {
-        background-color:rgb(220, 53, 69);
-    border: solid 1px rgb(220, 53, 69);
-    color: white;
-    }
-    
 }
 
+.btn-dangerr {
+    background-color: rgb(220, 53, 69);
+    border: solid 1px rgb(220, 53, 69);
+    color: white;
+
+    &:hover {
+        background-color: rgb(220, 53, 69);
+        border: solid 1px rgb(220, 53, 69);
+        color: white;
+    }
+}
 
 .modal-content {
-    padding:0 -15px!important;
-    margin:0 -15px!important;
+    padding: 0 -15px !important;
+    margin: 0 -15px !important;
 }
+
+/* Tooltip */
 .popover {
-    font-size:12px;
-    text-align:center;
-    border-radius:5px;
-    min-width:100px;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 5px;
+    min-width: 100px;
     max-width: 200px;
-    
 }
-
-/* .login-link {
-    margin-top:5px;
-    } */
-
-/*   .input:focus~label {
-        color: $inputOutline;
-    } */

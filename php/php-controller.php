@@ -1,13 +1,7 @@
-
 <?php 
 session_start();
+
 require "db.php";
-
-$email = "";
-$classname = "";
-$name = "";
-
-
 require 'php/PHPMailer.php';
 require 'php/SMTP.php';
 require 'php/Exception.php';
@@ -17,31 +11,22 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 $mail = new PHPMailer();
-
 $mail->SMTPDebug  = 2;  
 $mail->Port       = 587;
-
-
-
-
 $mail->isSMTP();
-
 $mail->Host = "smtp.gmail.com";
-
-
-
 $mail->SMTPAuth = true; 
 $mail->SMTPSecure = 'tls';            
 $mail->isHTML(true);
-
 $mail->Username = "aralink.xyz@gmail.com";
 $mail->Password = 'khpdauesnaeizzmv'; 
-
 $mail->setFrom('aralink.xyz@gmail.com','AraLink');
 
-
-
 $errors = array();
+
+$email = "";
+$classname = "";
+$name = "";
 
     /* Signup */
     if(isset($_POST['signup'])){
@@ -50,82 +35,60 @@ $errors = array();
         $password = $_POST['password'];
         $cpassword = $_POST['cpassword'];
         $classname = $_POST['classname'];
-
         if(preg_match("~@gmail\.com$~",$email)){
-
             $query = $conn->prepare("SELECT * FROM classadmin WHERE email = :email");
             $query->execute([':email' => $email]);
             if( $query->rowCount() > 0){
-                $errors[':email'] = "Email that you have entered is already exist!";
+                $errors[':email'] = "The email you have entered is already registered!";
             } else {
-
                 if($password !== $cpassword){
-                    $errors['password'] = "Confirm password not matched!";
+                    $errors['password'] = "The password you entered did not match!";
                 } else {
-                if(preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,20}$/', $password)) {
-
-
-                
-    
-               
-                if(count($errors) === 0){
-                $classcode =    substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,8))), 1, 8);
-                $encpass = password_hash($password, PASSWORD_BCRYPT);
-                $code = rand(999999, 111111);
-                $status = "notverified";
-
-                $query = $conn->prepare("SELECT * FROM classadmin WHERE classcode = :classcode");
-                $query->execute([':classcode' => $classcode]);
-                if( $query->rowCount() > 0){
-                    $classcode =    substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,8))), 1, 8);
-                } else {
-
-
-                
-                $query = $conn->prepare("INSERT INTO classadmin (name, email, password, code, status, classname, classcode)
-                                values(:name, :email, :password, :code, :status, :classname, :classcode)");
-                $result=$query->execute([':name' => $name, ':email' => $email, ':password' => $encpass, ':code' => $code,':status' => $status,':classname' => $classname,':classcode' => $classcode]);
-                    if($result){
-        
-
-                        $mail->addAddress($email);
-                        $mail->Subject='Email Verification Code';
-                        $mail->Body="Your verification code is <b>$code</b>";
-
-
-
-                        if($mail->send()){
-                            $info = "We've sent a verification code to your email - $email";
-                            $_SESSION['info-otp'] = $info;
-                            $_SESSION['email'] = $email;
-                            $_SESSION['password'] = $password;
-                        
-                            header('location: otp');
-                            exit();
-                        }else{
-                            $errors['otp-error'] = "Failed while sending code!";
+                    if(preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,20}$/', $password)) {
+                        if(count($errors) === 0){
+                            $classcode =    substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,8))), 1, 8);
+                            $encpass = password_hash($password, PASSWORD_BCRYPT);
+                            $code = rand(999999, 111111);
+                            $status = "notverified";
+                            $query = $conn->prepare("SELECT * FROM classadmin WHERE classcode = :classcode");
+                            $query->execute([':classcode' => $classcode]);
+                            if( $query->rowCount() > 0){
+                                $classcode =    substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,8))), 1, 8);
+                            } else {
+                                $query = $conn->prepare("INSERT INTO classadmin (name, email, password, code, status, classname, classcode)VALUES(:name, :email, :password, :code, :status, :classname, :classcode)");
+                                $result=$query->execute([':name' => $name, ':email' => $email, ':password' => $encpass, ':code' => $code,':status' => $status,':classname' => $classname,':classcode' => $classcode]);
+                                if($result){
+                                    $mail->addAddress($email);
+                                    $mail->Subject='Email Verification Code';
+                                    $mail->Body="Your verification code is <b>$code</b>";
+                                    if($mail->send()){
+                                        $info = "A verification code is sent to your email! - $email";
+                                        $_SESSION['info-otp'] = $info;
+                                        $_SESSION['email'] = $email;
+                                        $_SESSION['password'] = $password;
+                                        header('location: otp');
+                                        exit();
+                                    } else{
+                                        $errors['otp-error'] = "Failed to send verification code! Please try again later.";
+                                    }
+                                } else{
+                                    $errors['db-error'] = "Something went wrong! Please try again later.";
+                                }
+                            }
                         }
-                    }else{
-                        $errors['db-error'] = "Failed while inserting data into database!";
+                    } else{
+                        $errors['password'] = "Password does not meet the requirements!";
                     }
                 }
-                
             }
-            } else{
-                $errors['password'] = "password does not meet m inimum requoirements";
-            }
-        }
-    }
-}
-        else{
-            $errors['email'] = "bobo gmail nga e.";
+        } else{
+            $errors['email'] = "Please use a gmail account!";
         }
     }
 
 
     /* Click Verification Button */
      if(isset($_POST['check'])){
-       /*  $_SESSION['info'] = ""; */
         $otp_code = $_POST['otp'];
         if (preg_match('/^([0-9]*)$/', $otp_code)) {
             $query = $conn->prepare("SELECT * FROM classadmin WHERE code = :code");
@@ -144,13 +107,13 @@ $errors = array();
                     header('location: home');
                     exit();
                 }else{
-                    $errors['otp-error'] = "Failed while updating code!";
+                    $errors['otp-error'] = "Registration failed! Please try again later.";
                 }
             }else{
-                $errors['otp-error'] = "You've entered incorrect code!";
+                $errors['otp-error'] = "Verification code is incorrect!";
             }
         }else{
-            $errors['otp-error'] = "bobo number nga e.";
+            $errors['otp-error'] = "Verification code is incorrect!";
         }
     } 
 
@@ -172,7 +135,7 @@ $errors = array();
                         $_SESSION['password'] = $password;
                         header('location: home');
                     }else{
-                        $info = "It's look like you haven't still verify your email - $email";
+                        $info = "It looks like you haven't still verified your email! - $email";
                         $_SESSION['info-otp'] = $info;
                         header('location: otp');
                      }
@@ -180,11 +143,11 @@ $errors = array();
                      $errors['email'] = "Incorrect  password!";
                 }
             }else{
-                 $errors['email'] = "It's look like you're not yet a member! Click on the bottom link to signup.";
+                 $errors['email'] = "It looks like the email you have entered is not yet registered!";
             }
         }
         else{
-            $errors['email'] = "bobo gmail nga e.";
+            $errors['email'] = "Please use a gmail account!";
         } 
     }
 
@@ -202,24 +165,23 @@ $errors = array();
                     $mail->addAddress($femail);
                     $mail->Subject='Email Verification Code';
                     $mail->Body="Your verification code is <b>$code</b>";
-
                     if($mail->send()){
-                        $info = "We've sent a passwrod reset otp to your email - $femail";
+                        $info = "A verification code is sent to your email! - $femail";
                         $_SESSION['info-rotp'] = $info;
                         $_SESSION['femail'] = $femail;
                         header('location: reset-otp');
                         exit();
                     }else{
-                        $errors['otp-error'] = "Failed while sending code!";
+                        $errors['otp-error'] = "Failed to send verification code! Please try again later.";
                     }
                 }else{
-                    $errors['db-error'] = "Something went wrong!";
+                    $errors['db-error'] = "Something went wrong! Please try again later.";
                 }
             }else{
-                $errors['email'] = "This email address does not exist!";
+                $errors['email'] = "It looks like the email you have entered is not yet registered!";
             }
         }else{
-            $errors['email'] = "bobo gmfdssfail nga e.";
+            $errors['email'] = "Please use a gmail account!";
         }
     }
 
@@ -233,7 +195,6 @@ $errors = array();
             if($query->rowCount() > 0){
                 $fetch =  $query->fetch(PDO::FETCH_ASSOC);
                 $code = 0;
-
                 $femail = $fetch['email'];
                 $_SESSION['femail'] = $femail;
                 $info = "Please create a new password that you don't use on any other site.";
@@ -243,15 +204,14 @@ $errors = array();
                 if ($result) {
                     header('location: new-password');
                 } else {
-                    $errors['code'] = "Simethong is wrong!";
+                    $errors['code'] = "Something went wrong! Please try again later.";
                 }
-               
                 exit();
             }else{
-                $errors['otp-error'] = "You've entered incorrect code!";
+                $errors['otp-error'] = "Verification code is incorrect!";
             }
         }else{
-            $errors['otp-error'] = "bobo number nga e.";
+            $errors['otp-error'] = "Verification code is incorrect!";
         }
     }
 
@@ -262,7 +222,7 @@ $errors = array();
         $cpassword =  $_POST['cpassword'];
 
             if($password !== $cpassword){
-                $errors['password'] = "Confirm password not matched!";
+                $errors['password'] = "The password you entered did not match!";
             } else{ 
                 if(preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,20}$/', $password)) {
             /* $code = 0; */
@@ -272,14 +232,14 @@ $errors = array();
             $result=$query->execute([':password' => $encpass, ':email' => $femail]);
       
                 if($result){
-                    $success = "Your password changed. Now you can login with your new password.";
+                    $success = "Your password has been changed! Please login with your new password.";
                     $_SESSION['info-success'] = $success;
                     header('Location: login');
                 }else{
-                    $errors['db-error'] = "Failed to change your password!";
+                    $errors['db-error'] = "Failed to change your password! Please try again later.";
                 }
             }else {
-                $errors['password'] = "password does not meet m inimum requoirements";
+                $errors['password'] = "Password does not meet the requirements!";
         }
     }
 }
@@ -316,80 +276,62 @@ $errors = array();
                     $query  = $conn->prepare("UPDATE classadmin SET images = '$imgContent' WHERE classcode = '$varivari'");
                     $result = $query->execute(); 
                     if($result){ 
-                        $info = "Uploaded Succesfully";
+                        $info = "Image has been changed!";
                         $_SESSION['info-image'] = $info;
                     }else{ 
-                        $errors['images'] = "File upload failed, please try again."; 
+                        $errors['images'] = "Something went wrong! Please try again later."; 
                     }  
                 
                 }else{ 
-                    $errors['images'] = "Please upload less than 100kb"; 
+                    $errors['images'] = "Please upload an image that is less than 4 MB!"; 
                 }
                 }else{ 
-                    $errors['images'] = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
+                    $errors['images'] = 'Please select a PNG image file type!'; 
                 } 
             }else{ 
-                $errors['images'] = 'Please select an image file to upload.'; 
+                $errors['images'] = 'Please select a PNG image file type!'; 
             }
         ?>
-        
-        
-        <script>
-            var message = "e";
-        </script> 
-            <?php  
+            <script>
+                var message = "e";
+            </script>
+        <?php  
     } 
 
-    /* Delete Image */
+    /* Remove Image */
     if(isset($_POST['remove-image'])) {
         $varivari= $_SESSION["classcode"];
-        
         $query  = $conn->prepare("UPDATE classadmin SET images = '' WHERE classcode = '$varivari'");
        $query->execute(); 
     }
 
-
-
-    /* resenr for otp */
+    /* Resend OTP */
     if(isset($_POST['resend'])) {
         $email = $_POST['email'];
-      
-    /*     if ($_POST['otp-check'] != "" ) { */
-          
-         
         $code = rand(999999, 111111);
         $query=  $conn->prepare("UPDATE classadmin SET code = :code WHERE email = :email");
         $result = $query->execute([':code' => $code, ':email' => $email]);       
         if($result){
-         
             $mail->addAddress($email);
             $mail->Subject='Email Verification Code';
             $mail->Body="Your verification code is <b>$code</b>";
-
             if($mail->send()){
-                $info = "Code Resend to $email.";
-                
+                $info = "Verification code resent to your email! - $email.";
                 $_SESSION['info-otp'] = $info;
                 $_SESSION['email'] = $email;
                 header('location: otp');
                 exit();
             }else{
-                $errors['otp-error'] = "Failed while sending code!";
+                $errors['otp-error'] = "Failed to resend verification code! Please try again later.";
             }
         }else{
-            $errors['db-error'] = "Something went wrong!";
+            $errors['db-error'] = "Something went wrong! Please try again later.";
         }
-   /*  } else {
-        $errors['db-error'] = "put a text!";
-    } */
-    } 
-    /* resenr for reset-otp */
+    }
+
+    /* Resend Reset-OTP */
     if(isset($_POST['resendd'])) {
         $femail = $_POST['email'];
-      
-    /*     if ($_POST['otp-check'] != "" ) { */
-          
-         
         $code = rand(999999, 111111);
         $query=  $conn->prepare("UPDATE classadmin SET code = :code WHERE email = :email");
         $result = $query->execute([':code' => $code, ':email' => $femail]);       
@@ -397,39 +339,33 @@ $errors = array();
             $mail->addAddress($femail);
             $mail->Subject='Email Verification Code';
             $mail->Body="Your verification code is <b>$code</b>";
-
             if($mail->send()){
-                $info = "Code Resend to $femail.";
-                
+                $info = "Verification code resent to your email! - $femail.";
                 $_SESSION['info-rotp'] = $info;
                 $_SESSION['femail'] = $femail;
                 header('location: reset-otp');
                 exit();
             }else{
-                $errors['otp-error'] = "Failed while sending code!";
+                $errors['otp-error'] = "Failed to resend verification code! Please try again later.";
             }
         }else{
-            $errors['db-error'] = "Something went wrong!";
+            $errors['db-error'] = "Something went wrong! Please try again later.";
         }
-   /*  } else {
-        $errors['db-error'] = "put a text!";
-    } */
     } 
     
     /* Index */
-    /* Guest */
     if(isset($_POST['submit'])){
         $codihe = $_POST['c'];
-            $query = $conn->prepare("SELECT * FROM classadmin WHERE classcode = :classcode");
+            $query = $conn->prepare("SELECT * FROM classadmin WHERE classcode  = :classcode");
             $query->execute([':classcode' => $codihe]);
             if($query->rowCount() > 0){
                 header('location: guest?c='.$codihe);   
             } else {
-            $errors['classcode'] = "Looks like bobo!";
+            $errors['classcode'] = "Code doesn't exist!";
             ?>
-        <script>
-            var error = "error";
-        </script> 
+                <script>
+                    var error = "error";
+                </script>
             <?php 
         }
     }

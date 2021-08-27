@@ -1,18 +1,15 @@
 <?php 
-
-$errors = array();
-require_once 'php/php-controller.php';
+require 'php/php-controller.php';
 unset($_SESSION['selected']);
+$errors = array();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-    
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
 
     <title>AraLink</title>
     <link rel="icon" href="img/logo.png">
@@ -28,117 +25,90 @@ unset($_SESSION['selected']);
     <!-- Loading -->
     <link rel="stylesheet" href="css/pace-theme-minimal.css">
 
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            overflow: hidden;
+        }
+
+        .jumbotron {
+
+            color: white;
+            height: 102%;
+            padding-top: 10px;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            background-image: url(img/error.gif);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center center;
+            box-shadow: inset 0 0 0 9999px rgba(15, 144, 105, .6);
+        }
+
+        .jumbotron .container {
+            position: relative;
+            z-index: 999;
+            margin-top: -40px;
+
+        }
+        .description {
+            font-size: 18px;
+            width: 550px;
+            margin: 30px auto auto auto;
+        }
+
+        @media (max-width:580px) {
+            .description {
+                font-size: 18px;
+                width: 100%;
+                margin: auto;
+            }
+        }
+
+        .jumbotron-heading {
+            margin-top: 60px;
+            font-size: 150px;
+            font-weight: 700;
+            margin-bottom: -35px !important;
+
+        }
+
+        .jumbotron-subheading {
+
+            font-size: 37px;
+            font-weight: 600;
+        }
+
+        .jumbotron .container .btn {
+            width: 200px;
+            background: none;
+            transition: 0.2s;
+            border: 2px solid white !important;
+            color: white;
+            margin-top: 15px !important;
+            font-weight: 500;
+        }
+
+        .jumbotron .container .btn:hover {
+            background-color: white;
+            color: rgb(31, 155, 95);
+            border: 2px solid white;
+            font-weight: 500;
+        }
+      
+    </style>
 </head>
-
-<style>
-    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-
-    html,
-    body {
-        width: 100%;
-        height: 100%;
-        margin: 0px;
-        padding: 0px;
-        overflow: hidden;
-    }
-
-  
-
-    .jumbotron {
-      
-        color: white;
-        height: 102%;
-        padding-top: 10px;
-        position: relative;
-        align-items: center;
-        justify-content: center;
-        background-image: url(img/error.gif);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        background-position: center center;
-        box-shadow: inset 0 0 0 9999px rgba(15, 144, 105, .6);
-    }
-
-    /* Particles in Jumbotron */
-    .jumbotron .container {
-        position: relative;
-        z-index: 999;
-        margin-top:-40px;
-       
-    }
-    .description {
-        font-size:18px;
-        width:550px;
-    margin:30px auto auto auto;
-    }
-
-@media (max-width:580px) {
-    .description {
-        font-size:18px;
-        width:100%;
-    margin:auto;
-    }
-
-    
-}
-    .jumbotron-heading {
-     margin-top:60px;
-        font-size:150px;
-        font-weight:700;
-        margin-bottom:-35px!important;
-      
-    }
-    .jumbotron-subheading {
-        
-        font-size:37px;
-        font-weight:600;
-    }
-  
-    .jumbotron .container .btn {
-        width: 200px;
-        background: none;
-        transition: 0.2s;
-        border: 2px solid white!important;
-        color: white;
-        margin-top:15px!important;
-        font-weight:500;
-     
-    }
-
-    .jumbotron .container .btn:hover {
-        background-color: white;
-        color:rgb(31, 155, 95);
-        border: 2px solid white;
-        font-weight:500;
-        
-
-       
-    }
-    ::-webkit-input-placeholder {
-   text-align: center;
- 
-}
-input {
-    text-align: center; 
- 
-}
-.btn-primaryy {
-    margin-top:10px!important;
-}
-
- 
-  
-    
-  
-
-    
-</style>
 
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-light sticky-top nav-index">
-        <a href="index"  class="navbar-brand pl-3"><img src="img/nav-logo.png" width="190px" height="50px"></a>
+        <a href="index" class="navbar-brand pl-3"><img src="img/nav-logo.png" width="190px" height="50px"></a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navigation_bar"
             aria-controls="navigation_bar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
@@ -147,36 +117,29 @@ input {
         </button>
         <div class="collapse navbar-collapse " id="navigation_bar">
             <ul class="navbar-nav ml-auto flex-sm-row pr-2">
-                <div class="nav-item left  "> <a href="login" class="btn btn-light"> <i class="fas fa-sign-in-alt"></i>Login</a></div>
-                <div class="nav-item right "> <a href="register" class="btn btn-light"> <i class="fas fa-user-plus"></i>Register</a></div>
+                <div class="nav-item left  "> <a href="login" class="btn btn-light"> <i
+                            class="fas fa-sign-in-alt"></i>Login</a></div>
+                <div class="nav-item right "> <a href="register" class="btn btn-light"> <i
+                            class="fas fa-user-plus"></i>Register</a></div>
             </ul>
         </div>
     </nav>
-
-
 
     <div class="jumbotron d-flex align-items-center particles">
         <div class="container text-center">
             <h1 class="jumbotron-heading ">404</h1>
             <h1 class="jumbotron-subheading ">Page Not Found</h1>
             <div class="description">We're sorry, the page you requested could not be found.</div>
-          <a class="btn btn-primaryy" href="index">Go Back</a>
-       
+            <a class="btn btn-primaryy" href="index">Go Back</a>
         </div>
     </div>
 
-
-
-    
-
     <!-- Loading -->
     <script src="js/pace.js"></script>
+
     <!-- Particle -->
     <script src="js/particles.js"></script>
     <script src="js/app.js"></script>
-
-
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -185,9 +148,6 @@ input {
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-                            
-
 
 </body>
-
 </html>

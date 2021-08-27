@@ -5,3 +5,4 @@ if (isset($_POST['subject'])) {
 	$selected = $subject;
 	$_SESSION['selected'] = $selected;	
 	}
+?>
