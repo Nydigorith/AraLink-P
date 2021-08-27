@@ -52,7 +52,7 @@ unset($_SESSION['selected']);
         position: relative;
         align-items: center;
         justify-content: center;
-        background-image: url(img/error.jpg);
+        background-image: url(img/error.gif);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
@@ -101,7 +101,7 @@ unset($_SESSION['selected']);
         transition: 0.2s;
         border: 2px solid white!important;
         color: white;
-        margin-top:13px;
+        margin-top:15px!important;
         font-weight:500;
      
     }
@@ -159,7 +159,7 @@ input {
         <div class="container text-center">
             <h1 class="jumbotron-heading ">404</h1>
             <h1 class="jumbotron-subheading ">Page Not Found</h1>
-            <div class="description">We're sorry, the page you requested could not be found. Please  go back to the homepage.</div>
+            <div class="description">We're sorry, the page you requested could not be found.</div>
           <a class="btn btn-primaryy" href="index">Go Back</a>
        
         </div>

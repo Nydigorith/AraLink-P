@@ -72,7 +72,7 @@ unset($_SESSION['selected']);
     .jumbotron .container {
         position: relative;
         z-index: 999;
-        margin-top:-40px;
+      /*   margin-top:-10px; */
        
     }
     .description {

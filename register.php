@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Style -->
+
     <link rel="stylesheet" href="css/style.css">
+  
 
 
     <!-- Loading -->
@@ -27,11 +29,7 @@
             background-color: rgb(31, 155, 95);
             color: rgb(46, 50, 51);
         }
-        .popover {
-            font-size:12px;
-            text-align:center;
-            
-        }
+     
     </style>
 </head>
 
