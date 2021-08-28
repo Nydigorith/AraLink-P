@@ -1,7 +1,7 @@
 <?php 
+$errors = array();
 require 'php/php-controller.php';
 unset($_SESSION['selected']);
-$errors = array();
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -77,8 +77,10 @@ if (!empty($fetch['images'])) {
             height: 100%;
             margin: 0px;
             padding: 0px;
+  
             display: flex;
             flex-direction: column;
+            color: rgb(46, 50, 51);
         }
 
         .copied {
@@ -112,12 +114,13 @@ if (!empty($fetch['images'])) {
         @media (min-width: 0px) {
             .videos .shrink {
                 top: 126px;
+                transition: .4s;
             }
         }
 
-        .videos {
+       /*  .videos {
             margin-bottom:19px;
-        }
+        } */
 
         @media (max-width: 699px) {
             .videos{
@@ -128,6 +131,7 @@ if (!empty($fetch['images'])) {
         .modal-body {
             color:rgb(46, 50, 51);
         } 
+
     </style>
 </head>
 
@@ -175,7 +179,7 @@ if (!empty($fetch['images'])) {
                         <?php 
                             $query = $conn->prepare("SELECT * FROM classsubject WHERE subjectcode = :codihe");
                             $result  =  $query->execute([':codihe' => $fetch_classcode]);
-                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(31, 155, 95); color:white!important; font-weight: 450;}></style>"; 
+                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(31, 155, 95); color:white!important;   font-weight: 450;}></style>"; 
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
@@ -195,21 +199,21 @@ if (!empty($fetch['images'])) {
             </div>
         </div>
 
-        <div class=" video-show pt-5">
-            <div class="row px-2">
+        <div class=" video-show">
+            <div class="row">
                 <?php
                     if(isset($_SESSION['selected'])) {
                         $selected = $_SESSION['selected'];
                         if ($selected == "ALL") {
                             $query = $conn->prepare("SELECT * FROM classvideo WHERE linkcode = :codihe");
                             $result  =  $query->execute([':codihe' => $fetch_classcode]);
-                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(31, 155, 95);color:white!important; font-weight: 450;}></style>"; 
+                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(31, 155, 95);color:white!important; border:solid 1px rgb(31, 155, 95)!important; font-weight: 450;}></style>"; 
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
                         ?>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="card mb-4 box-shadow ">
+                    <div class="card box-shadow">
                         <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"
                             loading="lazy"></iframe>
                         <div class="card-body">
@@ -231,13 +235,13 @@ if (!empty($fetch['images'])) {
                         } else {
                             $query = $conn->prepare("SELECT * FROM classvideo WHERE subjects = :subject AND linkcode = :codihe");
                             $result  =  $query->execute([':subject' => $selected, ':codihe' => $fetch_classcode]);
-                             echo "<style>.filter-selection[value='$selected']{background-color: rgb(31, 155, 95);color:white!important;font-weight: 450;}.filter-selection[value=ALL]{background-color: white; color:#6c757d!important; font-weight: normal;}</style>";   
+                             echo "<style>.filter-selection[value='$selected']{background-color: rgb(31, 155, 95);color:white!important; border:solid 1px rgb(31, 155, 95)!important;font-weight: 450;}.filter-selection[value=ALL]{background-color: white; color:#6c757d!important; font-weight: normal;}</style>";   
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){                           
                     ?>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="card mb-4 box-shadow">
+                    <div class="card box-shadow">
                         <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"
                             loading="lazy"></iframe>
                         <div class="card-body">
@@ -265,7 +269,7 @@ if (!empty($fetch['images'])) {
                                 while($row = $query->fetch(PDO::FETCH_BOTH)){
                                     ?>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="card mb-4 box-shadow">
+                    <div class="card box-shadow">
                         <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"
                             loading="lazy"></iframe>
                         <div class="card-body">
@@ -353,6 +357,7 @@ if (!empty($fetch['images'])) {
                 });
             });
 
+
             $('.owl-carousel').owlCarousel({
                 margin: 0,
                 loop: false,
@@ -361,9 +366,10 @@ if (!empty($fetch['images'])) {
                 nav: true,
                 navText: ["<i class='fas fa-angle-left'></i>", "<i class='fas fa-angle-right'></i>"]
             });
-
-            /* Copy */
-            $('#copy-code').click(function (e) {
+        });
+     
+          /* Copy */
+          $('#copy-code').click(function (e) {
                 $('#copied').fadeIn(1000);
                 $('#copied').delay(2000).fadeOut(1000);
             });
@@ -376,7 +382,6 @@ if (!empty($fetch['images'])) {
                 document.execCommand("copy");
                 window.getSelection().removeAllRanges();
             }
-        });
 
         document.getElementById("toggler").addEventListener("click", function () {
             document.getElementById("selection").classList.toggle("shrink");

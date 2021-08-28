@@ -75,6 +75,7 @@ if (!empty($fetch['images'])) {
             padding: 0px;
             display: flex;
             flex-direction: column;
+            color: rgb(46, 50, 51);
         }
 
         @media (min-width: 0px) {
@@ -83,9 +84,9 @@ if (!empty($fetch['images'])) {
             }
         }
 
-        .videos {
+       /*  .videos {
             margin-bottom: 19px;
-        }
+        } */
 
         @media (max-width: 699px) {
             .videos {
@@ -131,15 +132,13 @@ if (!empty($fetch['images'])) {
             <div class="text-center">
                 <div class="filter">
                     <form id="form1" method="POST" class="owl-carousel radio-buttons m-0">
-
                         <label class="filter-selection " value='ALL'>
                             <input class="radio-filter subject" type="radio" name="subject" value="ALL">ALL</input>
                         </label>
                         <?php
-                           
                             $query = $conn->prepare("SELECT * FROM classsubject WHERE subjectcode = :codihe");
                             $result  =  $query->execute([':codihe' => $codihe]);
-                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(31, 155, 95); color:white!important; font-weight: 450;}></style>"; 
+                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(31, 155, 95); color:white!important;  font-weight: 450;}></style>"; 
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
@@ -155,26 +154,25 @@ if (!empty($fetch['images'])) {
                             }
                                 ?>
                         <input type="hidden" name="c" value="<?php echo $_POST['c']?>">
-
                     </form>
                 </div>
             </div>
         </div>
-        <div class=" video-show pt-5">
-            <div class="row px-2">
+        <div class=" video-show">
+            <div class="row">
                 <?php
                     if(isset($_SESSION['selected'])) {
                         $selected = $_SESSION['selected'];
                         if ($selected == "ALL") {
                             $query = $conn->prepare("SELECT * FROM classvideo WHERE linkcode = :codihe");
                             $result  =  $query->execute([':codihe' => $codihe]);
-                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(31, 155, 95);color:white!important; font-weight: 450;}></style>"; 
+                            echo "<style>.filter-selection[value='ALL']{background-color: rgb(31, 155, 95);color:white!important; border:solid 1px rgb(31, 155, 95)!important; font-weight: 450;}></style>"; 
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){
                         ?>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="card mb-4 box-shadow ">
+                    <div class="card box-shadow ">
                         <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"
                             loading="lazy"></iframe>
                         <div class="card-body">
@@ -195,13 +193,13 @@ if (!empty($fetch['images'])) {
                         } else {
                             $query = $conn->prepare("SELECT * FROM classvideo WHERE subjects = :subject AND linkcode = :codihe");
                             $result  =  $query->execute([':subject' => $selected, ':codihe' => $codihe]);
-                            echo "<style>.filter-selection[value='$selected']{background-color: rgb(31, 155, 95);color:white!important;font-weight: 450;}.filter-selection[value=ALL]{background-color: white; color:#6c757d!important; font-weight: normal;}</style>";   
+                            echo "<style>.filter-selection[value='$selected']{background-color: rgb(31, 155, 95);color:white!important; border:solid 1px rgb(31, 155, 95)!important;font-weight: 450;}.filter-selection[value=ALL]{background-color: white; color:#6c757d!important; font-weight: normal;}</style>";   
                             if($result){
                                 if($query->rowCount() > 0){
                                     while($row = $query->fetch(PDO::FETCH_BOTH)){                           
                     ?>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="card mb-4 box-shadow">
+                    <div class="card box-shadow">
                         <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"
                             loading="lazy"></iframe>
                         <div class="card-body">
@@ -229,7 +227,7 @@ if (!empty($fetch['images'])) {
                                 while($row = $query->fetch(PDO::FETCH_BOTH)){
                                     ?>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="card mb-4 box-shadow">
+                    <div class="card box-shadow">
                         <iframe class="card-img-top" src="<?php echo $row['links'];?>" allowfullscreen="true"
                             loading="lazy"></iframe>
                         <div class="card-body">

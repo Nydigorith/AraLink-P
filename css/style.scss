@@ -8,6 +8,7 @@ $jumbotronColor:rgba(31, 155, 95, .6);
 $inputOutline: rgb(31, 155, 95);
 $outline: rgb(214, 220, 224);
 $inputMain: rgb(196, 196, 196);
+$jumbotronTExtColor: white; /* rgb(46, 50, 51); */
 
 @mixin removeShadowOutline {
     outline: none !important;
@@ -20,6 +21,7 @@ html {
         font-family: 'Poppins', sans-serif;
         background-color: rgb(244, 244, 244);
         -webkit-overflow-scrolling: touch;
+        
     }
 }
 
@@ -202,14 +204,18 @@ html {
 
         .jumbotron-heading {
             font-size: 50px;
-            color: rgb(46, 50, 51);
+            color: $jumbotronTExtColor;
         }
 
         .fa-edit,
         .fa-share {
             font-size: 15px;
             padding-left: .2vw;
-            color: rgb(46, 50, 51);
+            color: $jumbotronTExtColor;
+        }
+        
+        .fa-image {
+            color: $jumbotronTExtColor;
         }
     }
 
@@ -234,28 +240,38 @@ html {
 
 /* Selection */
 .videos {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+     padding:0px!important;
+     margin:0px!important;
     .mb-4 {
         margin-top: 8px;
     }
 
     .video-selection {
         background-color: $nButtonColor;
-        border-top: 1px $outline solid;
+
         border-bottom: 1px $outline solid;
         margin-top: -32.1px;
-        top: 63px;
-        transition: .2s;
+        top: 62px;
+        transition: .3s;
         box-shadow: $mainShadow;
+        max-width: 100%;
+        min-height:53px;
+        max-height:53px;
+        overflow: hidden;
 
         .filter {
             width: 100%;
             $nButtonColor-space: nowrap;
             margin: auto;
 
+            
             .owl-prev,
             .owl-next {
                 position: absolute;
-                top: 12.4px;
+                top: 13px;
             }
 
             .owl-prev {
@@ -271,7 +287,7 @@ html {
                 font-size: 11px;
                 color: $nButtonColor;
                 background: linear-gradient(to left, rgba(0, 0, 0, 0), rgb(46, 50, 51));
-                padding: 8px 8px;
+                padding: 10px 10px;
             }
 
             .owl-next i {
@@ -279,7 +295,7 @@ html {
                 font-size: 11px;
                 color: $nButtonColor;
                 background: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(46, 50, 51));
-                padding: 8px 8px;
+                padding: 10px 10px;
             }
 
             .owl-carousel .owl-stage {
@@ -326,69 +342,99 @@ html {
 
     /* Card */
     .video-show {
-        padding: 0px 100px;
-
-        @media (max-width: 800px) {
-            padding: 0 20px;
+        padding:0px!important;
+        margin:0px!important;
+        flex:1;
+        @media (min-width: 850px) {
+            height:100%;
+            padding:20px 45px!important;
+            margin:0px!important;   
         }
-
-        .card {
-            border-top-left-radius: 0%;
-            border-top-right-radius: 0%;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-            border: 1px solid $outline;
-
-            &:hover {
-                box-shadow: $mainShadow;
-            }
-
-            .card-img-top {
-                text-align: center;
-                width: 100%;
-                height: 12em;
-                margin-left: auto;
-                margin-right: auto;
-                border-style: none;
-                border-radius: 0%;
-            }
-
-            .card-title {
-                font-size: 18px;
-                font-weight: 450;
-                color: $mainColor;
-            }
-
-            .card-title,
-            .card-subtitle {
-                margin: 0;
-                padding: 0;
-            }
-
-            .text-muted {
-                font-size: 15px;
-            }
+         @media (min-width: 575px) and (max-width: 850px){
+            height:100%;
+            padding:20px 10px!important;
+            margin:0px!important;
         }
-
-        @media (max-width: 700px) {
+        @media (min-width: 475px) and (max-width: 575px) {
+            height:100%;
+            padding:20px 30px!important;
+            margin:0px!important;
+        }
+        @media (min-width: 0px) and (max-width: 475px) {
+            height:100%;
+            padding:20px 10px!important;
+            margin:0px!important;
+        }
+        .row {
+            .col-lg-4,.col-md-6,.col-sm-6{
+                padding:15px!important;
+            }
+            @media (min-width: 850px) {
+                height:100%;
+                padding:20px 45px!important;
+                margin:0px!important;   
+            }
+             @media (min-width: 575px) and (max-width: 850px){
+                height:100%;
+                padding:20px 10px!important;
+                margin:0px!important;
+            }
+            @media (min-width: 475px) and (max-width: 575px) {
+                height:100%;
+                padding:20px 30px!important;
+                margin:0px!important;
+            }
+            @media (min-width: 0px) and (max-width: 475px) {
+                height:100%;
+                padding:20px 10px!important;
+                margin:0px!important;
+            }
             .card {
-                max-width: 380px !important;
-                margin: auto;
+                border-top-left-radius: 0%;
+                border-top-right-radius: 0%;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                border: 1px solid $outline;
+                margin: 0!important;
+                padding: 0!important;
+                &:hover {
+                    box-shadow: $mainShadow;
+                }
+                .card-img-top {
+                    text-align: center;
+                    width: 100%;
+                    height: 12em;
+                    margin-left: auto;
+                    margin-right: auto;
+                    border-style: none;
+                    border-radius: 0%;
+                }
+    
+                .card-title {
+                    font-size: 18px;
+                    font-weight: 450;
+                    color: $mainColor;
+                }
+    
+                .card-title,
+                .card-subtitle {
+                    margin: 0;
+                    padding: 0;
+                }
+    
+                .text-muted {
+                    font-size: 15px;
+                }
             }
         }
-
-        @media (max-width: 700px) {
-            .card-img-top {
-                height: 180px;
-            }
-        }
+        
     }
 }
 
 /* Footer */
 footer {
     margin-top: auto;
-    padding-top: 16px;
+ /*    padding-top: 16px; */
 
     .footer-text {
         color: $nButtonColor;
@@ -709,6 +755,8 @@ input {
 
 .error-text {
     padding: 45px 0 50px 0;
+    display:flex;
+    margin-bottom:auto;
 }
 
 @media (max-width:768px) {
