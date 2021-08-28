@@ -333,9 +333,9 @@ if (!empty($fetch['images'])) {
 
         .table-container {
             display: flex;
-            margin-top: -16px !important;
+           /*  margin-top: -16px 0 !important; */
             margin-bottom: 0 !important;
-            margin: 22px 15px 40px 15px;
+            margin: -16px 15px 0px 15px;
             background-color: white;
             padding: 15px 0;
             border-radius: 10px;
@@ -519,7 +519,7 @@ if (!empty($fetch['images'])) {
         }
 
         .datepicker-days {
-            padding: 10px !important;
+            padding: 5px !important;
         }
 
         .datepicker td,
@@ -546,15 +546,25 @@ if (!empty($fetch['images'])) {
         }
 
         .datepicker table tr td.active:active, 
-.datepicker table tr td.active:hover:active, 
-.datepicker table tr td.active.disabled:active, 
-.datepicker table tr td.active.disabled:hover:active, 
-.datepicker table tr td.active.active, 
-.datepicker table tr td.active:hover.active, 
-.datepicker table tr td.active.disabled.active, 
-.datepicker table tr td.active.disabled:hover.active {
-        background-image: linear-gradient(to bottom, rgb(31, 155, 95), rgb(31, 155, 95));
-    }
+        .datepicker table tr td.active:hover:active, 
+        .datepicker table tr td.active.disabled:active, 
+        .datepicker table tr td.active.disabled:hover:active, 
+        .datepicker table tr td.active.active, 
+        .datepicker table tr td.active:hover.active, 
+        .datepicker table tr td.active.disabled.active, 
+        .datepicker table tr td.active.disabled:hover.active {
+            background-image: linear-gradient(to bottom, rgb(31, 155, 95), rgb(31, 155, 95));
+        }
+
+        .table-condensed > thead > tr:nth-child(2) > .prev {
+  font-size: 5;
+  background: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cline x1='19' y1='12' x2='5' y2='12'%3E%3C/line%3E%3Cpolyline points='12 19 5 12 12 5'%3E%3C/polyline%3E%3C/svg%3E") 50% 50% / contain no-repeat;
+}
+
+.table-condensed > thead > tr:nth-child(2) > .next {
+  font-size: 0;
+  background: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3Cpolyline points='12 5 19 12 12 19'%3E%3C/polyline%3E%3C/svg%3E") 50% 50% / contain no-repeat;
+}
     </style>
 </head>
 
@@ -626,7 +636,7 @@ if (!empty($fetch['images'])) {
                     <div class="modal-content">
                         <form method="post" id="video_form" enctype="multipart/form-data">
                             <div class="modal-header">
-                                <h4 class="modal-title mx-auto">Add Video</h4>
+                                <h4 class="modal-title mx-auto">Add Video Details</h4>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
@@ -716,7 +726,7 @@ if (!empty($fetch['images'])) {
                     <div class="modal-content">
                         <form method="post" id="subject_form" enctype="multipart/form-data">
                             <div class="modal-header">
-                                <h4 class="modal-title mx-auto">Add Subject</h4>
+                                <h4 class="modal-title mx-auto">Add Subject Details</h4>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group pb-1">
@@ -839,7 +849,7 @@ if (!empty($fetch['images'])) {
     </div>
     </div>
 
-    <footer class="page-footer">
+    <footer class="page-footer pt-3">
         <div class="footer-text text-center py-2">
             <a href="https://github.com/Nydigorith/AraLink" target="_blank">Repository</a>
         </div>
@@ -1060,10 +1070,11 @@ if (!empty($fetch['images'])) {
         $(document).ready(function () {
             $('#subject_add_button').click(function () {
                 $('#subject_form')[0].reset();
-                $('.modal-title').text("Add Subject");
+                $('.modal-title').text("Add a Subject");
                 $('#subject_action').val("Add");
                 $('#subject_operation').val("Add");
             });
+
 
             var dataTable = $('#subject_table').DataTable({
                 "paging": false,

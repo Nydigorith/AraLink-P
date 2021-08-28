@@ -4,7 +4,7 @@ $nButtonColor: white;
 $mainColor:rgb(31, 155, 95);
 $nShadow: 0px 0px 10px -4px rgba(0, 0, 0, .1);
 $mainShadow: 0px 0px 10px -3px rgba(0, 0, 0, .2);
-$jumbotronColor:rgba(31, 155, 95, .6);
+$jumbotronColor:rgba(31, 155, 95, .5);
 $inputOutline: rgb(31, 155, 95);
 $outline: rgb(214, 220, 224);
 $inputMain: rgb(196, 196, 196);
@@ -203,7 +203,7 @@ html {
         background-repeat: no-repeat;
 
         .jumbotron-heading {
-            font-size: 50px;
+            font-size: 60px;
             color: $jumbotronTExtColor;
         }
 
@@ -225,14 +225,14 @@ html {
             height: 230px;
 
             .jumbotron-heading {
-                font-size: 40px;
+                font-size: 50px;
             }
 
             .fa-edit,
             .fa-share {
-                font-size: 10px;
+                font-size: 12px;
                 padding-left: .2vw;
-                color: rgb(46, 50, 51);
+                color: $jumbotronTExtColor;
             }
         }
     }

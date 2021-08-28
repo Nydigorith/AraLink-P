@@ -254,7 +254,7 @@ if (!empty($fetch['images'])) {
     <!-- Footer -->
     <footer class="page-footer">
         <div class="footer-text text-center py-2">
-            <a href="https://github.com/Nydigorith/AraLink" target="_blank">Download Source Code</a>
+            <a href="https://github.com/Nydigorith/AraLink" target="_blank">Repository</a>
         </div>
     </footer>
 
