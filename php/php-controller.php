@@ -59,17 +59,17 @@ $name = "";
                                 $result=$query->execute([':name' => $name, ':email' => $email, ':password' => $encpass, ':code' => $code,':status' => $status,':classname' => $classname,':classcode' => $classcode]);
                                 if($result){
                                     $mail->addAddress($email);
-                                    $mail->Subject='Email Verification Code';
+                                    $mail->Subject='Verification Code';
                                     $mail->Body="Your verification code is <b>$code</b>";
                                     if($mail->send()){
-                                        $info = "A verification code is sent to your email! - $email";
+                                        $info = "Verification code has been sent to $email";
                                         $_SESSION['info-otp'] = $info;
                                         $_SESSION['email'] = $email;
                                         $_SESSION['password'] = $password;
                                         header('location: otp');
                                         exit();
                                     } else{
-                                        $errors['otp-error'] = "Failed to send verification code! Please try again later.";
+                                        $errors['otp-error'] = "Something went wrong! Please try again later.";
                                     }
                                 } else{
                                     $errors['db-error'] = "Something went wrong! Please try again later.";
@@ -135,7 +135,7 @@ $name = "";
                         $_SESSION['password'] = $password;
                         header('location: home');
                     }else{
-                        $info = "It looks like you haven't still verified your email! - $email";
+                        $info = "Verification code has been sent to $email";
                         $_SESSION['info-otp'] = $info;
                         header('location: otp');
                      }
@@ -163,16 +163,16 @@ $name = "";
                 $result = $query->execute([':code' => $code, ':email' => $femail]);       
                 if($result){
                     $mail->addAddress($femail);
-                    $mail->Subject='Email Verification Code';
+                    $mail->Subject='Verification Code';
                     $mail->Body="Your verification code is <b>$code</b>";
                     if($mail->send()){
-                        $info = "A verification code is sent to your email! - $femail";
+                        $info = "A verification code is sent to your email - $femail";
                         $_SESSION['info-rotp'] = $info;
                         $_SESSION['femail'] = $femail;
                         header('location: reset-otp');
                         exit();
                     }else{
-                        $errors['otp-error'] = "Failed to send verification code! Please try again later.";
+                        $errors['otp-error'] = "Something went wrong! Please try again later.";
                     }
                 }else{
                     $errors['db-error'] = "Something went wrong! Please try again later.";
@@ -197,7 +197,7 @@ $name = "";
                 $code = 0;
                 $femail = $fetch['email'];
                 $_SESSION['femail'] = $femail;
-                $info = "Please create a new password that you don't use on any other site.";
+                $info = "Enter your new password";
                 $_SESSION['info-np'] = $info;
                 $query = $conn->prepare("UPDATE classadmin SET code = :code WHERE email = :email");
                 $result=$query->execute([':code' => $code, ':email' => $femail]);
@@ -283,13 +283,13 @@ $name = "";
                     }  
                 
                 }else{ 
-                    $errors['images'] = "Please upload an image that is less than 4 MB!"; 
+                    $errors['images'] = "Upload a PNG image that is smaller than 4 MB!"; 
                 }
                 }else{ 
-                    $errors['images'] = 'Please select a PNG image file type!'; 
+                    $errors['images'] = 'Sorry, only PNG files are allowed!'; 
                 } 
             }else{ 
-                $errors['images'] = 'Please select a PNG image file type!'; 
+                $errors['images'] = 'Select a PNG file to upload!'; 
             }
         ?>
             <script>
@@ -313,16 +313,16 @@ $name = "";
         $result = $query->execute([':code' => $code, ':email' => $email]);       
         if($result){
             $mail->addAddress($email);
-            $mail->Subject='Email Verification Code';
+            $mail->Subject='Verification Code';
             $mail->Body="Your verification code is <b>$code</b>";
             if($mail->send()){
-                $info = "Verification code resent to your email! - $email.";
+                $info = "Verification code resent to $email";
                 $_SESSION['info-otp'] = $info;
                 $_SESSION['email'] = $email;
                 header('location: otp');
                 exit();
             }else{
-                $errors['otp-error'] = "Failed to resend verification code! Please try again later.";
+                $errors['otp-error'] = "Something went wrong! Please try again later.";
             }
         }else{
             $errors['db-error'] = "Something went wrong! Please try again later.";
@@ -337,16 +337,16 @@ $name = "";
         $result = $query->execute([':code' => $code, ':email' => $femail]);       
         if($result){
             $mail->addAddress($femail);
-            $mail->Subject='Email Verification Code';
+            $mail->Subject='Verification Code';
             $mail->Body="Your verification code is <b>$code</b>";
             if($mail->send()){
-                $info = "Verification code resent to your email! - $femail.";
+                $info = "Verification code resent to $femail";
                 $_SESSION['info-rotp'] = $info;
                 $_SESSION['femail'] = $femail;
                 header('location: reset-otp');
                 exit();
             }else{
-                $errors['otp-error'] = "Failed to resend verification code! Please try again later.";
+                $errors['otp-error'] = "Something went wrong! Please try again later.";
             }
         }else{
             $errors['db-error'] = "Something went wrong! Please try again later.";

@@ -48,13 +48,13 @@ $errors = array();
             background-attachment: fixed;
             background-size: cover;
             background-position: center center;
-            box-shadow: inset 0 0 0 9999px rgba(15, 144, 105, .6);
+            box-shadow: inset 0 0 0 9999px rgba(15, 144, 105, .5);
         }
 
         .jumbotron .container {
             position: relative;
             z-index: 999;
-            margin-top: -40px;
+            margin-top: -60px;
 
         }
         .description {
@@ -63,11 +63,16 @@ $errors = array();
             margin: 30px auto auto auto;
         }
 
-        @media (max-width:580px) {
+        @media (max-width:770px) {
+            .jumbotron .container {
+         
+            margin-top: -80px;
+
+        }
             .description {
                 font-size: 18px;
                 width: 100%;
-                margin: auto;
+                margin: 30px auto auto auto;
             }
         }
 
@@ -129,7 +134,7 @@ $errors = array();
         <div class="container text-center">
             <h1 class="jumbotron-heading ">404</h1>
             <h1 class="jumbotron-subheading ">Page Not Found</h1>
-            <div class="description">We're sorry, the page you requested could not be found.</div>
+            <div class="description">The page you were looking for could not be found.</div>
             <a class="btn btn-primaryy" href="index">Go Back</a>
         </div>
     </div>

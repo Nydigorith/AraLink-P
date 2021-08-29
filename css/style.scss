@@ -287,7 +287,7 @@ html {
                 font-size: 11px;
                 color: $nButtonColor;
                 background: linear-gradient(to left, rgba(0, 0, 0, 0), rgb(46, 50, 51));
-                padding: 10px 10px;
+                padding: 10px 20px;
             }
 
             .owl-next i {
@@ -295,7 +295,7 @@ html {
                 font-size: 11px;
                 color: $nButtonColor;
                 background: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(46, 50, 51));
-                padding: 10px 10px;
+                padding: 10px 20px;
             }
 
             .owl-carousel .owl-stage {
@@ -634,7 +634,7 @@ input {
 
                 label {
                     margin: 0px;
-                    padding: 0px;
+                   height:10px;
                 }
 
                 .far {
@@ -649,6 +649,7 @@ input {
                 .input-group {
                     label {
                         margin: 0;
+                        
                     }
                 }
 
@@ -696,7 +697,7 @@ input {
                     bottom: 22px;
                     left: 15px;
                     position: relative;
-                    background-color: $nButtonColor;
+                    background: $nButtonColor;
                     padding: 0px 5px;
                     font-size: 16px;
                     transition: 0.2s;
@@ -736,6 +737,7 @@ input {
 
             .alert {
                 word-wrap: break-word;
+                font-size:15px;
             }
         }
     }

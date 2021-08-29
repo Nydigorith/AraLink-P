@@ -1,0 +1,73 @@
+.dt-responsive {
+  /* th {
+    border-top: 1px solid var(--tableBorder) !important;
+    border-bottom: 0px solid var(--tableBorder) !important;
+    background-color: rgb(244, 244, 244);
+} */
+}
+
+.dt-responsive td {
+  border-top: 0px solid var(--tableBorder);
+  border-bottom: 1px solid var(--tableBorder);
+}
+
+.dt-responsive th,
+.dt-responsive td {
+  border-bottom: 0px solid var(--tableBorder) !important;
+}
+
+.dt-responsive th:first-child {
+  border-left: 1px solid var(--tableBorder);
+}
+
+.dt-responsive th:last-child {
+  border-right: 1px solid var(--tableBorder);
+}
+
+.dt-responsive td:first-child {
+  border-left: 1px solid var(--tableBorder);
+}
+
+.dt-responsive td:last-child {
+  border-right: 1px solid var(--tableBorder);
+}
+
+.datepicker table {
+  border: 1px var(--tableBorder) solid !important;
+}
+
+.datepicker-days {
+  padding: 5px !important;
+}
+
+.datepicker td,
+th {
+  border-bottom: 1px var(--tableBorder) solid !important;
+}
+
+.datepicker td:last-child,
+th:last-child {
+  padding: 0 3px;
+}
+
+.datepicker td:first-child,
+th:first-child {
+  padding: 0 3px;
+}
+
+.datepicker td:hover {
+  background-color: white !important;
+}
+
+.datepicker table tr td.active:active,
+.datepicker table tr td.active:hover:active,
+.datepicker table tr td.active.disabled:active,
+.datepicker table tr td.active.disabled:hover:active,
+.datepicker table tr td.active.active,
+.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active.disabled.active,
+.datepicker table tr td.active.disabled:hover.active {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1f9b5f), to(#1f9b5f));
+  background-image: linear-gradient(to bottom, #1f9b5f, #1f9b5f);
+}
+/*# sourceMappingURL=admin.css.map */
