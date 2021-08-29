@@ -970,7 +970,7 @@ if (!empty($fetch['images'])) {
                 "order": [],
                 "info": false,
                 "ajax": {
-                    url: 'vfetch.php',
+                    url: 'php/vfetch.php',
                     type: "POST"
                 },
                 "columnDefs": [{
@@ -1021,7 +1021,7 @@ if (!empty($fetch['images'])) {
                 var links = $('#links').val();
                 var linkcode = $('#linkcode').val();
                 $.ajax({
-                    url: "input-controller.php",
+                    url: "php/input-controller.php",
                     method: 'POST',
                     data: new FormData(this),
                     contentType: false,
@@ -1037,7 +1037,7 @@ if (!empty($fetch['images'])) {
             $(document).on('click', '.update', function () {
                 var video_id = $(this).attr("id");
                 $.ajax({
-                    url: "vfetch.php",
+                    url: "php/vfetch.php",
                     method: "POST",
                     data: {
                         video_id: video_id
@@ -1066,7 +1066,7 @@ if (!empty($fetch['images'])) {
                 var video_id = $(this).attr("id");
                 if (confirm("Are you sure you want to delete?")) {
                     $.ajax({
-                        url: "input-controller.php",
+                        url: "php/input-controller.php",
                         method: "POST",
                         data: {
                             video_id: video_id
@@ -1111,7 +1111,7 @@ if (!empty($fetch['images'])) {
                 },
                 "info": false,
                 "ajax": {
-                    url: "sfetch.php",
+                    url: "php/sfetch.php",
                     type: "POST"
                 },
                 "columnDefs": [{
@@ -1144,7 +1144,7 @@ if (!empty($fetch['images'])) {
                 var subjects = $('#subjects').val();
                 var subjectcode = $('#subjectcode').val();
                 $.ajax({
-                    url: "input-controller.php",
+                    url: "php/input-controller.php",
                     method: 'POST',
                     data: new FormData(this),
                     contentType: false,
@@ -1162,7 +1162,7 @@ if (!empty($fetch['images'])) {
                 var subject_id = $(this).attr("id");
                 if (confirm("Are you sure you want to delete?")) {
                     $.ajax({
-                        url: "input-controller.php",
+                        url: "php/input-controller.php",
                         method: "POST",
                         data: {
                             subject_id: subject_id
